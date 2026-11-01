@@ -9,7 +9,7 @@ const children = [
   spawn(process.execPath,[path.join(root,'apps/web/node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','3001','--strictPort'],{cwd:path.join(root,'apps/web'),stdio:'inherit'}),
 ];
 const manifest=JSON.parse(fs.readFileSync(path.join(root,'deployments/elysium-testnet.json'),'utf8'));
-if(manifest.modules?.markets==='confirmed')children.push(spawn(process.execPath,['scripts/elysium-oracle.cjs','--watch'],{cwd:root,stdio:'inherit'}));
+if(require('../networks/elysium-features.json').syntheticMarkets&&manifest.modules?.markets==='confirmed')children.push(spawn(process.execPath,['scripts/elysium-oracle.cjs','--watch'],{cwd:root,stdio:'inherit'}));
 function stop(){for(const child of children)child.kill();}
 process.on('SIGINT',stop);process.on('SIGTERM',stop);
 for(const child of children){child.on('error',error=>{console.error(error.message);stop();process.exitCode=1});child.on('exit',code=>{if(code){stop();process.exitCode=code;}});}

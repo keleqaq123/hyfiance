@@ -14,3 +14,8 @@ test('operator test oracle scales exact prices without floating-point loss',()=>
   assert.equal(scale('3512345678',-8),3512345678n*10n**10n);
   assert.throws(()=>scale('1',-19));
 });
+test('the requested deployment excludes synthetic markets and all points',()=>{
+ const features=require('../../networks/elysium-features.json');
+ assert.deepEqual(features.deploymentModules,['swap','launchpad','cfi','nft']);
+ assert.equal(features.syntheticMarkets,false);assert.equal(features.points,false);
+});

@@ -23,6 +23,7 @@ def test_elysium_does_not_inherit_old_chain_addresses_or_currency(monkeypatch, t
         assert net['chain_id'] == 99801 and net['native_symbol'] == 'HYPE'
         config = reality.config()
         assert config['chain_id'] == 99801 and config['native_symbol'] == 'HYPE'
+        assert config['points_enabled'] is False
         assert config['launchpad'] == '' and config['weth'] == '' and config['cfi_staking'] == ''
         app = FastAPI(); app.include_router(reality.router)
         with TestClient(app) as client:

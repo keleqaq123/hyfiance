@@ -3,6 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const net = require('../networks/elysium-testnet.json');
+const features = require('../networks/elysium-features.json');
 const read = file => JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
 function json(file, value) {
   fs.mkdirSync(path.dirname(path.join(root, file)), { recursive: true });
@@ -30,6 +31,8 @@ const base = {
   REALITY_CFI_PRICE_SOURCE: 'hyperliquid',
   CFI_QUOTE_SIGNER_KEY: wallet.quoteSignerKey || '',
   FAUCET_ENABLED: 'false',
+  HYFIANCE_POINTS_ENABLED: String(features.points),
+  HYFIANCE_SYNTHETIC_MARKETS_ENABLED: String(features.syntheticMarkets),
   REALITY_LAUNCHPAD_ADDRESS: '', REALITY_SWAP_ROUTER: '', REALITY_SWAP_FACTORY: '',
   REALITY_WETH: '', REALITY_CFI_STAKING: '', REALITY_CFI_START_BLOCK: 0,
 };
@@ -37,6 +40,12 @@ const manifestPath = 'deployments/elysium-testnet.json';
 const manifest = fs.existsSync(path.join(root, manifestPath)) ? read(manifestPath) : { chainId: net.chainId, status: 'awaiting-funding', contracts: {} };
 if (manifest.chainId !== net.chainId) throw Error('Deployment manifest chain mismatch');
 const c = manifest.contracts;
+const tokens=[
+  ['weth','WHYPE','Wrapped HYPE'],['tokenA','CUSTOS-A','Custos Token A'],['tokenB','CUSTOS-B','Custos Token B']
+].filter(([key])=>c[key]).map(([key,symbol,name])=>({chainId:net.chainId,address:c[key],name,symbol,decimals:18,logoURI:'./custos-icon.png'}));
+const tokenlist={name:'Hyfiance Elysium Testnet',timestamp:manifest.completedAt||new Date().toISOString(),version:{major:1,minor:0,patch:0},tokens};
+json('apps/web/public/tokenlist.json',tokenlist);
+json('assets/tokenlist/elysium-testnet.json',tokenlist);
 fs.writeFileSync(path.join(root, 'packages/swap-sdk/src/elysium.ts'),
   '// Generated from confirmed Elysium deployments.\nexport const ELYSIUM_V2 = ' +
   JSON.stringify({ factory: c.factory || '', weth: c.weth || '', initCodeHash: manifest.initCodeHash || '' }) + '\n');
@@ -52,7 +61,7 @@ env('apps/web/.env', {
   VITE_API_BASE: 'http://127.0.0.1:8001', VITE_NFT_ADDRESS: c.nft || '',
 });
 // Quarantine inherited generated addresses until this chain has its own deployment.
-if (!manifest.modules?.markets) {
+if (!features.syntheticMarkets || !manifest.modules?.markets) {
   for (const file of ['deployment.generated.json', 'spot.generated.json', 'rwa.generated.json']) {
     const value = read('apps/web/src/custos/' + file);
     function clearAddresses(item) {

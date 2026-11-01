@@ -35,11 +35,13 @@ if PYTH_ENV_FILE:
     load_dotenv(PYTH_ENV_FILE)
 
 from network_config import network_config
+from features import core_experience
 
 from perp_market import router as perp_router, start_perp_stream, stop_perp_stream
 from real_market import router as real_market_router
 from public_beta import router as public_beta_router
 from reality import router as reality_router, start_reality_index, stop_reality_index, close_rpc
+from reality import config as reality_config
 from faucet import router as faucet_router, start_faucet, stop_faucet
 
 DB_PATH = BASE_DIR / os.getenv("DATABASE_PATH", "rwa_exchange.db")
@@ -558,8 +560,9 @@ def market_row(conn: sqlite3.Connection, pool_id: int) -> sqlite3.Row:
 # ---------------------------------------------------------------------------
 @app.on_event("startup")
 async def startup() -> None:
-    init_db()
-    await start_perp_stream()
+    if not core_experience():
+        init_db()
+        await start_perp_stream()
     await start_faucet()
     await start_reality_index()
 
@@ -577,7 +580,7 @@ async def shutdown() -> None:
 # ---------------------------------------------------------------------------
 @app.get("/")
 def root() -> dict[str, Any]:
-    return {"ok": True, "service": "GIWA RWA Exchange API", "version": "2.0.0"}
+    return {"ok": True, "service": "Hyfiance Testnet API", "version": "3.0.0"}
 
 
 @app.get("/api/health")
@@ -593,7 +596,7 @@ def health() -> dict[str, Any]:
         "rpc": GIWA_RPC_URL,
         "flashblocksRpc": GIWA_FLASHBLOCKS_RPC_URL,
         "explorer": GIWA_EXPLORER_URL,
-        "contractsConfigured": bool(contracts.get("verifiedToken") and contracts.get("poolFactory")),
+        "contractsConfigured": all(reality_config().get(key) for key in ('launchpad','swap_router','swap_factory','cfi_staking')) if core_experience() else bool(contracts.get("verifiedToken") and contracts.get("poolFactory")),
         "time": now_iso(),
     }
 
@@ -948,3 +951,14 @@ async def wallet_balance(address: str) -> dict[str, Any]:
     balance_hex = await json_rpc("eth_getBalance", [address, "latest"])
     wei = int(balance_hex, 16)
     return {"address": address, "wei": wei, "eth": wei / 1_000_000_000_000_000_000}
+
+
+# The Elysium fork exposes the Custos Reality experience without synthetic
+# trading or participation/points APIs. Archived modules remain source-only.
+if core_experience():
+    def _core_route(route):
+        path=getattr(route,'path','')
+        if path.startswith(('/api/reality/season','/api/reality/admin/points')):
+            return False
+        return path.startswith(('/api/reality','/api/faucet')) or path in ('/','/api/health','/docs','/docs/oauth2-redirect','/redoc','/openapi.json')
+    app.router.routes=[route for route in app.router.routes if _core_route(route)]

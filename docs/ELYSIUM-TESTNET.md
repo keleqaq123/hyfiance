@@ -1,24 +1,36 @@
-# Hyfiance on Elysium Testnet
+# Hyfiance — Custos core experience on Elysium Testnet
 
-This checkout publishes to `keleqaq123/hyfiance`. The original Custos repository and its deployments are independent.
+## Scope
 
-## Network
+Keep the original Custos Finance project workflow: launchpad and proof review, project token markets and rankings, token swaps and liquidity, native-HYPE CFI receipts, NFT minting, account/profile/history, and the official Elysium bridge/faucet entry points.
 
-- Chain ID: **99801**, native gas: **HYPE**, 18 decimals.
+Independent synthetic RWA, oracle Spot and Perpetual modules are disabled. Season/points/tasks/referrals and their administration endpoints are disabled. The application does not automatically register wallets in a points campaign. `networks/elysium-features.json` defines this scope for deployment and runtime.
+
+This checkout publishes only to `keleqaq123/hyfiance`. The original `custosDefi/custos-Finance` repository and its deployed contracts are independent.
+
+## Network and current deployment
+
+- Elysium Testnet chain ID **99801**, native gas **HYPE** (18 decimals).
 - RPC: `https://testnet-rpc.elysium.kinetiq.xyz`
-- Explorer: `https://testnet.elysium.kinetiq.xyz`
+- Explorer: <https://testnet.elysium.kinetiq.xyz>
 - Faucet: <https://elysium.kinetiq.xyz/testnet-faucet>
 - Official bridge: <https://elysium.kinetiq.xyz/testnet-bridge>
-- Network information: <https://www.alchemy.com/docs/reference/elysium-api-faq>
-- Kinetiq builder documentation: <https://elysium.kinetiq.xyz/docs/building-on-elysium>
+- Network reference: <https://www.alchemy.com/docs/reference/elysium-api-faq>
 
-Do not use the unrelated Elysium chain IDs 1338/1339. The RPC chain ID is checked before deployment. This integration refuses other chains, including HyperEVM mainnet 999.
+The active contracts are deployed on the public testnet:
 
-## Current state
+| Module | Address |
+| --- | --- |
+| Swap router | `0x01E9D616A064dC8E3a8ed43154631Abf06D402A1` |
+| Swap factory | `0xa4ebF13e03ED586e33296896317AC79A1f7ACEE5` |
+| Wrapped HYPE | `0xD1fB6128C215a8E30a482C31535a591fd41e9d5B` |
+| Project launchpad | `0x6324bF0c17ACE5Da6404415aEA5c861e3CAe7Db5` |
+| CFI receipt vault | `0xF9e8067285db6a6488a2d831782ec9D913f13115` |
+| Community NFT | `0x3dCc1d199C08B6B4CF6E4C8f8d4D332400Ed9569` |
 
-Frontend and API can run locally now. Public-chain deployment remains **awaiting test HYPE**. See `deployments/elysium-testnet.json` for the actual deployment state. Empty addresses mean not deployed. Historical GIWA files are retained as reference, and are not used as Elysium contract addresses.
+`deployments/elysium-testnet.json` contains deployment receipts and the active module state. `docs/ELYSIUM-LIVE-CHECK.json` records the actual testnet lifecycle transactions. Historical GIWA deployments remain source references and are not Elysium addresses.
 
-The dedicated deployer is `0xFc3FAB33fde4671851Dfb2Fb3802496AeC7F4607`. Its deployment key and the separate receipt-quote signing key exist only in the Git-ignored `.secrets/elysium-testnet.json`. This file is not included in source control or build output. Keep a private backup; a fresh clone does not contain these keys. Do not fund this test wallet on mainnet.
+The earlier synthetic-market deployment attempt was stopped when the user changed scope. Already confirmed transactions at deployer nonces 9–45 cannot be reversed; those partial contracts are excluded from the active configuration. No remaining synthetic-market deployment or oracle updater is started.
 
 ## Install and start
 
@@ -26,9 +38,7 @@ Use Node 22+ and Python 3.12. From the repository root:
 
 ```powershell
 npm ci
-npm run elysium:wallet
 npm ci --prefix contracts/swap
-npm ci --prefix contracts/markets
 npm ci --prefix contracts/nft
 npx --yes yarn@1.22.22 --cwd packages/swap-sdk install --frozen-lockfile
 npm run build --prefix packages/swap-sdk
@@ -39,16 +49,17 @@ npm run elysium:configure
 npm start
 ```
 
-The initial dedicated wallet must exist locally before deployment. `elysium:configure` never generates or imports a production wallet and never reads credentials from Custos.
-
-- App: <http://127.0.0.1:3001/reality>
+- Home: <http://127.0.0.1:3001/>
+- App: <http://127.0.0.1:3001/#/reality>
+- Project swaps: <http://127.0.0.1:3001/#/reality/swap/rwa>
+- V2 liquidity: <http://127.0.0.1:3001/#/reality/pool>
 - API documentation: <http://127.0.0.1:8001/docs>
 
-`HYFIANCE_PYTHON` may point to an existing virtual environment Python executable. `npm start` runs both services on loopback, with strict frontend port selection. These processes run on this computer; they are not public website hosting.
+`HYFIANCE_PYTHON` may point to an existing virtual-environment Python. The local app uses a hash router. These services run on this computer; public website hosting and domain configuration are separate from the public-chain contract deployments.
 
-## Compile, deploy and verify
+A fresh clone can use the public deployment manifest without deployment keys. To deploy a new instance, generate a dedicated test wallet with `npm run elysium:wallet`, fund it with test HYPE, then compile and deploy. Do not overwrite an existing deployment manifest to force a redeployment. The deployer and separate quote signer are stored only in the Git-ignored `.secrets/elysium-testnet.json`; no credentials are committed. Copy them only through a private local backup if moving this test instance.
 
-Fund the dedicated address with Elysium **testnet** HYPE, then run:
+## Deployment and verification commands
 
 ```powershell
 npm run elysium:compile
@@ -56,25 +67,21 @@ npm run elysium:check
 npm run elysium:deploy
 npm run elysium:smoke
 npm run build --prefix packages/swap-sdk
-# Refresh the local file dependency after rebuilding the SDK:
 npx --yes yarn@1.22.22 --cwd apps/web install --force --frozen-lockfile
 npm run build --prefix apps/web
 ```
 
-Deployment intentionally uses precompiled artifacts. Restart both services after configuration changes.
+Existing confirmed modules are skipped. New deployment runs include only Swap, launchpad, CFI and NFT; no synthetic markets. The orchestrator checks chain 99801 before signing and verifies the active deployed code. Interrupted modules require transaction inspection before retrying. Receipt/nonce recovery checks are retained in the deployment manifest. Restart both local services after configuration changes.
 
-The orchestrator deploys Swap + wrapped HYPE + test tokens and liquidity; synthetic RWA/Spot/Perps contracts; the Reality launchpad; a native-HYPE CFI receipt vault; and the community NFT contract. It saves module state and verifies code on chain. An interrupted module is marked `needs-review` and will not automatically redeploy. Inspect its transactions before retrying. Deployment stops between modules if spending exceeds 0.05 test HYPE; individual direct deployment estimates are capped at 0.01 test HYPE.
+## Runtime behavior
 
-## Functional boundaries
+- Project issuance, proof review and token trading remain the original independent Custos workflow. Testnet participation is not rewarded with points.
+- Swap uses project-owned V2 contracts, a wrapped-HYPE contract and seeded test-token liquidity. It does not imply Ascend liquidity or HyperCore order-book integration.
+- The CFI vault holds native HYPE principal, with account-bound receipts and proportional redemption. It does not earn yield. The API reads HYPE mid prices from Hyperliquid and signs short-lived account/amount/nonce/vault/chain-bound quotes using a separate test signer. The legacy EIP-712 domain name remains `Custos CFI Binance`; ETH prices are not used for HYPE deposits.
+- NFT minting is free, with one mint per wallet. Metadata currently points to the local app and can be updated by the collection owner when a public hosting origin is configured.
+- Bridge and faucet link to Elysium's official services. The old GIWA OP Stack bridge is not used for Elysium. A project-operated gas sponsor and token relayer are not configured.
+- The API exposes Reality/project/account functions and the faucet entry, plus health/docs. Season, admin points, legacy synthetic market and beta-task routes return 404 and are not included in its OpenAPI description.
 
-- **Swap / liquidity:** project-owned V2 contracts and test token pools, not Ascend liquidity.
-- **Launchpad / RWA:** existing independent project and proof-review workflow. New database files isolate the fork's users, uploads and points.
-- **Spot / Perps:** project synthetic test markets. The initial Elysium deployment uses the owner-managed test-price oracle, not a verified Pyth deployment and not HyperCore trading. Prices expire under the contracts' freshness checks. Use `elysium:oracle` to refresh them from Pyth Hermes; stale or missing feeds are never assigned a fabricated fresh timestamp. Equity feeds may legitimately be stale while their markets are closed. No real funds belong in this test configuration.
-- **CFI:** native HYPE principal receipts; no yield. The API reads HYPE mid prices from Hyperliquid and signs short-lived wallet-, amount-, nonce-, vault- and chain-bound quotes with the separate test quote signer. The vault trusts that signer. Its legacy EIP-712 domain name remains `Custos CFI Binance` for ABI compatibility; ETH prices are not used for HYPE deposits.
-- **NFT:** separate free-mint deployment. The old GIWA NFT address is not reused.
-- **Bridge / faucet:** explicit links to Elysium's official services. The old GIWA OP Stack bridge is not used for Elysium. A new project-operated gas sponsor and token relayer are not configured.
-- **Hosting:** local services only. Public hosting, domain setup, persistent cloud storage and live HyperCore/HIP-3 execution are separate integrations.
+## Validation
 
-## Checks performed
-
-Frontend production build; frontend and API suites; SDK build; Swap, Markets and NFT compilation; local V2 liquidity/swap tests; local RWA/Spot/Perps integration tests; launchpad buy/sell and reserve isolation; CFI signature replay/chain binding and redemption; and an isolated complete deployment rehearsal with local chain ID 99801. None of these is a public Elysium deployment receipt.
+See `docs/ELYSIUM-VALIDATION.json` for current check results. Public deployment receipts and lifecycle transactions are separate from earlier local rehearsals. Mainnet deployment, public website hosting, and HyperCore/HIP-3 execution are outside this testnet integration.

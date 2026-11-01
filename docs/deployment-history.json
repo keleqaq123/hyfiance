@@ -995,5 +995,19 @@
     },
     "selectedRwaQuote": "project",
     "officialCanReceive": false
+  },
+  {
+    "runId": "99801-20261101032049-ec7f4607",
+    "status": "cancelled_by_user",
+    "network": {
+      "name": "Elysium Testnet",
+      "chainId": 99801
+    },
+    "deployer": "0xFc3FAB33fde4671851Dfb2Fb3802496AeC7F4607",
+    "startedAt": "2026-11-01T03:20:49.648Z",
+    "requestedRwaQuote": "project",
+    "pyth": "",
+    "completedAt": "2026-11-01T03:27:12.883637+00:00",
+    "reason": "Synthetic RWA/Spot/Perps excluded from this fork"
   }
 ]

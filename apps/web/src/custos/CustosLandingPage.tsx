@@ -1,3 +1,4 @@
+import {POINTS_ENABLED} from './features'
 import React, { useEffect, useState } from 'react'
 import type {RealityAsset} from './realityClient'
 import './homepage.css'
@@ -47,7 +48,7 @@ function LandingHeader({ onEnter }: { onEnter: () => void }) {
     ['Markets', 'markets'],
     ['Proof', 'proof'],
     ['Season 1', 'season'],
-  ] as const
+  ].filter(([label])=>POINTS_ENABLED||label!=='Season 1')
 
   const navigateTo = (event: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     setOpen(false)
@@ -123,8 +124,8 @@ export default function CustosLandingPage() {
         <LandingHeader onEnter={goToTerminal} />
 
         <div className="hero-content">
-          <p className="eyebrow"><span className="status-dot" /> GIWA SEPOLIA · PUBLIC TESTNET</p>
-          <p className="hero-kicker">REALITY LAUNCHPAD ON GIWA</p>
+          <p className="eyebrow"><span className="status-dot" /> ELYSIUM TESTNET · PUBLIC TESTNET</p>
+          <p className="hero-kicker">REALITY LAUNCHPAD ON ELYSIUM</p>
           <h1 id="hero-title" className="reality-hero-title">Real things.<br/>Value beyond<br/>a price tag.</h1>
           <p className="hero-tagline">YOUR WORLD. A SHARED SENSE OF VALUE.</p>
           <p className="hero-description">
@@ -242,10 +243,10 @@ export default function CustosLandingPage() {
         </div>
         {!issued.length?<p className="reality-feed-message" role="status">{feedState==='loading'?'Loading community launches…':feedState==='error'?'The project feed is temporarily unavailable. You can still open Explore Reality.':'New onchain launches will appear here. Bring the first story.'}</p>:null}
         <div className="hero-actions"><a className="button button--primary" href="#/reality/market">Explore Markets <span>↗</span></a><a className="button button--ghost" href="#/reality/rankings">View Rankings <span>↗</span></a></div>
-        <p className="market-disclaimer">GIWA SEPOLIA TESTNET · TRANSACTIONS USE TEST ETH · DELISTING DOES NOT DELETE ONCHAIN TOKENS</p>
+        <p className="market-disclaimer">ELYSIUM TESTNET TESTNET · TRANSACTIONS USE TEST ETH · DELISTING DOES NOT DELETE ONCHAIN TOKENS</p>
       </section>
 
-      <section className="season section" id="season" aria-labelledby="season-title">
+      {POINTS_ENABLED&&<section className="season section" id="season" aria-labelledby="season-title">
         <div className="season-blocks" aria-hidden="true"><span /><span /><span /></div>
         <div className="season-copy">
           <p className="eyebrow"><span className="status-dot" /> SEASON 1 · NOW OPEN</p>
@@ -257,19 +258,19 @@ export default function CustosLandingPage() {
           </a></div>
         </div>
         <LargeBrandSymbol className="season-mark" />
-      </section>
+      </section>}
 
       <footer className="site-footer">
         <div className="footer-brand">
           <BrandSymbol />
-          <div><strong>CUSTOS FINANCE</strong><small>REALITY LAUNCHPAD ON GIWA</small></div>
+          <div><strong>CUSTOS FINANCE</strong><small>REALITY LAUNCHPAD ON ELYSIUM</small></div>
         </div>
         <div className="footer-links">
           <a href="#markets" onClick={(event) => scrollToSection(event, 'markets')}>Markets</a>
           <a href="#proof" onClick={(event) => scrollToSection(event, 'proof')}>Proof</a>
-          <a href="#season" onClick={(event) => scrollToSection(event, 'season')}>Season 1</a>
+          {POINTS_ENABLED&&<a href="#season" onClick={(event) => scrollToSection(event, 'season')}>Season 1</a>}
         </div>
-        <div className="footer-meta"><span>GIWA SEPOLIA</span><span>TESTNET ONLINE</span><span>© {new Date().getFullYear()} CUSTOS</span></div>
+        <div className="footer-meta"><span>ELYSIUM TESTNET</span><span>TESTNET ONLINE</span><span>© {new Date().getFullYear()} CUSTOS</span></div>
       </footer>
     </div>
   )

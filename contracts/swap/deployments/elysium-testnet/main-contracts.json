@@ -1,0 +1,17 @@
+{
+  "network": "Elysium Testnet",
+  "chainId": 99801,
+  "rpc": "https://testnet-rpc.elysium.kinetiq.xyz",
+  "deployer": "0xFc3FAB33fde4671851Dfb2Fb3802496AeC7F4607",
+  "deployedAt": "2026-11-01T03:20:43.589Z",
+  "contracts": {
+    "weth": "0xD1fB6128C215a8E30a482C31535a591fd41e9d5B",
+    "factory": "0xa4ebF13e03ED586e33296896317AC79A1f7ACEE5",
+    "router": "0x01E9D616A064dC8E3a8ed43154631Abf06D402A1",
+    "multicall": "0xE1631068576F87daC34291440e17a3336A5A7F13",
+    "tokenA": "0x47C2154ABd781a779F22CaA73bF6569781c3A360",
+    "tokenB": "0x257361787007B7e5bf2186E797E2feFFeC699c62",
+    "pair": "0x699A19F3321DB59fDe636D507C0D150310Fe2797"
+  },
+  "initCodeHash": "0x557a766008a8cd8e924285f8112de27cababa9ac28e813698860a4342ed3f647"
+}

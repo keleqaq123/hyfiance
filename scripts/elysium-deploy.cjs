@@ -4,6 +4,7 @@ const { spawnSync } = require('node:child_process');
 const { ethers } = require('ethers');
 const root = path.resolve(__dirname, '..');
 const net = require('../networks/elysium-testnet.json');
+const features = require('../networks/elysium-features.json');
 const target = path.join(root, 'deployments/elysium-testnet.json');
 function validateChain(value) {
   if (Number(value) !== 99801) throw Error(`Refusing chain ${value}; Elysium Testnet 99801 only`);
@@ -35,7 +36,7 @@ async function main() {
   }
   console.log(JSON.stringify({status: 'funded', address: wallet.address, balanceHYPE: ethers.utils.formatEther(balance), send}));
   if (!send) return;
-  for (const directory of ['contracts/swap/artifacts/contracts','contracts/markets/artifacts/contracts','contracts/nft/artifacts/contracts']) {
+  for (const directory of ['contracts/swap/artifacts/contracts','contracts/nft/artifacts/contracts',...(features.syntheticMarkets?['contracts/markets/artifacts/contracts']:[])]) {
     if (!fs.existsSync(path.join(root,directory))) throw Error('Compile contracts first: npm run elysium:compile');
   }
   // Refuse an unbounded or accidental large testnet deployment spend.
@@ -63,20 +64,21 @@ async function main() {
     validateChain(result.chainId); Object.assign(record.contracts, result.contracts);
     record.initCodeHash = result.initCodeHash;
   });
-  await module('markets', async () => {
+  if (features.syntheticMarkets) await module('markets', async () => {
     hardhat('markets','scripts/deploy-elysium-markets.js');
     const result = load('contracts/markets/deployments/elysium-testnet.json');
     validateChain(result.network.chainId);
     Object.assign(record.contracts, result.contracts);
     record.marketOracle = 'operator-managed test price oracle; synthetic test assets only';
   });
+  else {record.modules.markets='disabled'; save(record);}
   async function direct(name, artifact, args = []) {
     // Persist the creation transaction before waiting. The module guard prevents
     // duplicate sends if this process is stopped between broadcast and receipt.
     const factory = new ethers.ContractFactory(artifact.abi, artifact.bytecode, wallet);
     const request = factory.getDeployTransaction(...args);
     const gas = (await wallet.estimateGas(request)).mul(125).div(100);
-    const gasPrice = await provider.getGasPrice();
+    const gasPrice = (await provider.getGasPrice()).mul(125).div(100);
     if (gas.mul(gasPrice).gt(ethers.utils.parseEther('0.01'))) throw Error(`${name} deployment estimate exceeds 0.01 test HYPE`);
     const contract = await factory.deploy(...args, {gasLimit: gas, gasPrice});
     record.transactions ||= {}; record.transactions[name] = contract.deployTransaction.hash; save(record);

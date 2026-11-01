@@ -1,0 +1,5 @@
+{
+  "deploymentModules": ["swap", "launchpad", "cfi", "nft"],
+  "syntheticMarkets": false,
+  "points": false
+}

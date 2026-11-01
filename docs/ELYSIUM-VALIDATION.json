@@ -1,17 +1,24 @@
 {
   "network": "Elysium Testnet",
   "chainId": 99801,
-  "publicDeployment": "awaiting-funding",
+  "publicDeployment": "deployed",
   "deployer": "0xFc3FAB33fde4671851Dfb2Fb3802496AeC7F4607",
-  "balanceHYPE": "0",
+  "activeModules": ["swap", "launchpad", "cfi", "nft"],
+  "disabledModules": ["synthetic RWA", "synthetic Spot", "Perpetuals", "points/tasks/referrals"],
   "validation": {
-    "frontendTestsPassed": 202,
+    "frontendTestsPassed": 207,
     "backendTestsPassed": 84,
-    "deploymentGuardTestsPassed": 3,
+    "deploymentGuardTestsPassed": 4,
+    "publicContractEntriesChecked": 10,
+    "liveLifecycleTransactionsConfirmed": 18,
+    "liveCheckFile": "docs/ELYSIUM-LIVE-CHECK.json",
+    "liveChecks": ["V2 liquidity add/remove", "token swap", "HYPE wrap/unwrap", "wallet login and profile", "project image upload and issuance", "project token buy/sell", "NFT mint", "Hyperliquid HYPE quote", "HYPE stake and full redemption", "account holdings"],
+    "disabledHttpRoutes": ["/api/reality/season/stats", "/api/beta/config", "/api/perp/markets"],
+    "disabledHttpStatus": 404,
     "swapIntegrationTestsPassed": 3,
     "marketIntegrationTestsPassed": 3,
-    "launchpadLifecycle": "passed on isolated chain ID 99801",
-    "cfiSignaturesAndRedemption": "passed on isolated chain ID 99801",
+    "launchpadLifecycle": "passed on public Elysium Testnet",
+    "cfiSignaturesAndRedemption": "passed on public Elysium Testnet",
     "productionFrontendBuild": "passed",
     "contractCompilation": [
       "swap",
@@ -19,6 +26,7 @@
       "nft"
     ],
     "isolatedFullDeploymentRehearsal": {
+      "note": "Historical local rehearsal before the user excluded synthetic markets; not the current deployment scope.",
       "chainId": 99801,
       "modules": [
         "swap",
@@ -32,7 +40,9 @@
     }
   },
   "localServices": {
-    "frontend": "http://127.0.0.1:3001/reality",
+    "frontend": "http://127.0.0.1:3001/#/reality",
     "api": "http://127.0.0.1:8001/docs"
-  }
+  },
+  "hosting": "Local frontend/API; contracts are on the public testnet.",
+  "priorMarketAttempt": "Stopped at user request. Already-confirmed nonces 9-45 are excluded from active runtime; see deployment manifest."
 }

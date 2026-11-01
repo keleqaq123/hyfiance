@@ -1,0 +1,35 @@
+{
+  "name": "Hyfiance Elysium Testnet",
+  "timestamp": "2026-11-01T03:30:02.707Z",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  },
+  "tokens": [
+    {
+      "chainId": 99801,
+      "address": "0xD1fB6128C215a8E30a482C31535a591fd41e9d5B",
+      "name": "Wrapped HYPE",
+      "symbol": "WHYPE",
+      "decimals": 18,
+      "logoURI": "./custos-icon.png"
+    },
+    {
+      "chainId": 99801,
+      "address": "0x47C2154ABd781a779F22CaA73bF6569781c3A360",
+      "name": "Custos Token A",
+      "symbol": "CUSTOS-A",
+      "decimals": 18,
+      "logoURI": "./custos-icon.png"
+    },
+    {
+      "chainId": 99801,
+      "address": "0x257361787007B7e5bf2186E797E2feFFeC699c62",
+      "name": "Custos Token B",
+      "symbol": "CUSTOS-B",
+      "decimals": 18,
+      "logoURI": "./custos-icon.png"
+    }
+  ]
+}

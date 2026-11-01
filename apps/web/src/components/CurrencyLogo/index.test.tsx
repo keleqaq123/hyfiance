@@ -2,11 +2,13 @@ import React from 'react'
 import {renderToStaticMarkup} from 'react-dom/server'
 import {ChainId, Token, V2_WETH} from 'custoswap-sdk'
 import CurrencyLogo from '.'
+import tokens from '../../../public/tokenlist.json'
 vi.mock('../Logo', () => ({default: ({srcs}: {srcs: string[]}) => <span>{srcs.join(',')}</span>}))
 vi.mock('../../hooks/useHttpLocations', () => ({default: () => []}))
 
 it('uses bundled Custos logos instead of nonexistent mainnet artwork', () => {
-  const token = new Token(ChainId.GIWA_SEPOLIA, '0x32AF40B25CB5842f91E2B790563e5F0e51A70832', 18, 'CUSTOS-A')
+  const configured=tokens.tokens.find(token=>token.chainId===99801&&token.symbol==='CUSTOS-A')!
+  const token = new Token(ChainId.ELYSIUM_TESTNET, configured.address, 18, configured.symbol)
   const html = renderToStaticMarkup(<CurrencyLogo currency={token}/>)
   expect(html).toContain('custos-icon.png')
   expect(html).not.toContain('trustwallet')

@@ -3,8 +3,14 @@ import {createRoot} from 'react-dom/client'
 import {afterEach,expect,it,vi} from 'vitest'
 import CustosFaucetPage from './CustosFaucetPage'
 import {MARKET_NETWORK,WALLET_NETWORK,ensureMarketNetwork} from './marketNetwork'
+import {POINTS_ENABLED,SYNTHETIC_MARKETS_ENABLED,unavailableRoute} from './features'
 Object.assign(globalThis,{IS_REACT_ACT_ENVIRONMENT:true})
 afterEach(()=>{vi.unstubAllGlobals();vi.unstubAllEnvs()})
+it('disables tasks and synthetic trading while preserving project swaps and V2 pools',()=>{
+ expect(POINTS_ENABLED).toBe(false);expect(SYNTHETIC_MARKETS_ENABLED).toBe(false)
+ for(const route of ['/reality/season','/defi/rwa','/defi/spot','/defi/perpetuals','/perp'])expect(unavailableRoute(route)).toBe(true)
+ for(const route of ['/reality/swap/rwa','/reality/market','/defi/spot/v2','/defi/liquidity/v2','/reality/stake'])expect(unavailableRoute(route)).toBe(false)
+})
 it('adds Elysium with HYPE and never adds the old GIWA chain',async()=>{
  expect(MARKET_NETWORK.chainId).toBe(99801)
  expect(WALLET_NETWORK.nativeCurrency.symbol).toBe('HYPE')

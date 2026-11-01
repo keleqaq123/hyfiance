@@ -17,6 +17,7 @@ import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../state'
 import { selectList } from '../../state/lists/actions'
 import { DEFAULT_TOKEN_LIST_URL } from '../../constants/lists'
+import {displayCurrencySymbol} from '../../utils/wrappedCurrency'
 
 const InputRow = styled.div<{ selected: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
@@ -153,7 +154,8 @@ export default function CurrencyInputPanel({
   const { t } = useTranslation()
 
   const [modalOpen, setModalOpen] = useState(false)
-  const { account } = useActiveWeb3React()
+  const { account, chainId } = useActiveWeb3React()
+  const displaySymbol=displayCurrencySymbol(currency,chainId)
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
   const theme = useContext(ThemeContext)
   const dispatch = useDispatch<AppDispatch>()
@@ -234,11 +236,11 @@ export default function CurrencyInputPanel({
                 </StyledTokenName>
               ) : (
                 <StyledTokenName className="token-symbol-container" active={Boolean(currency && currency.symbol)}>
-                  {(currency && currency.symbol && currency.symbol.length > 20
-                    ? currency.symbol.slice(0, 4) +
+                  {(displaySymbol && displaySymbol.length > 20
+                    ? displaySymbol.slice(0, 4) +
                       '...' +
-                      currency.symbol.slice(currency.symbol.length - 5, currency.symbol.length)
-                    : currency?.symbol) || t('selectToken')}
+                      displaySymbol.slice(displaySymbol.length - 5, displaySymbol.length)
+                    : displaySymbol) || t('selectToken')}
                 </StyledTokenName>
               )}
               {!disableCurrencySelect && <StyledDropDown selected={!!currency} />}

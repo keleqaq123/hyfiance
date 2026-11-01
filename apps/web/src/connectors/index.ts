@@ -22,7 +22,7 @@ export function getNetworkLibrary(): Web3Provider {
 }
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [1, 3, 4, 5, 42, 1337, 31337, 47805, 47806, 12357, 91342, 99801, 11155111]
+  supportedChainIds: NETWORK_CHAIN_ID===99801 ? [99801] : [1, 3, 4, 5, 42, 1337, 31337, 47805, 47806, 12357, 91342, 11155111]
 })
 
 // Retired hosted wallets and WalletConnect v1 are not bundled.

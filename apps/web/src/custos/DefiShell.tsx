@@ -1,3 +1,4 @@
+import {POINTS_ENABLED,SYNTHETIC_MARKETS_ENABLED} from './features'
 import React, { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { Redirect, Route, Switch, useHistory, useLocation } from 'react-router-dom'
 import {
@@ -80,7 +81,7 @@ type NavItem = {
   icon: typeof LayoutDashboard
 }
 
-const NAV_ITEMS: NavItem[] = [
+const NAV_ITEMS: NavItem[] = ([
   { id: 'swap', label: 'Swap', description: 'Trade tokens', icon: ArrowLeftRight },
   { id: 'swapLiquidity', label: 'Swap Liquidity', description: 'Manage Custos V2 pools', icon: Droplets },
   { id: 'spot', label: 'Spot Trade', description: 'Trade synthetic assets', icon: ArrowLeftRight },
@@ -94,7 +95,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: 'season', label: 'Season 1', description: 'Verified participation', icon: Trophy },
   { id: 'transparency', label: 'Transparency', description: 'Contracts and proof data', icon: ShieldCheck },
   { id: 'rwa', label: 'RWA Exchange', description: 'Proof, assets and RWA pools', icon: Landmark },
-]
+] as NavItem[]).filter(item=>(POINTS_ENABLED||item.id!=='season')&&(SYNTHETIC_MARKETS_ENABLED||['swap','swapLiquidity','launchpad','bridge','faucet'].includes(item.id)))
 
 const MARKET_FALLBACKS: Record<string, { name: string; unit: string; image: string; accent: string }> = {
   XAU: { name: 'Gold', unit: 'USD / oz', image: '/assets/markets/gold.png', accent: 'PRECIOUS METAL' },
@@ -362,6 +363,7 @@ export default function DefiShell() {
   const numericChainId = Number(chainId || 0)
 
   const networkLabel = useMemo(() => {
+    if (numericChainId === 99801) return 'ELYSIUM TESTNET'
     if (numericChainId === 47805) return 'LOCAL TESTNET'
     if (numericChainId === 91342) return 'GIWA SEPOLIA'
     if (numericChainId) return `CHAIN ${numericChainId}`
@@ -378,6 +380,7 @@ export default function DefiShell() {
   const activeTab: WorkspaceTab = legacyV2
     ? (routePath === '/defi/liquidity/v2' ? 'swapLiquidity' : 'swap')
     : tab
+  if(!SYNTHETIC_MARKETS_ENABLED&&['bridge','launchpad','faucet'].includes(tab))return <Redirect to={tab==='bridge'?'/reality/swap':tab==='faucet'?'/reality/faucet':'/reality'}/>
 
   return (
     <div className="defi-app">
@@ -388,7 +391,7 @@ export default function DefiShell() {
           <div className="defi-topbar-left">
             <button type="button" className="defi-brand" onClick={() => go('swap')}>
               <LogoMark size={58} />
-              <span><strong>Custos Finance</strong><small>RWA · SPOT · PERPETUALS</small></span>
+              <span><strong>Custos Finance</strong><small>LAUNCH · SWAP · STAKE</small></span>
             </button>
           </div>
           <nav className="defi-top-nav" aria-label="Custos DeFi navigation">
@@ -403,11 +406,11 @@ export default function DefiShell() {
                 {label}
               </button>
             ))}
-            <a className="defi-top-nav-item" href="https://www.custosfinance.xyz/#/defi?tab=nft" target="_blank" rel="noopener noreferrer">NFT Mint ↗</a>
+            <a className="defi-top-nav-item" href="#/reality/nft" target="_blank" rel="noopener noreferrer">NFT Mint ↗</a>
           </nav>
           <div className="defi-topbar-right">
             <div className="defi-top-network"><span className="defi-status-dot" />{networkLabel}</div>
-            {account && ethBalance ? <span className="defi-eth-balance">{ethBalance.toSignificant(4)} ETH</span> : null}
+            {account && ethBalance ? <span className="defi-eth-balance">{ethBalance.toSignificant(4)} {numericChainId===99801?'HYPE':'ETH'}</span> : null}
             <div className="defi-wallet-button"><Web3Status /></div>
             <Menu />
             <I18nSwitch />

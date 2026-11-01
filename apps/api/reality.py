@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Literal
 import httpx
 from network_config import network_config
+from features import feature_enabled
 from eth_account import Account
 from eth_account.messages import encode_typed_data
 from eth_account.messages import encode_defunct
@@ -77,7 +78,7 @@ def config():
     with engine().connect() as db: stored={r.key:r.value for r in db.execute(select(runtime_settings))}
     net=network_config()
     return {'chain_id':net['chain_id'],'name':net['name'],'rpc':net['rpc'],
-            'explorer':net['explorer'],'testnet':True,'native_symbol':net['native_symbol'],
+            'explorer':net['explorer'],'testnet':True,'native_symbol':net['native_symbol'],'points_enabled':feature_enabled('points'),
             'launchpad':os.getenv('REALITY_LAUNCHPAD_ADDRESS','') or stored.get('launchpad',''),'platform_token':os.getenv('REALITY_PLATFORM_TOKEN','') or stored.get('platform_token',''),
             'swap_router':os.getenv('REALITY_SWAP_ROUTER','') or stored.get('swap_router',''),'swap_factory':os.getenv('REALITY_SWAP_FACTORY','') or stored.get('swap_factory',''),
             'cfi_staking':os.getenv('REALITY_CFI_STAKING','') or stored.get('cfi_staking',''),
@@ -571,7 +572,7 @@ async def verify_staking(body:Attachment,wallet=Depends(wallet_auth)):
     with engine().begin() as db:
         for row in records:
             if not db.execute(select(stake_events.c.id).where(stake_events.c.id==row['id'])).scalar():db.execute(insert(stake_events).values(**row))
-    return {'ok':True,'profile':season_profile(wallet)}
+    return {'ok':True,'profile':season_profile(wallet)} if feature_enabled('points') else {'ok':True}
 
 async def sync_staking():
     cfg=config();address=cfg['cfi_staking'];first=cfg['cfi_start_block']

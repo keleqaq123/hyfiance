@@ -16,6 +16,65 @@
     "https://www.alchemy.com/docs/reference/elysium-api-faq",
     "https://elysium.kinetiq.xyz/docs/building-on-elysium"
   ],
-  "status": "awaiting-funding",
-  "contracts": {}
+  "status": "deployed",
+  "contracts": {
+    "weth": "0xD1fB6128C215a8E30a482C31535a591fd41e9d5B",
+    "factory": "0xa4ebF13e03ED586e33296896317AC79A1f7ACEE5",
+    "router": "0x01E9D616A064dC8E3a8ed43154631Abf06D402A1",
+    "multicall": "0xE1631068576F87daC34291440e17a3336A5A7F13",
+    "tokenA": "0x47C2154ABd781a779F22CaA73bF6569781c3A360",
+    "tokenB": "0x257361787007B7e5bf2186E797E2feFFeC699c62",
+    "pair": "0x699A19F3321DB59fDe636D507C0D150310Fe2797",
+    "launchpad": "0x6324bF0c17ACE5Da6404415aEA5c861e3CAe7Db5",
+    "cfi": "0xF9e8067285db6a6488a2d831782ec9D913f13115",
+    "nft": "0x3dCc1d199C08B6B4CF6E4C8f8d4D332400Ed9569"
+  },
+  "modules": {
+    "swap": "confirmed",
+    "markets": "disabled",
+    "launchpad": "confirmed",
+    "cfi": "confirmed",
+    "nft": "confirmed"
+  },
+  "deployer": "0xFc3FAB33fde4671851Dfb2Fb3802496AeC7F4607",
+  "checkedAt": "2026-11-01T03:29:24.612Z",
+  "balanceWei": "6846931722162349",
+  "initCodeHash": "0x557a766008a8cd8e924285f8112de27cababa9ac28e813698860a4342ed3f647",
+  "excludedMarketAttempt": {
+    "status": "stopped-at-user-request",
+    "nonceFrom": 9,
+    "nonceTo": 45,
+    "pendingTransactions": 0,
+    "note": "Transactions already confirmed are not reversible; partial synthetic-market contracts are not connected to this application."
+  },
+  "transactions": {
+    "launchpad": "0xeb9428dcb198300863240171012ef67db3d349617e7ea32fa4ad9dbec3a74c26",
+    "cfi": "0xf13ea52dca90eafdeb6d516865399003db85f9ef9f659d740a494bf5c79d55ac",
+    "nft": "0x6d1c7c011f78c0c3962c78ab57c22f19faec01278399b45c2321645e82066d5e"
+  },
+  "receipts": {
+    "launchpad": {
+      "hash": "0xeb9428dcb198300863240171012ef67db3d349617e7ea32fa4ad9dbec3a74c26",
+      "blockNumber": 20340690
+    },
+    "cfi": {
+      "hash": "0xf13ea52dca90eafdeb6d516865399003db85f9ef9f659d740a494bf5c79d55ac",
+      "blockNumber": 20341810
+    },
+    "nft": {
+      "hash": "0x6d1c7c011f78c0c3962c78ab57c22f19faec01278399b45c2321645e82066d5e",
+      "blockNumber": 20341897
+    }
+  },
+  "recoveryChecks": [
+    {
+      "module": "cfi",
+      "checkedNonce": 47,
+      "pendingNonce": 47,
+      "creationCodeAtNonce47": "0x",
+      "result": "No transaction broadcast; safe to retry after transient RPC error"
+    }
+  ],
+  "cfiStartBlock": 20341810,
+  "completedAt": "2026-11-01T03:30:02.707Z"
 }

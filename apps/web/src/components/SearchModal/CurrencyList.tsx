@@ -17,6 +17,7 @@ import { FadedSpan, MenuItem } from './styleds'
 import Loader from '../Loader'
 import { isTokenOnList } from '../../utils'
 import { useTranslation } from 'react-i18next'
+import {displayCurrencySymbol} from '../../utils/wrappedCurrency'
 
 function currencyKey(currency: Currency): string {
   return currency instanceof Token ? currency.address : currency === ETHER ? 'ETHER' : ''
@@ -117,7 +118,7 @@ function CurrencyRow({
       <CurrencyLogo currency={currency} size={'24px'} />
       <Column>
         <Text title={currency.name} fontWeight={500}>
-          {currency.symbol}
+          {displayCurrencySymbol(currency,chainId)}
         </Text>
         <FadedSpan>
           {!isOnSelectedList && customAdded ? (

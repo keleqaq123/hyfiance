@@ -7,7 +7,7 @@ async function main(){
  if(record.status!=='deployed')throw Error(`No completed Elysium deployment: ${record.status}`);
  const p=new ethers.providers.JsonRpcProvider({url:process.env.ELYSIUM_RPC_URL||net.rpc,headers:{'User-Agent':'hyfiance-testnet-check/1.0'},timeout:20000});
  validateChain(parseInt(await p.send('eth_chainId',[]),16));
- for(const module of ['swap','markets','launchpad','cfi','nft'])if(record.modules[module]!=='confirmed')throw Error(`${module} not confirmed`);
+ for(const module of require('../networks/elysium-features.json').deploymentModules)if(record.modules[module]!=='confirmed')throw Error(`${module} not confirmed`);
  for(const [name,address] of Object.entries(record.contracts))if(ethers.utils.isAddress(address)&&(await p.getCode(address))==='0x')throw Error(`${name} has no code`);
  const c=record.contracts;
  const router=new ethers.Contract(c.router,['function factory() view returns(address)','function WETH() view returns(address)'],p);

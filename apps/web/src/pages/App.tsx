@@ -4,6 +4,7 @@ const LegacyApp=React.lazy(()=>import('../custos/LegacyApp'))
 const CustosLandingPage=React.lazy(()=>import('../custos/CustosLandingPage'))
 const RealityApp=React.lazy(()=>import('../custos/RealityApp'))
 import PageErrorBoundary from '../components/PageErrorBoundary'
+import {unavailableRoute} from '../custos/features'
 
 /**
  * Custos application routes.
@@ -19,6 +20,7 @@ export default function App() {
       <Suspense fallback={<div className="custos-route-loading" role="status">Opening Custos…</div>}>
         <Switch>
           <Route exact path={['/', '/index.html', '/legacy-home']} component={CustosLandingPage} />
+          <Route path={['/reality/season','/defi/season','/defi/rwa','/defi/perpetuals','/defi/markets','/defi/portfolio','/defi/transparency','/defi/spot','/defi/liquidity','/perp']} render={({location})=>unavailableRoute(location.pathname)?<Redirect to="/reality"/>:location.pathname.startsWith('/reality')?<RealityApp/>:<LegacyApp/>}/>
           <Route path="/reality" component={RealityApp} />
           <Route exact path="/defi/faucet" component={RealityApp} />
           <Route exact path="/defi/launchpad" component={RealityApp} />
