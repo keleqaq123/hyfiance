@@ -1,4 +1,10 @@
 **/.git
+**/.secrets
+**/.logs
+**/.pids
+**/data
+runtime-data
+work
 **/.gitignore
 **/node_modules
 **/.venv

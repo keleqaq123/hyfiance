@@ -1,0 +1,21 @@
+# Requires external durable storage; no paid Render resource is provisioned.
+services:
+  - type: web
+    name: hyfiance
+    runtime: docker
+    plan: free
+    dockerfilePath: ./deploy/hyfiance.Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: CUSTOS_CHAIN_ID
+        value: "99801"
+      - key: REALITY_DATABASE_URL
+        sync: false
+      - key: REALITY_GCS_BUCKET
+        sync: false
+      - key: GOOGLE_APPLICATION_CREDENTIALS
+        value: /etc/secrets/gcs.json
+      - key: CFI_QUOTE_SIGNER_KEY
+        sync: false
+      - key: REALITY_ADMIN_WALLETS
+        sync: false
