@@ -1,6 +1,8 @@
 FROM node:22-bookworm-slim AS web
 WORKDIR /workspace
-RUN corepack enable
+RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates \
+    && git config --global url."https://github.com/".insteadOf "ssh://git@github.com/" \
+    && rm -rf /var/lib/apt/lists/* && corepack enable
 COPY packages/swap-sdk ./packages/swap-sdk
 RUN cd packages/swap-sdk && yarn install --frozen-lockfile --ignore-scripts && yarn build
 COPY apps/web/package.json apps/web/yarn.lock ./apps/web/
