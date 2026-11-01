@@ -1,15 +1,15 @@
 {
-  "network": "GIWA Sepolia",
-  "chainId": 91342,
-  "deployedAt": "2026-08-28T12:10:25.429Z",
-  "deployer": "0xD017bCFa977511794AD302F0b7eDBF59fAC6ee42",
-  "pyth": "0x2880ab155794e7179c9ee2e38200202908c17b43",
+  "network": "Elysium Testnet",
+  "chainId": 99801,
+  "deployedAt": null,
+  "deployer": "",
+  "pyth": "",
   "contracts": {
-    "testUSDC": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
-    "oracleRouter": "0x4aE104028b03c2Bd8730b32999A0ce22865A8eee",
-    "marketRegistry": "0x1F8088286c9ecb75A4AECe9300524C9B4f33cEC4",
-    "marginVault": "0x38847c6C1fC6bACAD3929c541812f532CFcdc174",
-    "perpEngine": "0x6163B145B1cDe748E3BE527df3085E708880F7F3"
+    "testUSDC": "",
+    "oracleRouter": "",
+    "marketRegistry": "",
+    "marginVault": "",
+    "perpEngine": ""
   },
   "markets": {
     "BTC": {
@@ -73,5 +73,6 @@
       "oracleMode": "pyth-or-fallback"
     }
   },
-  "version": "custos-markets-v1"
+  "version": "custos-markets-v1",
+  "status": "not-deployed"
 }

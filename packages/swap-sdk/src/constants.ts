@@ -1,4 +1,5 @@
 import JSBI from 'jsbi'
+import { ELYSIUM_V2 } from './elysium'
 
 // exports for external consumption
 export type BigintIsh = JSBI | bigint | string
@@ -11,6 +12,7 @@ export enum ChainId {
   KOVAN = 42,
   REI = 47805,
   REITEST = 12357,
+  ELYSIUM_TESTNET = 99801,
   GIWA_SEPOLIA = 91342
 }
 
@@ -44,10 +46,18 @@ export const INIT_CODE_HASHES: Partial<Record<ChainId, string>> = {
 }
 
 export function getFactoryAddress(chainId: ChainId): string {
+  if (chainId === ChainId.ELYSIUM_TESTNET) {
+    if (!ELYSIUM_V2.factory) throw new Error('Elysium V2 is not deployed')
+    return ELYSIUM_V2.factory
+  }
   return FACTORY_ADDRESSES[chainId] ?? FACTORY_ADDRESS
 }
 
 export function getInitCodeHash(chainId: ChainId): string {
+  if (chainId === ChainId.ELYSIUM_TESTNET) {
+    if (!ELYSIUM_V2.initCodeHash) throw new Error('Elysium V2 is not deployed')
+    return ELYSIUM_V2.initCodeHash
+  }
   return INIT_CODE_HASHES[chainId] ?? INIT_CODE_HASH
 }
 

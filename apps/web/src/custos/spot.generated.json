@@ -1,12 +1,12 @@
 {
   "version": "custos-spot-v1",
-  "chainId": 91342,
-  "deployedAt": "2026-08-28T12:10:25.429Z",
-  "deployer": "0xD017bCFa977511794AD302F0b7eDBF59fAC6ee42",
-  "quoteToken": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+  "chainId": 99801,
+  "deployedAt": null,
+  "deployer": "",
+  "quoteToken": "",
   "quoteSymbol": "tUSDC",
   "quoteDecimals": 6,
-  "oracleRouter": "0x4aE104028b03c2Bd8730b32999A0ce22865A8eee",
+  "oracleRouter": "",
   "markets": {
     "XAU": {
       "name": "Custos Synthetic Gold",
@@ -15,8 +15,8 @@
       "pythSymbol": "Metal.XAU/USD",
       "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
       "unit": "1 token = 1 troy oz gold reference",
-      "token": "0xA9E82BA86C8069508be7dc254248946886E6B0FE",
-      "pool": "0xa6B3b7e400d89874880F78654211B5108d2f563C",
+      "token": "",
+      "pool": "",
       "oracleMode": "fallback"
     },
     "XAG": {
@@ -26,8 +26,8 @@
       "pythSymbol": "Metal.XAG/USD",
       "feedId": "0xf2fb02c32b055c805e7238d628e5e9dadef274376114eb1f012337cabe93871e",
       "unit": "1 token = 1 troy oz silver reference",
-      "token": "0x0032b38908bDDDF634Aa0e9a548C516573FC1A3B",
-      "pool": "0x73D0D1FfFF7Cb3B5E98694B8e68268123c0A5144",
+      "token": "",
+      "pool": "",
       "oracleMode": "fallback"
     },
     "OIL": {
@@ -37,8 +37,8 @@
       "pythSymbol": "Commodities.WTIX6/USD",
       "feedId": "0xf8c2191e76f7f4d5335e7f4e8f81ab0df6360d54ee020874222841894203e9d7",
       "unit": "1 token = 1 barrel WTI reference",
-      "token": "0xD451C4fFFE0F77887b1036D1e431b9d3b408154A",
-      "pool": "0x6000F1Bb346AF1Bd6EDB3F061E6A2BBA15270756",
+      "token": "",
+      "pool": "",
       "oracleMode": "fallback"
     }
   },
@@ -46,5 +46,7 @@
     "Synthetic testnet spot markets; not redeemable for physical assets.",
     "Spot execution is anchored to the configured Pyth or local mock oracle.",
     "The same tUSDC contract is used by Spot and Perpetuals."
-  ]
+  ],
+  "network": "Elysium Testnet",
+  "status": "not-deployed"
 }

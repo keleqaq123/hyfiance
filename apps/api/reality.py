@@ -8,6 +8,7 @@ import asyncio, hashlib, io, json, os, re, secrets, time, uuid
 from pathlib import Path
 from typing import Literal
 import httpx
+from network_config import network_config
 from eth_account import Account
 from eth_account.messages import encode_typed_data
 from eth_account.messages import encode_defunct
@@ -74,14 +75,15 @@ def now(): return int(time.time())
 def admins(): return {x.strip().lower() for x in os.getenv('REALITY_ADMIN_WALLETS','').split(',') if re.fullmatch(r'0x[0-9a-fA-F]{40}',x.strip())}
 def config():
     with engine().connect() as db: stored={r.key:r.value for r in db.execute(select(runtime_settings))}
-    return {'chain_id':91342,'name':'GIWA Sepolia','rpc':os.getenv('GIWA_RPC_URL','https://sepolia-rpc.giwa.io'),
-            'explorer':'https://sepolia-explorer.giwa.io','testnet':True,
+    net=network_config()
+    return {'chain_id':net['chain_id'],'name':net['name'],'rpc':net['rpc'],
+            'explorer':net['explorer'],'testnet':True,'native_symbol':net['native_symbol'],
             'launchpad':os.getenv('REALITY_LAUNCHPAD_ADDRESS','') or stored.get('launchpad',''),'platform_token':os.getenv('REALITY_PLATFORM_TOKEN','') or stored.get('platform_token',''),
             'swap_router':os.getenv('REALITY_SWAP_ROUTER','') or stored.get('swap_router',''),'swap_factory':os.getenv('REALITY_SWAP_FACTORY','') or stored.get('swap_factory',''),
             'cfi_staking':os.getenv('REALITY_CFI_STAKING','') or stored.get('cfi_staking',''),
             'cfi_price_source':os.getenv('REALITY_CFI_PRICE_SOURCE','pyth'),
             'cfi_start_block':int(os.getenv('REALITY_CFI_START_BLOCK','0') or '0') or int(stored.get('cfi_start_block','0')),
-            'weth':'0x4200000000000000000000000000000000000006','admin_configured':bool(admins())}
+            'weth':os.getenv('REALITY_WETH','' if net['chain_id']==99801 else '0x4200000000000000000000000000000000000006'),'admin_configured':bool(admins())}
 class BridgeRpc(BaseModel):
     jsonrpc:Literal['2.0']='2.0'
     id:int|str|None=1
@@ -185,7 +187,7 @@ def get_config(): return config()
 def challenge(body:Challenge,request:Request):
     id=uid();wallet=body.wallet.lower();stamp=now()
     domain=os.getenv('REALITY_PUBLIC_ORIGIN','').strip() or str(request.base_url).rstrip('/')
-    message=f'{domain} requests a Custos wallet login.\nWallet: {wallet}\nChain ID: 91342\nNonce: {secrets.token_hex(16)}\nIssued: {stamp}\nExpires: {stamp+300}\nSign in only. No transaction or token allowance.'
+    message=f'{domain} requests a Custos wallet login.\nWallet: {wallet}\nChain ID: {network_config()["chain_id"]}\nNonce: {secrets.token_hex(16)}\nIssued: {stamp}\nExpires: {stamp+300}\nSign in only. No transaction or token allowance.'
     with engine().begin() as db:
         db.execute(delete(nonces).where(nonces.c.expires_at<stamp));db.execute(delete(sessions).where(sessions.c.expires_at<stamp))
         existing=db.execute(select(func.count()).select_from(nonces).where(nonces.c.wallet==wallet)).scalar()
@@ -225,7 +227,7 @@ def save_account_profile(body:ProfileUpdate,wallet=Depends(wallet_auth)):
 @router.get('/account/holdings')
 async def account_holdings(page:int=1,wallet=Depends(wallet_auth)):
     page=max(1,page)
-    if int(await rpc('eth_chainId',[]),16)!=91342:raise HTTPException(503,'GIWA RPC network mismatch')
+    if int(await rpc('eth_chainId',[]),16)!=network_config()['chain_id']:raise HTTPException(503,'GIWA RPC network mismatch')
     with engine().connect() as db:
         rows=db.execute(select(assets).where(visible_listing(),assets.c.token_address.is_not(None)).order_by(assets.c.created_at.desc(),assets.c.id.asc()).offset((page-1)*50).limit(51)).mappings().all()
     selector='0x'+keccak(text='balanceOf(address)').hex()[:8]+wallet[2:].rjust(64,'0')
@@ -479,10 +481,14 @@ async def read_binance_price():
     global _binance_price_cache
     try:
         async with httpx.AsyncClient(timeout=8) as client:
-            response=await client.get('https://data-api.binance.vision/api/v3/ticker/price',params={'symbol':'ETHUSDT'})
-            response.raise_for_status();body=response.json()
+            if network_config()['chain_id']==99801:
+                response=await client.post('https://api.hyperliquid.xyz/info',json={'type':'allMids'})
+                response.raise_for_status();body={'symbol':'HYPEUSDT','price':response.json()['HYPE']}
+            else:
+                response=await client.get('https://data-api.binance.vision/api/v3/ticker/price',params={'symbol':'ETHUSDT'})
+                response.raise_for_status();body=response.json()
         price=Decimal(body['price']);scaled=price*10**18
-        if body.get('symbol')!='ETHUSDT' or not price.is_finite() or not 0<price<=10**8 or scaled!=scaled.to_integral_value():raise ValueError('Invalid price')
+        if body.get('symbol')!=('HYPEUSDT' if network_config()['chain_id']==99801 else 'ETHUSDT') or not price.is_finite() or not 0<price<=10**8 or scaled!=scaled.to_integral_value():raise ValueError('Invalid price')
         _binance_price_cache=(time.monotonic(),int(scaled),now())
         return _binance_price_cache
     except (httpx.HTTPError,ValueError,KeyError,TypeError,InvalidOperation):raise HTTPException(503,'Fresh Binance ETH/USDT data is unavailable. Retry later.')
@@ -501,14 +507,14 @@ async def binance_staking_quote(request,address,value):
     calls=[rpc('eth_chainId',[]),rpc('eth_call',[{'to':address,'data':'0x'+keccak(text='quoteSigner()').hex()[:8]},'latest'])]
     if wallet:calls.append(rpc('eth_call',[{'to':address,'data':'0x'+keccak(text='nonces(address)').hex()[:8]+encode(['address'],[wallet]).hex()},'latest']))
     results=await asyncio.gather(*calls)
-    if int(results[0],16)!=91342 or not isinstance(results[1],str) or len(results[1])!=66 or ('0x'+results[1][-40:]).lower()!=signer.address.lower():raise HTTPException(503,'Staking quote signer or GIWA network mismatch')
+    if int(results[0],16)!=network_config()['chain_id'] or not isinstance(results[1],str) or len(results[1])!=66 or ('0x'+results[1][-40:]).lower()!=signer.address.lower():raise HTTPException(503,'Staking quote signer or GIWA network mismatch')
     if now()-issued>15:raise HTTPException(503,'Binance quote expired. Retry.')
     nonce=int(results[2],16) if wallet else 0;deadline=issued+60;signature=None
     if wallet:
         message={'account':wallet,'amount':value,'price18':price18,'issuedAt':issued,'deadline':deadline,'nonce':nonce}
-        typed=encode_typed_data(domain_data={'name':'Custos CFI Binance','version':'1','chainId':91342,'verifyingContract':address},message_types={'StakeQuote':STAKE_QUOTE_FIELDS},message_data=message)
+        typed=encode_typed_data(domain_data={'name':'Custos CFI Binance','version':'1','chainId':network_config()['chain_id'],'verifyingContract':address},message_types={'StakeQuote':STAKE_QUOTE_FIELDS},message_data=message)
         signature='0x'+Account.sign_message(typed,signer.key).signature.hex().removeprefix('0x')
-    return {'source':'binance','pair':'ETHUSDT','quoteCurrency':'USDT','vault':address,'account':wallet,'amountWei':str(value),'expectedCFI':str(value*price18//10**18),'price18':str(price18),'publishTime':issued,'issuedAt':issued,'deadline':deadline,'nonce':str(nonce),'signature':signature,'feeWei':'0'}
+    return {'source':config()['cfi_price_source'],'pair':'HYPE/USD' if network_config()['chain_id']==99801 else 'ETHUSDT','quoteCurrency':'USD' if network_config()['chain_id']==99801 else 'USDT','vault':address,'account':wallet,'amountWei':str(value),'expectedCFI':str(value*price18//10**18),'price18':str(price18),'publishTime':issued,'issuedAt':issued,'deadline':deadline,'nonce':str(nonce),'signature':signature,'feeWei':'0'}
 
 @router.get('/staking/quote')
 async def staking_quote(request:Request,amount:str):
@@ -516,8 +522,8 @@ async def staking_quote(request:Request,amount:str):
     if not re.fullmatch(r'\d{1,7}(\.\d{1,18})?',amount):raise HTTPException(400,'Enter a valid ETH amount with up to 18 decimals')
     value=int(Decimal(amount)*10**18)
     if not 0<value<=10**24:raise HTTPException(400,'ETH amount is out of range')
-    if config()['cfi_price_source']=='binance':return await binance_staking_quote(request,address,value)
-    if int(await rpc('eth_chainId',[]),16)!=91342:raise HTTPException(503,'GIWA RPC network mismatch')
+    if config()['cfi_price_source'] in ('binance','hyperliquid'):return await binance_staking_quote(request,address,value)
+    if int(await rpc('eth_chainId',[]),16)!=network_config()['chain_id']:raise HTTPException(503,'GIWA RPC network mismatch')
     try:
         async with httpx.AsyncClient(timeout=20) as client:
             key=os.getenv('PYTH_API_KEY','').strip()
@@ -550,7 +556,7 @@ def decode_stake_event(log,stamp):
 @router.post('/staking/verify')
 async def verify_staking(body:Attachment,wallet=Depends(wallet_auth)):
     address=staking_address()
-    if int(await rpc('eth_chainId',[]),16)!=91342:raise HTTPException(503,'GIWA RPC network mismatch')
+    if int(await rpc('eth_chainId',[]),16)!=network_config()['chain_id']:raise HTTPException(503,'GIWA RPC network mismatch')
     receipt=await rpc('eth_getTransactionReceipt',[body.tx_hash])
     if not receipt or receipt.get('status')!='0x1':raise HTTPException(409,'Transaction has not confirmed successfully')
     if receipt.get('to','').lower()!=address or receipt.get('from','').lower()!=wallet:raise HTTPException(400,'Staking contract or wallet mismatch')
@@ -570,7 +576,7 @@ async def verify_staking(body:Attachment,wallet=Depends(wallet_auth)):
 async def sync_staking():
     cfg=config();address=cfg['cfi_staking'];first=cfg['cfi_start_block']
     if not address or not first:return
-    if int(await rpc('eth_chainId',[]),16)!=91342:raise HTTPException(503,'GIWA RPC network mismatch')
+    if int(await rpc('eth_chainId',[]),16)!=network_config()['chain_id']:raise HTTPException(503,'GIWA RPC network mismatch')
     cursor_key='cfi_index_block:'+address.lower()
     updated_key='cfi_index_updated_at:'+address.lower()
     with engine().connect() as db:cursor=db.execute(select(runtime_settings.c.value).where(runtime_settings.c.key==cursor_key)).scalar()
@@ -611,7 +617,7 @@ async def attach(id:str,body:Attachment,wallet=Depends(wallet_auth)):
     launchpad=config()['launchpad'].lower()
     if not re.fullmatch(r'0x[0-9a-f]{40}',launchpad): raise HTTPException(503,'GIWA Launchpad is not deployed or configured')
     chain=await rpc('eth_chainId',[])
-    if int(chain,16)!=91342: raise HTTPException(503,'RPC Network does not match GIWA configuration')
+    if int(chain,16)!=network_config()['chain_id']: raise HTTPException(503,'RPC Network does not match GIWA configuration')
     receipt=await rpc('eth_getTransactionReceipt',[body.tx_hash])
     if not receipt or receipt.get('status')!='0x1': raise HTTPException(409,'Transaction has not confirmed successfully')
     if receipt.get('to','').lower()!=launchpad or receipt.get('from','').lower()!=wallet: raise HTTPException(400,'Transaction contract or creator mismatch')
@@ -705,7 +711,7 @@ async def sync_listings():
     with engine().connect() as db:
         rows=db.execute(select(assets).where(assets.c.token_address.is_not(None),assets.c.tx_hash.is_not(None),~assets.c.id.in_(select(launch_listings.c.asset_id))).limit(20)).mappings().all()
     if not rows:return
-    if int(await rpc('eth_chainId',[]),16)!=91342:raise HTTPException(503,'GIWA RPC network mismatch')
+    if int(await rpc('eth_chainId',[]),16)!=network_config()['chain_id']:raise HTTPException(503,'GIWA RPC network mismatch')
     head=int(await rpc('eth_blockNumber',[]),16)
     for row in rows:
         receipt=await rpc('eth_getTransactionReceipt',[row['tx_hash']])
@@ -748,7 +754,7 @@ _ranking_quote_tasks={}
 
 async def ranking_quote(key,asset):
     try:
-        if int(await rpc('eth_chainId',[]),16)!=91342:return
+        if int(await rpc('eth_chainId',[]),16)!=network_config()['chain_id']:return
         data='0x'+keccak(text='getLaunch(uint256)').hex()[:8]+encode(['uint256'],[asset['launch_id']]).hex()
         raw=await rpc('eth_call',[{'to':key[1],'data':data},'latest'])
         state=decode(['(address,address,string,string,string,uint256,uint256,uint256,uint256,uint64,uint64,bool,bool)'],bytes.fromhex(raw[2:]))[0]
@@ -869,7 +875,7 @@ class RuntimeConfig(BaseModel):
 @router.post('/admin/config')
 async def set_runtime_config(body:RuntimeConfig,wallet=Depends(admin_auth)):
     values=body.model_dump()
-    if int(await rpc('eth_chainId',[]),16)!=91342: raise HTTPException(503,'RPC chain ID mismatch')
+    if int(await rpc('eth_chainId',[]),16)!=network_config()['chain_id']: raise HTTPException(503,'RPC chain ID mismatch')
     for key,value in values.items():
         if not value: continue
         if not re.fullmatch(r'0x[0-9a-fA-F]{40}',value): raise HTTPException(400,'Invalid contract address')
@@ -893,7 +899,7 @@ async def set_runtime_config(body:RuntimeConfig,wallet=Depends(admin_auth)):
 @router.get('/health')
 def health():
     with engine().connect() as db: db.execute(select(func.count()).select_from(users))
-    return {'ok':True,'chain_id':91342,'launchpad_configured':bool(config()['launchpad'])}
+    return {'ok':True,'chain_id':network_config()['chain_id'],'launchpad_configured':bool(config()['launchpad'])}
 
 def season_scores(db):
     issued=dict(db.execute(select(assets.c.wallet,func.count()).where(assets.c.token_address.is_not(None)).group_by(assets.c.wallet)).all())

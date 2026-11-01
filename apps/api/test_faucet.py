@@ -1,4 +1,5 @@
 import asyncio
+import os
 import sys
 from pathlib import Path
 from unittest.mock import AsyncMock
@@ -149,7 +150,9 @@ def test_queue_deduplicates_address_and_survives_restart(tmp_path):
     recovered = f.Store(store.filename).next()
     assert recovered['id'] == first['id'] and recovered['raw_tx'] == 'private-signed-bytes'
     assert 'raw_tx' not in f.public_job(recovered)
-    assert Path(store.filename).stat().st_mode & 0o777 == 0o600
+    # POSIX mode bits do not represent Windows ACLs.
+    if os.name != 'nt':
+        assert Path(store.filename).stat().st_mode & 0o777 == 0o600
 
 
 def test_unconfigured_captcha_still_shows_real_reserve_but_cannot_send(tmp_path):

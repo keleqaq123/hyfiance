@@ -54,6 +54,12 @@ module.exports = {
    defaultNetwork: 'hardhat',
 
    networks: {
+      elysiumTestnet: {
+         url: process.env.ELYSIUM_RPC_URL || 'https://testnet-rpc.elysium.kinetiq.xyz',
+         chainId: 99801,
+         accounts: process.env.ELYSIUM_PRIVATE_KEY ? [process.env.ELYSIUM_PRIVATE_KEY] : [],
+         saveDeployments: true
+      },
       hardhat: {
          chainId: 47805,
          allowUnlimitedContractSize: true,

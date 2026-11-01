@@ -1,7 +1,9 @@
 import { ChainId } from 'custoswap-sdk'
+import elysium from '../../custos/elysiumDeployment.json'
 import MULTICALL_ABI from './abi.json'
 
 const MULTICALL_NETWORKS: { [chainId in ChainId]: string } = {
+  [ChainId.ELYSIUM_TESTNET]: (elysium.contracts as Record<string,string>).multicall || '',
   [ChainId.GIWA_SEPOLIA]: '0xcA11bde05977b3631167028862bE2a173976CA11',
   [ChainId.MAINNET]: '0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441',
   [ChainId.ROPSTEN]: '0x53C43764255c17BD724F74c4eF150724AC50a3ed',

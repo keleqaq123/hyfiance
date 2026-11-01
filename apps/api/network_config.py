@@ -46,32 +46,36 @@ def network_config() -> dict[str, Any]:
     chain_id = _env_chain_id() or int(
         configured_network.get("chainId") or GIWA_CHAIN_ID
     )
-    default_name = "Custos Local" if chain_id == LOCAL_CHAIN_ID else "GIWA Sepolia"
+    elysium = chain_id == 99801
+    if int(configured_network.get("chainId") or 0) != chain_id:
+        configured_network = {}
+    default_name = "Elysium Testnet" if elysium else "Custos Local" if chain_id == LOCAL_CHAIN_ID else "GIWA Sepolia"
     name = str(
         os.getenv("CUSTOS_NETWORK_NAME", "").strip()
         or configured_network.get("name")
         or default_name
     )
 
-    default_rpc = "http://127.0.0.1:7545" if chain_id == LOCAL_CHAIN_ID else "https://sepolia-rpc.giwa.io"
+    default_rpc = "https://testnet-rpc.elysium.kinetiq.xyz" if elysium else "http://127.0.0.1:7545" if chain_id == LOCAL_CHAIN_ID else "https://sepolia-rpc.giwa.io"
     default_flashblocks = (
         default_rpc
-        if chain_id == LOCAL_CHAIN_ID
+        if chain_id == LOCAL_CHAIN_ID or elysium
         else "https://sepolia-rpc-flashblocks.giwa.io"
     )
-    default_explorer = "" if chain_id == LOCAL_CHAIN_ID else "https://sepolia-explorer.giwa.io"
+    default_explorer = "https://testnet.elysium.kinetiq.xyz" if elysium else "" if chain_id == LOCAL_CHAIN_ID else "https://sepolia-explorer.giwa.io"
 
     return {
         "name": name,
         "chain_id": chain_id,
-        "rpc": os.getenv("GIWA_RPC_URL", default_rpc).strip() or default_rpc,
+        "rpc": os.getenv("CUSTOS_RPC_URL", os.getenv("GIWA_RPC_URL", default_rpc)).strip() or default_rpc,
         "flashblocks_rpc": os.getenv(
             "GIWA_FLASHBLOCKS_RPC_URL", default_flashblocks
         ).strip()
         or default_flashblocks,
-        "explorer": os.getenv("GIWA_EXPLORER_URL", default_explorer).strip()
+        "explorer": os.getenv("CUSTOS_EXPLORER_URL", os.getenv("GIWA_EXPLORER_URL", default_explorer)).strip()
         or default_explorer,
         "local": chain_id == LOCAL_CHAIN_ID,
+        "native_symbol": "HYPE" if elysium else "ETH",
     }
 
 

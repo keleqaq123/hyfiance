@@ -2,6 +2,7 @@ import { ChainId, JSBI, Percent, Token, WETH, V2_WETH } from 'custoswap-sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { injected, walletlink } from '../connectors'
+import elysium from '../custos/elysiumDeployment.json'
 
 // Keep the original export for older consumers, but resolve the router by
 // chain for the active deployment.
@@ -13,6 +14,11 @@ export const ROUTER_ADDRESSES: Partial<Record<ChainId, string>> = {
 }
 
 export function getRouterAddress(chainId?: number): string {
+  if (chainId === 99801) {
+    const router = (elysium.contracts as Record<string,string>).router
+    if (!router) throw new Error('Elysium Swap is not deployed yet')
+    return router
+  }
   return (chainId && ROUTER_ADDRESSES[chainId as ChainId]) || ROUTER_ADDRESS
 }
 
@@ -44,6 +50,7 @@ export const GIWA_CUSTOS_B = new Token(
 )
 
 const WETH_ONLY: ChainTokenList = {
+  [ChainId.ELYSIUM_TESTNET]: (elysium.contracts as Record<string,string>).weth ? [WETH[ChainId.ELYSIUM_TESTNET]] : [],
   [ChainId.MAINNET]: [WETH[ChainId.MAINNET]],
   [ChainId.ROPSTEN]: [WETH[ChainId.ROPSTEN]],
   [ChainId.RINKEBY]: [WETH[ChainId.RINKEBY]],

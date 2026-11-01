@@ -1,5 +1,7 @@
 # hyfiance
 
+Elysium Testnet integration: [setup, deployment state and verification](docs/ELYSIUM-TESTNET.md). The frontend/API can start locally; public-chain deployment awaits test HYPE.
+
 这是一个本地可完整跑通的 DEX 项目仓库，包含：
 - 合约工程（Hardhat）
 - SDK（`custoswap-sdk` 本地源码版）

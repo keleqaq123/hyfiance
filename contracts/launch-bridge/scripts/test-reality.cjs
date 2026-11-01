@@ -3,7 +3,7 @@ const {ethers}=require(process.env.ETHERS_MODULE||'ethers');const ganache=requir
 const artifact=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../../../apps/web/src/custos/reality-artifacts.json')));
 async function rejects(fn){let failed=false;try{const r=await fn();if(r.wait)await r.wait()}catch{failed=true}assert(failed,'Expected a reverted transaction')}
 async function main(){
- const server=ganache.provider({chain:{chainId:91342},logging:{quiet:true},wallet:{totalAccounts:4}}),provider=new ethers.providers.Web3Provider(server),creator=provider.getSigner(0),buyer=provider.getSigner(1),other=provider.getSigner(2);
+ const server=ganache.provider({chain:{chainId:Number(process.env.TEST_CHAIN_ID||91342)},logging:{quiet:true},wallet:{totalAccounts:4}}),provider=new ethers.providers.Web3Provider(server),creator=provider.getSigner(0),buyer=provider.getSigner(1),other=provider.getSigner(2);
  const launch=await new ethers.ContractFactory(artifact.CustosRealityLaunchpad.abi,artifact.CustosRealityLaunchpad.bytecode,creator).deploy();await launch.deployed();
  const supply=ethers.utils.parseEther('1000000');
  for(const name of ['Camera','Property'])await(await launch.createLaunch(name,name==='Camera'?'CAM':'HBR','https://example.test/api/reality/assets/'+name+'/metadata',supply,ethers.utils.parseEther('1'),0,0)).wait();

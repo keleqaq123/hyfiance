@@ -1,0 +1,15 @@
+{
+  "chainId": 99801,
+  "name": "Elysium Testnet",
+  "nativeCurrency": { "name": "HYPE", "symbol": "HYPE", "decimals": 18 },
+  "rpc": "https://testnet-rpc.elysium.kinetiq.xyz",
+  "explorer": "https://testnet.elysium.kinetiq.xyz",
+  "faucet": "https://elysium.kinetiq.xyz/testnet-faucet",
+  "bridge": "https://elysium.kinetiq.xyz/testnet-bridge",
+  "parentChainId": 998,
+  "testnet": true,
+  "sources": [
+    "https://www.alchemy.com/docs/reference/elysium-api-faq",
+    "https://elysium.kinetiq.xyz/docs/building-on-elysium"
+  ]
+}

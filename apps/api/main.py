@@ -51,7 +51,7 @@ GIWA_EXPLORER_URL = _network["explorer"]
 CHAIN_ID = int(_network["chain_id"])
 
 app = FastAPI(
-    title="GIWA RWA Exchange API",
+    title="Hyfiance Testnet API",
     version="3.0.0-beta",
     description="Metadata, demo-market quotes and activity for GIWA RWA Exchange.",
 )
@@ -588,7 +588,7 @@ def health() -> dict[str, Any]:
     chain_id = int(network.get("chainId") or CHAIN_ID)
     return {
         "ok": True,
-        "service": "GIWA RWA Exchange API",
+        "service": "Hyfiance Testnet API",
         "chainId": chain_id,
         "rpc": GIWA_RPC_URL,
         "flashblocksRpc": GIWA_FLASHBLOCKS_RPC_URL,

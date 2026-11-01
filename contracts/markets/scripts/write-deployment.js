@@ -163,13 +163,14 @@ function removeEnvKeys(file, keys) {
 function syncRuntimeEnv(root, network) {
   const chainId = Number(network.chainId);
   const local = chainId === 47805;
-  const rpc = local
+  const elysium = chainId === 99801;
+  const rpc = elysium ? (process.env.ELYSIUM_RPC_URL || 'https://testnet-rpc.elysium.kinetiq.xyz') : local
     ? 'http://127.0.0.1:7545'
     : (process.env.GIWA_RPC_URL || 'https://sepolia-rpc.giwa.io');
-  const flashblocksRpc = local
+  const flashblocksRpc = elysium ? rpc : local
     ? rpc
     : (process.env.GIWA_FLASHBLOCKS_RPC_URL || 'https://sepolia-rpc-flashblocks.giwa.io');
-  const explorer = local
+  const explorer = elysium ? 'https://testnet.elysium.kinetiq.xyz' : local
     ? ''
     : (process.env.GIWA_EXPLORER_URL || 'https://sepolia-explorer.giwa.io');
   const networkName = network.name || (local ? 'Custos Local' : 'GIWA Sepolia');
@@ -231,7 +232,7 @@ function writeDeploymentFiles({
     perps,
   };
 
-  json(path.join(root, 'contracts/markets/deployments', network.chainId === 91342 ? 'giwa-sepolia.json' : 'local.json'), marketDeployment);
+  json(path.join(root, 'contracts/markets/deployments', network.chainId === 99801 ? 'elysium-testnet.json' : network.chainId === 91342 ? 'giwa-sepolia.json' : 'local.json'), marketDeployment);
 
   json(path.join(root, 'apps/web/src/custos/deployment.generated.json'), {
     network: network.name,

@@ -5,7 +5,7 @@ import FaucetTurnstile from './FaucetTurnstile'
 import {faucetApi, FaucetConfig, FaucetJob, faucetJobLabel, recipientAddress, restoreFaucetJob, retainFaucetJob} from './faucetClient'
 
 const explorer = 'https://sepolia-explorer.giwa.io'
-export default function CustosFaucetPage() {
+function LegacyFaucetPage() {
   const [restored] = useState(restoreFaucetJob)
   const [config, setConfig] = useState<FaucetConfig | null>(null), [input, setInput] = useState(restored?.recipient || ''), [token, setToken] = useState('')
   const [error, setError] = useState(''), [pollError, setPollError] = useState(''), [busy, setBusy] = useState(false), [job, setJob] = useState<FaucetJob | null>(restored)
@@ -71,4 +71,9 @@ export default function CustosFaucetPage() {
       <aside className="rl-panel rl-inset rl-faucet-info"><h2>Zero ETH to get started</h2><p>You do not send a transaction. Our official operator calls the faucet contract for your address and covers the transaction fee.</p><ol><li>Enter an Ethereum-compatible receiving address.</li><li>{captchaRequired ? 'Complete human verification and request test ETH.' : 'Click Request test ETH. No human verification is currently required.'}</li><li>Follow the transaction until it confirms on GIWA Sepolia.</li></ol><dl><div><dt>Faucet reserve</dt><dd>{config?.reserveWei ? utils.formatEther(config.reserveWei) + ' ETH' : '—'}</dd></div><div><dt>Daily contract limit</dt><dd>{config?.dailyLimitWei ? utils.formatEther(config.dailyLimitWei) + ' ETH' : '—'}</dd></div></dl><p className="rl-inline-note">Testnet only. Test ETH has no monetary value. Address cooldowns, IP request limits{captchaRequired ? ', human verification' : ''} and daily budgets limit abuse; they do not guarantee one claim per person.</p>{config?.contract ? <a className="rl-chain-link" href={explorer + '/address/' + config.contract} target="_blank" rel="noreferrer">Faucet contract <ExternalLink size={14}/></a> : null}<a className="rl-chain-link" href="https://faucet.giwa.io/" target="_blank" rel="noreferrer">Official GIWA faucet <ExternalLink size={14}/></a></aside>
     </div>
   </section>
+}
+
+export default function CustosFaucetPage(){
+ if(Number(import.meta.env.VITE_CHAIN_ID)!==99801)return <LegacyFaucetPage/>
+ return <section className="rl-panel rl-inset"><h1>Elysium test HYPE faucet</h1><p>Receive native test HYPE on Elysium Testnet (99801) from the official faucet. These tokens are only for testing.</p><a className="rl-button" href="https://elysium.kinetiq.xyz/testnet-faucet" target="_blank" rel="noreferrer">Open Elysium faucet ↗</a></section>
 }

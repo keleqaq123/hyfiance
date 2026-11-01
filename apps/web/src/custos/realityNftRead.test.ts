@@ -14,4 +14,4 @@ it('reads seven NFT fields in one call and preserves wallet-specific mint status
 it('omits wallet calls for a disconnected visitor',async()=>{expect((await readNftState(config,'',deployedAddress)).minted).toBe(0);expect(state.aggregate.mock.calls[0][0]).toHaveLength(6)})
 it('reports a failed read instead of displaying invented contract values',async()=>{state.aggregate.mockResolvedValue([{success:false,returnData:'0x'}]);await expect(readNftState(config,wallet,deployedAddress)).rejects.toThrow('unavailable')})
 
-it('uses the verified KBW deployment without relying on browser storage',()=>{expect(nftAddress).toBe('0xF2B200A8a90cB40f08e91CE1539260556719d691')})
+it('never inherits the GIWA NFT address on Elysium before deployment',()=>{expect(nftAddress).toBe('')})

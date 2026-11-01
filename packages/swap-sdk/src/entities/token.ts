@@ -1,4 +1,5 @@
 import invariant from 'tiny-invariant'
+import { ELYSIUM_V2 } from '../elysium'
 import { ChainId } from '../constants'
 import { validateAndParseAddress } from '../utils'
 import { Currency } from './currency'
@@ -57,6 +58,7 @@ export function currencyEquals(currencyA: Currency, currencyB: Currency): boolea
 }
 
 export const WETH = {
+  [ChainId.ELYSIUM_TESTNET]: new Token(ChainId.ELYSIUM_TESTNET, ELYSIUM_V2.weth || '0x0000000000000000000000000000000000000000', 18, 'WHYPE', 'Wrapped HYPE'),
   [ChainId.GIWA_SEPOLIA]: new Token(ChainId.GIWA_SEPOLIA, '0x4200000000000000000000000000000000000006', 18, 'WETH', 'Wrapped Ether'),
   [ChainId.MAINNET]: new Token(
     ChainId.MAINNET,

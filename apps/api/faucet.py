@@ -25,7 +25,8 @@ from eth_utils import is_address, is_checksum_address, keccak, to_checksum_addre
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, Field, field_validator
 
-CHAIN_ID = 91342
+from network_config import network_config
+CHAIN_ID = network_config()['chain_id']
 ZERO = '0x' + '0' * 40
 router = APIRouter(prefix='/api/faucet', tags=['Testnet faucet'])
 

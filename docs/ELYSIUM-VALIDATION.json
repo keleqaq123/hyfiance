@@ -1,0 +1,38 @@
+{
+  "network": "Elysium Testnet",
+  "chainId": 99801,
+  "publicDeployment": "awaiting-funding",
+  "deployer": "0xFc3FAB33fde4671851Dfb2Fb3802496AeC7F4607",
+  "balanceHYPE": "0",
+  "validation": {
+    "frontendTestsPassed": 202,
+    "backendTestsPassed": 84,
+    "deploymentGuardTestsPassed": 3,
+    "swapIntegrationTestsPassed": 3,
+    "marketIntegrationTestsPassed": 3,
+    "launchpadLifecycle": "passed on isolated chain ID 99801",
+    "cfiSignaturesAndRedemption": "passed on isolated chain ID 99801",
+    "productionFrontendBuild": "passed",
+    "contractCompilation": [
+      "swap",
+      "markets",
+      "nft"
+    ],
+    "isolatedFullDeploymentRehearsal": {
+      "chainId": 99801,
+      "modules": [
+        "swap",
+        "markets",
+        "launchpad",
+        "cfi",
+        "nft"
+      ],
+      "contractEntriesChecked": 21,
+      "publicChain": false
+    }
+  },
+  "localServices": {
+    "frontend": "http://127.0.0.1:3001/reality",
+    "api": "http://127.0.0.1:8001/docs"
+  }
+}

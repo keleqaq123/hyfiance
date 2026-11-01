@@ -211,6 +211,7 @@ const BalanceText = styled(Text)`
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | null } = {
+  [ChainId.ELYSIUM_TESTNET]: 'Elysium Testnet',
   [ChainId.GIWA_SEPOLIA]: 'GIWA Sepolia',
   [ChainId.MAINNET]: 'Ethereum',
   [ChainId.RINKEBY]: 'Rinkeby',

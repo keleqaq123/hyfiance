@@ -8,7 +8,7 @@ const short=(value:string)=>value.slice(0,6)+'…'+value.slice(-4)
 const explorer=(l1:boolean,hash:string)=>(l1?'https://sepolia.etherscan.io':'https://sepolia-explorer.giwa.io')+'/tx/'+hash
 const message=(error:any)=>error?.shortMessage||error?.message||'Bridge request failed. Please retry.'
 export {verifyBridgeNetwork as prepareBridge} from './giwaBridge'
-export default function RealityBridgePage({notify}:{notify:(value:string)=>void}){
+function LegacyGiwaBridgePage({notify}:{notify:(value:string)=>void}){
   const [depositGas,setDepositGas]=useState<string>('')
   const [account,setAccount]=useState<Address|null>(null),[direction,setDirection]=useState<BridgeDirection>('deposit'),[amount,setAmount]=useState('')
   const [records,setRecords]=useState<BridgeRecord[]>(loadBridgeRecords),[busy,setBusy]=useState(''),[error,setError]=useState(''),[ready,setReady]=useState(false),[checking,setChecking]=useState(true),[networkError,setNetworkError]=useState('')
@@ -65,4 +65,9 @@ export default function RealityBridgePage({notify}:{notify:(value:string)=>void}
       })}
     </section>
   </>
+}
+
+export default function RealityBridgePage(props:{notify:(value:string)=>void}) {
+ if(Number(import.meta.env.VITE_CHAIN_ID)!==99801)return <LegacyGiwaBridgePage {...props}/>
+ return <section className="rl-panel rl-inset"><h1>Elysium testnet bridge</h1><p>Transfer test HYPE between HyperEVM Testnet (998) and Elysium Testnet (99801) using the official Elysium bridge. Review the source and destination in your wallet.</p><a className="rl-button" href="https://elysium.kinetiq.xyz/testnet-bridge" target="_blank" rel="noreferrer">Open official Elysium bridge ↗</a><p><a href="https://elysium.kinetiq.xyz/testnet-faucet" target="_blank" rel="noreferrer">Get test HYPE from the official faucet ↗</a></p></section>
 }

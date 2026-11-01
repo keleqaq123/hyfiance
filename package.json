@@ -1,0 +1,23 @@
+{
+  "name": "hyfiance",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "elysium:configure": "node scripts/elysium-configure.cjs",
+    "elysium:check": "node scripts/elysium-deploy.cjs",
+    "elysium:deploy": "node scripts/elysium-deploy.cjs --send",
+    "elysium:test": "node --test scripts/test/elysium.test.cjs",
+    "start": "node scripts/elysium-start.cjs",
+    "elysium:smoke": "node scripts/elysium-smoke.cjs",
+    "elysium:oracle": "node scripts/elysium-oracle.cjs",
+    "elysium:compile": "node scripts/elysium-compile.cjs",
+    "elysium:wallet": "node scripts/elysium-wallet.cjs"
+  },
+  "dependencies": {
+    "ethers": "5.8.0"
+  },
+  "devDependencies": {
+    "ganache": "7.9.2",
+    "solc": "0.8.30"
+  }
+}

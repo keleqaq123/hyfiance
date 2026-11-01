@@ -1,22 +1,22 @@
 {
   "version": "custos-rwa-v1",
-  "chainId": 91342,
-  "deployedAt": "2026-08-28T12:10:25.429Z",
-  "deployer": "0xD017bCFa977511794AD302F0b7eDBF59fAC6ee42",
+  "chainId": 99801,
+  "deployedAt": null,
+  "deployer": "",
   "contracts": {
-    "verifiedToken": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
-    "verifiedTokenFaucet": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
-    "registry": "0x094d3a81582E470d9b669C0E776eE422CbEC4570",
-    "assetFactory": "0xe306f0ea65CCe42462f57E79b7EC203a4e88dAee",
-    "poolFactory": "0x5360507e0965f9e0d50b729E72a17B83B3ccd8Cc"
+    "verifiedToken": "",
+    "verifiedTokenFaucet": "",
+    "registry": "",
+    "assetFactory": "",
+    "poolFactory": ""
   },
   "settlementToken": {
     "name": "Custos Test USD Coin",
     "symbol": "tUSDC",
-    "address": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+    "address": "",
     "decimals": 6,
     "official": false,
-    "faucetAddress": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+    "faucetAddress": "",
     "claimUrl": "",
     "claimFlow": "Call the Custos tUSDC faucet from the connected wallet.",
     "disclaimer": "Project-owned testnet-only collateral; not USDC, not fiat-backed and not redeemable for cash."
@@ -32,8 +32,8 @@
       "weight": 30,
       "assetPerQuote": 1,
       "assetId": "0x8e9ce7eb3c7d4cae7ffc8205177d2fef2663328cd968e066271dd8186868476f",
-      "tokenAddress": "0x85B65f5A44EE2faff5e99D04A5E2f842c16c12B3",
-      "poolAddress": "0xeA3ec5d362D5599161e5Bc4013103Fb0b4758A95",
+      "tokenAddress": "",
+      "poolAddress": "",
       "documentHash": "0x206691bad47a51f111df1d02c7a7f1dfccfc4e3f7b3a66ae97346ddfbf0f7453",
       "metadataURI": "ipfs://custos-rwa-demo/rkinv26",
       "assetLiquidity": "90000.0",
@@ -49,8 +49,8 @@
       "weight": 45,
       "assetPerQuote": 1,
       "assetId": "0x70d91a452fda84b42dfe05925f1b7a0b70b2b25f5907318fb35d6347262cb3ca",
-      "tokenAddress": "0x9e1CD03EEfe22e62f104966Dc7784c32fC174e07",
-      "poolAddress": "0x01Ef4d5431EB2Ed3f66D47686D433b34928dF3dd",
+      "tokenAddress": "",
+      "poolAddress": "",
       "documentHash": "0x518fd051064bf359884c5b54b132fe482a91f9e95bb09ea05545f48c876d176a",
       "metadataURI": "ipfs://custos-rwa-demo/rsolar27",
       "assetLiquidity": "135000.0",
@@ -66,12 +66,14 @@
       "weight": 25,
       "assetPerQuote": 1,
       "assetId": "0x3f22426beb8b43886d6f301c4f670a57ace0404010b4fa2b46c812ce155e57dc",
-      "tokenAddress": "0x09fDD53efaA8b87Fe2B6C4e09f179b9BaED08913",
-      "poolAddress": "0xCc753182d9DDD5875Ba974a16600f1Dac83Efa1f",
+      "tokenAddress": "",
+      "poolAddress": "",
       "documentHash": "0xd2c320662eb4ab6e4a492f41864d6eb8f384ddfbf1a4bfd0fbc2ddf2443ea04c",
       "metadataURI": "ipfs://custos-rwa-demo/rcoffee26",
       "assetLiquidity": "75000.0",
       "quoteLiquidity": "75000.0"
     }
-  ]
+  ],
+  "network": "Elysium Testnet",
+  "status": "not-deployed"
 }

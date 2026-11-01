@@ -8,12 +8,13 @@ const generatedChainId = [
   Number((rwaDeployment as { chainId?: number }).chainId || 0),
 ].find((value) => value > 0);
 
-const chainId = generatedChainId || Number(import.meta.env.VITE_CHAIN_ID || 91342);
+const chainId = Number(import.meta.env.VITE_CHAIN_ID || generatedChainId || 91342);
+const elysium = chainId === 99801;
 const local = chainId === 47805;
-const rpc = local
+const rpc = elysium ? (import.meta.env.VITE_NETWORK_URL || 'https://testnet-rpc.elysium.kinetiq.xyz') : local
   ? (import.meta.env.VITE_NETWORK_URL || 'http://127.0.0.1:7545')
   : (import.meta.env.VITE_GIWA_RPC || 'https://sepolia-rpc.giwa.io');
-const explorer = local
+const explorer = elysium ? 'https://testnet.elysium.kinetiq.xyz' : local
   ? (import.meta.env.VITE_LOCAL_EXPLORER || '')
   : (import.meta.env.VITE_GIWA_EXPLORER || 'https://sepolia-explorer.giwa.io');
 
@@ -32,7 +33,7 @@ export const CUSTOS_API_BASE = resolveMarketApiBase(
 export const MARKET_NETWORK = {
   chainId,
   hexChainId: `0x${chainId.toString(16)}`,
-  name: local ? 'Custos Local' : 'GIWA Sepolia',
+  name: elysium ? 'Elysium Testnet' : local ? 'Custos Local' : 'GIWA Sepolia',
   rpc,
   explorer,
   local,
@@ -41,7 +42,7 @@ export const MARKET_NETWORK = {
 export const WALLET_NETWORK = {
   chainId: MARKET_NETWORK.hexChainId,
   chainName: MARKET_NETWORK.name,
-  nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+  nativeCurrency: { name: elysium ? 'HYPE' : 'Ether', symbol: elysium ? 'HYPE' : 'ETH', decimals: 18 },
   rpcUrls: [MARKET_NETWORK.rpc],
   ...(MARKET_NETWORK.explorer
     ? { blockExplorerUrls: [MARKET_NETWORK.explorer] }

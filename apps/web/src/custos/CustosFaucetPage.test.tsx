@@ -1,11 +1,12 @@
 import React, {act} from 'react'
 import {createRoot} from 'react-dom/client'
-import {afterEach, expect, it, vi} from 'vitest'
+import {beforeEach, afterEach, expect, it, vi} from 'vitest'
 import CustosFaucetPage from './CustosFaucetPage'
 Object.assign(globalThis, {IS_REACT_ACT_ENVIRONMENT: true})
 vi.mock('./FaucetTurnstile', () => ({default: () => <div>Human verification</div>}))
 let root: ReturnType<typeof createRoot>, container: HTMLDivElement
-afterEach(() => {act(() => root?.unmount());container?.remove();sessionStorage.clear();vi.unstubAllGlobals()})
+beforeEach(() => vi.stubEnv('VITE_CHAIN_ID', '91342'))
+afterEach(() => {act(() => root?.unmount());container?.remove();sessionStorage.clear();vi.unstubAllGlobals();vi.unstubAllEnvs()})
 it('allows address entry without a connected wallet and cannot claim when unconfigured', async () => {
   vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ok: true, json: async () => ({chainId: 91342, contract: '', siteKey: '', enabled: false, message: 'Sponsored faucet is not yet configured.'})}))
   container = document.createElement('div');document.body.appendChild(container);root = createRoot(container)

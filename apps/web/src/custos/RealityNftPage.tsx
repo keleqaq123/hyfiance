@@ -35,7 +35,7 @@ export default function RealityNftPage({config,wallet,connect,notify}:{config:Re
         <button className="rl-button" disabled={!address||!config||busy||sold||!!wallet&&(!state||!state.open||limit)} onClick={()=>void mint()}>{busy?<Loader2 className="spin" size={16}/>:null}<span>{!address?'NOT DEPLOYED':sold?'COLLECTION SOLD OUT':!wallet?'Connect wallet':limit?'ALREADY MINTED':state?.open?'Mint your mark':'MINT PAUSED'}</span></button>
         {error?<p className="rl-footnote">{error}</p>:null}
         <button className="rl-nft-refresh" disabled={loading} onClick={()=>{invalidateRealityReads();void refresh()}}><RefreshCw size={13}/>Refresh onchain state</button>
-        <p className="rl-footnote">{wallet?short(wallet):'Wallet limits and prices are read from the contract'} · GIWA Sepolia</p>
+        <p className="rl-footnote">{wallet?short(wallet):'Wallet limits and prices are read from the contract'} · Elysium Testnet</p>
         {hash?<a className="rl-chain-link" href={config?.explorer+'/tx/'+hash} target="_blank" rel="noreferrer">View mint transaction ↗</a>:null}
       </div>
     </div>

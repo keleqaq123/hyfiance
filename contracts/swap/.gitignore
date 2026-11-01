@@ -4,5 +4,5 @@ node_modules
 .DS_Store
 artifacts
 cache
-package-lock.json
+# npm lock is tracked for reproducible Elysium builds.
 yarn-error.log

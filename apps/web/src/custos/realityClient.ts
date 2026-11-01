@@ -3,7 +3,7 @@ import artifacts from './reality-artifacts.json'
 import {RealityReadCache} from './realityReadCache'
 
 export const REALITY_API=(import.meta.env.VITE_API_BASE || '').replace(/\/$/,'')
-export type RealityConfig={chain_id:number;name:string;rpc:string;explorer:string;testnet:boolean;launchpad:string;platform_token:string;swap_router:string;swap_factory:string;weth:string;admin_configured:boolean;cfi_staking?:string;cfi_start_block?:number;cfi_price_source?:string}
+export type RealityConfig={chain_id:number;name:string;rpc:string;explorer:string;testnet:boolean;native_symbol?:string;launchpad:string;platform_token:string;swap_router:string;swap_factory:string;weth:string;admin_configured:boolean;cfi_staking?:string;cfi_start_block?:number;cfi_price_source?:string}
 export type RealityAsset={listing_status?:string;moderation_reason?:string;id:string;wallet:string;name:string;symbol:string;story:string;description:string;category:string;mode:string;image_url:string;review_status:string;verified:boolean;supply:string;proof_code?:string;proof_ids?:string;review_note?:string;proof_files?:{id:string;name:string;type:string}[];token_address?:string;launch_id?:number;tx_hash?:string;love_count:number;collect_count:number;watch_count:number;loved:boolean;collectd:boolean;watchd:boolean;valuation_count:number;community_value:number|null;created_at:number;issued_at?:number|null;comments?:{id:string;wallet:string;body:string;created_at:number}[]}
 let credential=''
 const reads=new RealityReadCache()
@@ -43,7 +43,7 @@ const providersByNetwork=new Map<string,providers.StaticJsonRpcProvider>()
 export function readonly(config:RealityConfig){const key=config.rpc+':'+config.chain_id;let provider=providersByNetwork.get(key);if(!provider){provider=new providers.StaticJsonRpcProvider({url:config.rpc,timeout:10000},{name:config.name,chainId:config.chain_id});providersByNetwork.set(key,provider)}return provider}
 export async function ensureGiwa(config:RealityConfig){
   const injected=(window as any).ethereum;if(!injected)throw new Error('Install MetaMask or a compatible EVM wallet')
-  const id='0x'+config.chain_id.toString(16);const current=await injected.request({method:'eth_chainId'});if(current!==id){try{await injected.request({method:'wallet_switchEthereumChain',params:[{chainId:id}]})}catch(e:any){if(e.code!==4902)throw e;await injected.request({method:'wallet_addEthereumChain',params:[{chainId:id,chainName:config.name,rpcUrls:[config.rpc],nativeCurrency:{name:'Ether',symbol:'ETH',decimals:18},blockExplorerUrls:[config.explorer]}]})}}
+  const id='0x'+config.chain_id.toString(16);const current=await injected.request({method:'eth_chainId'});if(current!==id){try{await injected.request({method:'wallet_switchEthereumChain',params:[{chainId:id}]})}catch(e:any){if(e.code!==4902)throw e;await injected.request({method:'wallet_addEthereumChain',params:[{chainId:id,chainName:config.name,rpcUrls:[config.rpc],nativeCurrency:{name:config.native_symbol||'Ether',symbol:config.native_symbol||'ETH',decimals:18},blockExplorerUrls:[config.explorer]}]})}}
   const provider=new providers.Web3Provider(injected,'any');await provider.send('eth_requestAccounts',[]);return provider
 }
 export type MarketValue={price:number|null;cap:number|null;reserve:number|null;tokenReserve:string;quoteReserve:string;change24h?:number|null;volume24h?:number|null;pending?:boolean}
@@ -80,14 +80,14 @@ export async function quoteLaunchSwap(config:RealityConfig,asset:RealityAsset,re
   const out:BigNumber=await launch[reverse?'quoteSell':'quoteFor'](asset.launch_id,value)
   if(out.lte(0))throw new Error('Amount is too small')
   if(reverse&&out.gt(state.raised))throw new Error('Project ETH reserves are insufficient')
-  return {input:reverse?asset.token_address:'ETH',output:reverse?'ETH':asset.token_address,amount,amountOut:out,decimals:18,inputDecimals:18,symbol:reverse?'ETH':state.symbol,inputSymbol:reverse?state.symbol:'ETH',path:[],at:Date.now(),router:config.launchpad,chainId:config.chain_id,launchId:asset.launch_id}
+  return {input:reverse?asset.token_address:'ETH',output:reverse?'ETH':asset.token_address,amount,amountOut:out,decimals:18,inputDecimals:18,symbol:reverse?(config.native_symbol||'ETH'):state.symbol,inputSymbol:reverse?state.symbol:(config.native_symbol||'ETH'),path:[],at:Date.now(),router:config.launchpad,chainId:config.chain_id,launchId:asset.launch_id}
 }
 export async function quoteSwap(config:RealityConfig,input:string,output:string,amount:string):Promise<SwapQuote>{
   if(!utils.isAddress(config.swap_router)||!utils.isAddress(config.swap_factory))throw new Error('GIWA Swap route is not configured')
   const nativeIn=input==='ETH',nativeOut=output==='ETH'
   if((!nativeIn&&!utils.isAddress(input))||(!nativeOut&&!utils.isAddress(output))||input.toLowerCase()===output.toLowerCase())throw new Error('Select two different valid tokens')
   const p=readonly(config),router=new Contract(config.swap_router,routerABI,p),a=nativeIn?null:new Contract(input,tokenABI,p),b=nativeOut?null:new Contract(output,tokenABI,p)
-  const [factory,wrapped,ad,bd,symbol,inputSymbol]=await Promise.all([router.factory(),router.WETH(),a?a.decimals():18,b?b.decimals():18,b?b.symbol():'ETH',a?a.symbol():'ETH'])
+  const [factory,wrapped,ad,bd,symbol,inputSymbol]=await Promise.all([router.factory(),router.WETH(),a?a.decimals():18,b?b.decimals():18,b?b.symbol():(config.native_symbol||'ETH'),a?a.symbol():(config.native_symbol||'ETH')])
   if(factory.toLowerCase()!==config.swap_factory.toLowerCase())throw new Error('Swap router and factory do not match')
   if(!utils.isAddress(wrapped)||wrapped.toLowerCase()!==config.weth.toLowerCase())throw new Error('Router native ETH configuration mismatch')
   if(Number(ad)>36||Number(bd)>36)throw new Error('Unsupported token precision')

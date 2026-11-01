@@ -1,0 +1,10 @@
+{
+  "chainId": 99801,
+  "status": "awaiting-funding",
+  "contracts": {},
+  "modules": {},
+  "deployer": "0xFc3FAB33fde4671851Dfb2Fb3802496AeC7F4607",
+  "rpc": "https://testnet-rpc.elysium.kinetiq.xyz",
+  "checkedAt": "2026-11-01T03:11:07.086Z",
+  "balanceWei": "0"
+}
