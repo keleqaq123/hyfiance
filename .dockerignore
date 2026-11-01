@@ -2,7 +2,7 @@
 **/.secrets
 **/.logs
 **/.pids
-**/data
+apps/api/data
 runtime-data
 work
 **/.gitignore
