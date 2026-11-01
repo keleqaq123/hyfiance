@@ -12,10 +12,9 @@ function BrandSymbol({ className = 'brand-symbol' }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 64 64" aria-hidden="true">
       <g fill="none" stroke="currentColor" strokeWidth="5">
-        <path d="M49 19.5A21 21 0 1 0 49 44.5" />
-        <path d="M41.3 25.1a11.5 11.5 0 1 0 0 13.8" />
+        <path d="M18 14v36M46 14v36" />
       </g>
-      <path d="M34 32h16.4" stroke="#35b978" strokeWidth="5" />
+      <path d="M18 32h28" stroke="#35b978" strokeWidth="5" />
     </svg>
   )
 }
@@ -24,10 +23,9 @@ function LargeBrandSymbol({ className = 'hero-mark' }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 512 512" aria-hidden="true">
       <g fill="none" stroke="currentColor" strokeWidth="38">
-        <path d="M391.91 157.25A168 168 0 1 0 391.91 354.75" />
-        <path d="M330.43 201.92A92 92 0 1 0 330.43 310.08" />
+        <path d="M144 112v288M368 112v288" />
       </g>
-      <path d="M270 256H401" stroke="#35b978" strokeWidth="38" />
+      <path d="M144 256h224" stroke="#35b978" strokeWidth="38" />
     </svg>
   )
 }
@@ -57,9 +55,9 @@ function LandingHeader({ onEnter }: { onEnter: () => void }) {
 
   return (
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
-      <a className="brand" href="#top" aria-label="Custos Finance home" onClick={(event) => navigateTo(event, 'top')}>
+      <a className="brand" href="#top" aria-label="Hyfiance home" onClick={(event) => navigateTo(event, 'top')}>
         <BrandSymbol />
-        <span>CUSTOS FINANCE</span>
+        <span>HYFIANCE</span>
       </a>
 
       <button
@@ -124,12 +122,12 @@ export default function CustosLandingPage() {
         <LandingHeader onEnter={goToTerminal} />
 
         <div className="hero-content">
-          <p className="eyebrow"><span className="status-dot" /> ELYSIUM TESTNET · PUBLIC TESTNET</p>
+          <p className="eyebrow"><span className="status-dot" /> ELYSIUM TESTNET · CREATOR LAUNCHPAD</p>
           <p className="hero-kicker">REALITY LAUNCHPAD ON ELYSIUM</p>
           <h1 id="hero-title" className="reality-hero-title">Real things.<br/>Value beyond<br/>a price tag.</h1>
           <p className="hero-tagline">YOUR WORLD. A SHARED SENSE OF VALUE.</p>
           <p className="hero-description">
-            A beloved pet. An old camera. A café you built.<br/>Custos lets anyone create a token around something real—and lets people discover, support and trade what matters to them.
+            A beloved pet. An old camera. A café you built.<br/>Hyfiance lets anyone create a token around something real—and lets people discover, support and trade what matters to them.
           </p>
           <div className="hero-actions">
             <a className="button button--primary" href="#/reality" onClick={goToTerminal}>
@@ -153,7 +151,7 @@ export default function CustosLandingPage() {
         <div className="hero-scroll" aria-hidden="true"><span /> SCROLL TO EXPLORE</div>
       </section>
 
-      <section className="ticker" aria-label="Custos principles">
+      <section className="ticker" aria-label="Hyfiance principles">
         <div><span>01</span><strong>CREATE</strong><small>Anyone can launch</small></div>
         <div><span>02</span><strong>PROVE</strong><small>Reality comes first</small></div>
         <div><span>03</span><strong>DISCOVER</strong><small>Find what matters</small></div>
@@ -164,7 +162,7 @@ export default function CustosLandingPage() {
         <div className="section-label"><span>01</span> THE WORLD YOU KNOW</div>
         <div className="section-heading"><h2 id="stories-title">Every real thing<br/>has a story.</h2><p>Some things matter because of what they earn. Others, because of what they mean. A story, an object or a place can bring people together.</p></div>
         <div className="reality-story-prompts">{[['A beloved pet','A companion. A shared memory. A story people care about.'],['An old camera','An everyday object with a history only you can tell.'],['A café you built','A place, its people and the work behind it.']].map(([title,copy])=><article key={title}><span>WHAT COULD YOU BRING?</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
-        <div className="reality-story-feed"><p className="reality-feed-label">REALITY STARTS WITH WHAT MATTERS TO YOU</p><div className="reality-story-grid"><article className="reality-story-card reality-companion-card"><img src="/custos-companion.png" alt="A golden dog sitting on the grass" loading="lazy" decoding="async"/><div><span>A BELOVED PET</span><h3>A companion.<br/>A story worth sharing.</h3><p>No price tag can tell you what a beloved pet means. Bring something real to Custos—and let people discover what it means to them.</p><a href="#/reality/create"><small>Share your own story ↗</small></a></div></article></div></div>
+        <div className="reality-story-feed"><p className="reality-feed-label">REALITY STARTS WITH WHAT MATTERS TO YOU</p><div className="reality-story-grid"><article className="reality-story-card reality-companion-card"><img src="/custos-companion.png" alt="A golden dog sitting on the grass" loading="lazy" decoding="async"/><div><span>A BELOVED PET</span><h3>A companion.<br/>A story worth sharing.</h3><p>No price tag can tell you what a beloved pet means. Bring something real to Hyfiance—and let people discover what it means to them.</p><a href="#/reality/create"><small>Share your own story ↗</small></a></div></article></div></div>
         <p className="reality-manifesto">You don’t need to own a building<br/>to bring something real onchain.</p>
       </section>
 
@@ -187,7 +185,7 @@ export default function CustosLandingPage() {
             <div className="card-topline"><span>02</span><span>EVIDENCE, THEN REVIEW</span></div>
             <div className="layer-glyph layer-glyph--grid" aria-hidden="true" />
             <h3>Verified launch</h3>
-            <p>Submit original photos and evidence of your connection or ownership. Custos reviews your application before verified issuance.</p>
+            <p>Submit original photos and evidence of your connection or ownership. Hyfiance reviews your application before verified issuance.</p>
             <a href="#/reality/create?mode=verified">Apply for Blue V <span>↗</span></a>
           </article>
           <article className="layer-card">
@@ -206,7 +204,7 @@ export default function CustosLandingPage() {
         <div className="proof-layout">
           <div className="proof-copy">
             <h2 id="proof-title">Verified for reality.<br/>Valued by people.</h2>
-            <p>Custos reviews the evidence. People decide what deserves their attention and support. Token prices form through buying and selling.</p>
+            <p>Hyfiance reviews the evidence. People decide what deserves their attention and support. Token prices form through buying and selling.</p>
           </div>
           <div className="proof-items">
             <article>
@@ -217,7 +215,7 @@ export default function CustosLandingPage() {
             <article>
               <span className="proof-no">02</span>
               <h3>BLUE V · HUMAN REVIEW</h3>
-              <p>The badge means Custos has reviewed evidence of authenticity and your connection to the project. It does not set a price or guarantee returns.</p>
+              <p>The badge means Hyfiance has reviewed evidence of authenticity and your connection to the project. It does not set a price or guarantee returns.</p>
             </article>
             <article>
               <span className="proof-no">03</span>
@@ -232,7 +230,7 @@ export default function CustosLandingPage() {
         <div className="section-label section-label--light"><span>04</span> FROM STORIES TO MARKETS</div>
         <div className="market-heading">
           <div>
-            <p className="eyebrow"><span className="status-dot" /> COMMUNITY PROJECTS · GIWA TESTNET</p>
+            <p className="eyebrow"><span className="status-dot" /> COMMUNITY PROJECTS · ELYSIUM TESTNET</p>
             <h2 id="markets-title">Discover what<br/>people believe in.</h2>
           </div>
           <p>Meet real projects, see recent launches and follow community trading in the rankings.</p>
@@ -243,7 +241,7 @@ export default function CustosLandingPage() {
         </div>
         {!issued.length?<p className="reality-feed-message" role="status">{feedState==='loading'?'Loading community launches…':feedState==='error'?'The project feed is temporarily unavailable. You can still open Explore Reality.':'New onchain launches will appear here. Bring the first story.'}</p>:null}
         <div className="hero-actions"><a className="button button--primary" href="#/reality/market">Explore Markets <span>↗</span></a><a className="button button--ghost" href="#/reality/rankings">View Rankings <span>↗</span></a></div>
-        <p className="market-disclaimer">ELYSIUM TESTNET TESTNET · TRANSACTIONS USE TEST ETH · DELISTING DOES NOT DELETE ONCHAIN TOKENS</p>
+        <p className="market-disclaimer">ELYSIUM TESTNET · TRANSACTIONS USE TEST HYPE · DELISTING DOES NOT DELETE ONCHAIN TOKENS</p>
       </section>
 
       {POINTS_ENABLED&&<section className="season section" id="season" aria-labelledby="season-title">
@@ -263,14 +261,14 @@ export default function CustosLandingPage() {
       <footer className="site-footer">
         <div className="footer-brand">
           <BrandSymbol />
-          <div><strong>CUSTOS FINANCE</strong><small>REALITY LAUNCHPAD ON ELYSIUM</small></div>
+          <div><strong>HYFIANCE</strong><small>REALITY LAUNCHPAD ON ELYSIUM</small></div>
         </div>
         <div className="footer-links">
           <a href="#markets" onClick={(event) => scrollToSection(event, 'markets')}>Markets</a>
           <a href="#proof" onClick={(event) => scrollToSection(event, 'proof')}>Proof</a>
           {POINTS_ENABLED&&<a href="#season" onClick={(event) => scrollToSection(event, 'season')}>Season 1</a>}
         </div>
-        <div className="footer-meta"><span>ELYSIUM TESTNET</span><span>TESTNET ONLINE</span><span>© {new Date().getFullYear()} CUSTOS</span></div>
+        <div className="footer-meta"><span>ELYSIUM TESTNET</span><span>TESTNET ONLINE</span><span>© {new Date().getFullYear()} HYFIANCE</span></div>
       </footer>
     </div>
   )

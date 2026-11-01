@@ -90,7 +90,7 @@ const NAV_ITEMS: NavItem[] = ([
   { id: 'perpetuals', label: 'Perpetuals', description: 'Leveraged testnet markets', icon: TrendingUp },
   { id: 'launchpad', label: 'Launchpad', description: 'Launch tokens onchain', icon: Rocket },
   { id: 'bridge', label: 'Bridge', description: 'Relay messages cross-chain', icon: Network },
-  { id: 'faucet', label: 'Faucet', description: 'Gas-sponsored test ETH', icon: Droplets },
+  { id: 'faucet', label: 'Faucet', description: 'Elysium test HYPE', icon: Droplets },
   { id: 'portfolio', label: 'Portfolio', description: 'Wallet, positions and activity', icon: Wallet },
   { id: 'season', label: 'Season 1', description: 'Verified participation', icon: Trophy },
   { id: 'transparency', label: 'Transparency', description: 'Contracts and proof data', icon: ShieldCheck },
@@ -141,13 +141,12 @@ function LogoMark({ size = 42 }: { size?: number }) {
       height={size}
       viewBox="0 0 64 64"
       role="img"
-      aria-label="Custos Finance"
+      aria-label="Hyfiance"
     >
       <g fill="none" stroke="currentColor" strokeWidth="5">
-        <path d="M49 19.5A21 21 0 1 0 49 44.5" />
-        <path d="M41.3 25.1a11.5 11.5 0 1 0 0 13.8" />
+        <path d="M18 14v36M46 14v36" />
       </g>
-      <path d="M34 32h16.4" stroke="#35b978" strokeWidth="5" />
+      <path d="M18 32h28" stroke="#35b978" strokeWidth="5" />
     </svg>
   )
 }
@@ -391,7 +390,7 @@ export default function DefiShell() {
           <div className="defi-topbar-left">
             <button type="button" className="defi-brand" onClick={() => go('swap')}>
               <LogoMark size={58} />
-              <span><strong>Custos Finance</strong><small>LAUNCH · SWAP · STAKE</small></span>
+              <span><strong>Hyfiance</strong><small>LAUNCH · SWAP · STAKE</small></span>
             </button>
           </div>
           <nav className="defi-top-nav" aria-label="Custos DeFi navigation">
