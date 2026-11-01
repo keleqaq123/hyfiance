@@ -1,0 +1,17 @@
+{
+  "deployment": "0xe12c3b8940368e85500ec48CfF1EB0e7cB882dF2",
+  "network": "GIWA Sepolia",
+  "chainId": 91342,
+  "smoke": {
+    "ok": true,
+    "checkedAt": "2026-09-11T07:28:57.049Z",
+    "signer": "0xee379A4fC908F03Cd886197945bf964806709D97",
+    "mintTx": "0xcb73a1236085cc9d4ceab02a32f618bc16e5746521b2b22cece2624fda419364",
+    "tokenId": "1",
+    "totalSupply": "1",
+    "mintedByWallet": "1",
+    "ownerOf": "0xee379A4fC908F03Cd886197945bf964806709D97",
+    "tokenURI": "https://www.custosfinance.xyz/nft/metadata/1",
+    "duplicateMintRejected": true
+  }
+}

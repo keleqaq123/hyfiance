@@ -1,0 +1,999 @@
+[
+  {
+    "runId": "91342-20260828095508-fac6ee42",
+    "status": "success",
+    "network": {
+      "name": "GIWA Sepolia",
+      "chainId": 91342
+    },
+    "deployer": "0xD017bCFa977511794AD302F0b7eDBF59fAC6ee42",
+    "startedAt": "2026-08-28T09:55:08.461Z",
+    "deployedAt": "2026-08-28T09:55:08.461Z",
+    "completedAt": "2026-08-28T09:55:08.461Z",
+    "requestedRwaQuote": "auto",
+    "selectedRwaQuote": "project",
+    "officialCanReceive": false,
+    "pyth": "0x2880ab155794e7179c9ee2e38200202908c17b43",
+    "contracts": {
+      "verifiedToken": "0xcfD64985C0812E0A80Daa18c8a026FCa555113a2",
+      "verifiedTokenFaucet": "0xcfD64985C0812E0A80Daa18c8a026FCa555113a2",
+      "officialVerifiedToken": "0xBCdB22f56642DE57624CfC2fBb9eE398cF3CA268",
+      "rwaSettlementToken": "0xcfD64985C0812E0A80Daa18c8a026FCa555113a2",
+      "testUSDC": "0xcfD64985C0812E0A80Daa18c8a026FCa555113a2",
+      "oracleRouter": "0x905778a1d1DBfd78fb1bA6F756f439B1d92Da4a0",
+      "registry": "0xa1eb5a89DabCb4A780c6191899f94D5582300880",
+      "assetFactory": "0x7BB430aA9fF0f9080c970855AFCE7Ef6C4Ce147F",
+      "poolFactory": "0x5c4F7016e0Ea75f167d34dE210D25a2973150ba9",
+      "marketRegistry": "0x4Ff5F14aed26375c402c0C1164b474423ae5B3b6",
+      "marginVault": "0xBD1017f8c7ce46920bef44612F6C3f4bF29Ac770",
+      "perpEngine": "0xdDA5dC86b949008358b4f6a21363256B5f7A0aA6"
+    },
+    "settlementToken": {
+      "name": "Custos Test USD Coin",
+      "symbol": "tUSDC",
+      "address": "0xcfD64985C0812E0A80Daa18c8a026FCa555113a2",
+      "decimals": 6,
+      "official": false
+    },
+    "spot": {
+      "XAU": {
+        "token": "0xCA2E6a1be477E517730cfA0e6b675D9CA9425258",
+        "pool": "0x306495b5a0eB41ffeb64D291881F78803420dCe7",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "oracleMode": "fallback"
+      },
+      "XAG": {
+        "token": "0x2D7d3aC00D2Af7Ae82E8854252c86662A71B3dA8",
+        "pool": "0x7C117894Dc8a262fEDD93Be95F34D85c67EE5e1F",
+        "feedId": "0xf2fb02c32b055c805e7238d628e5e9dadef274376114eb1f012337cabe93871e",
+        "oracleMode": "fallback"
+      },
+      "OIL": {
+        "token": "0xb2cDbbbA725Bdc1Cf967fD222436D7adAca87D23",
+        "pool": "0x72F3Fa1D8C18Fb2b6460D26eFFf42F7dd4a9BAaF",
+        "feedId": "0xf8c2191e76f7f4d5335e7f4e8f81ab0df6360d54ee020874222841894203e9d7",
+        "oracleMode": "fallback"
+      }
+    },
+    "rwa": [
+      {
+        "symbol": "rKINV26",
+        "assetId": "0x8e9ce7eb3c7d4cae7ffc8205177d2fef2663328cd968e066271dd8186868476f",
+        "token": "0xaB8F6F6e51266a099dc1634932b9729bb519cC2C",
+        "pool": "0x243a49BeB298db0Fe82CF6249Aa7fC28cf390eAA",
+        "assetLiquidity": "0.0",
+        "quoteLiquidity": "0.0"
+      },
+      {
+        "symbol": "rSOLAR27",
+        "assetId": "0x70d91a452fda84b42dfe05925f1b7a0b70b2b25f5907318fb35d6347262cb3ca",
+        "token": "0x48D65C6Bdc02Da7882668C1Cf22644AF0a245A34",
+        "pool": "0x832EaE154831929B2ed50198e5A7A01B898d5078",
+        "assetLiquidity": "0.0",
+        "quoteLiquidity": "0.0"
+      },
+      {
+        "symbol": "rCOFFEE26",
+        "assetId": "0x3f22426beb8b43886d6f301c4f670a57ace0404010b4fa2b46c812ce155e57dc",
+        "token": "0xA8F22D363Bd53Aee1593871dC0fbe4e81bAF0ACb",
+        "pool": "0x120a44617e9876312667970bE27261d994264B79",
+        "assetLiquidity": "75000.0",
+        "quoteLiquidity": "75000.0"
+      }
+    ],
+    "perps": {
+      "BTC": {
+        "oracleMode": "pyth-or-fallback"
+      },
+      "ETH": {
+        "oracleMode": "pyth-or-fallback"
+      },
+      "SOL": {
+        "oracleMode": "pyth-or-fallback"
+      },
+      "AAPL": {
+        "oracleMode": "pyth-or-fallback"
+      },
+      "NVDA": {
+        "oracleMode": "pyth-or-fallback"
+      },
+      "XAU": {
+        "oracleMode": "pyth-or-fallback"
+      }
+    }
+  },
+  {
+    "runId": "91342-20260828100415-fac6ee42",
+    "status": "success",
+    "network": {
+      "name": "GIWA Sepolia",
+      "chainId": 91342
+    },
+    "deployer": "0xD017bCFa977511794AD302F0b7eDBF59fAC6ee42",
+    "startedAt": "2026-08-28T10:04:15.353Z",
+    "requestedRwaQuote": "auto",
+    "pyth": "0x2880ab155794e7179c9ee2e38200202908c17b43",
+    "deployedAt": "2026-08-28T10:08:23.869Z",
+    "completedAt": "2026-08-28T10:08:23.874Z",
+    "contracts": {
+      "verifiedToken": "0x7cF2328985e754ED424aD96423Ae501b9E2d6fFb",
+      "verifiedTokenFaucet": "0x7cF2328985e754ED424aD96423Ae501b9E2d6fFb",
+      "officialVerifiedToken": "0xBCdB22f56642DE57624CfC2fBb9eE398cF3CA268",
+      "rwaSettlementToken": "0x7cF2328985e754ED424aD96423Ae501b9E2d6fFb",
+      "testUSDC": "0x7cF2328985e754ED424aD96423Ae501b9E2d6fFb",
+      "oracleRouter": "0x8A01685cB334CeB51aB37B0e9D6a997d7aeeE6Fa",
+      "registry": "0x2A59E3A2F7Fff7Db5b0E772dfB8e53fE8364ff82",
+      "assetFactory": "0x54f3C0a28EaF1E4900cE561FE97e6F86F282bA97",
+      "poolFactory": "0x05b250e9a81C5eb2aD481FB7acE5E084017126f8",
+      "marketRegistry": "0x4a1BFdcd8CaB18Fc7470a3035aC9b88cb32fB98e",
+      "marginVault": "0xB687B4711b163bC4c6f447a514Cf6Cc0DafBdA56",
+      "perpEngine": "0x82Fe9DC9e274803934E67e983080e11B25B8F80D"
+    },
+    "settlementToken": {
+      "name": "Custos Test USD Coin",
+      "symbol": "tUSDC",
+      "address": "0x7cF2328985e754ED424aD96423Ae501b9E2d6fFb",
+      "decimals": 6,
+      "official": false,
+      "faucetAddress": "0x7cF2328985e754ED424aD96423Ae501b9E2d6fFb",
+      "claimUrl": "",
+      "claimFlow": "Call the Custos tUSDC faucet from the connected wallet.",
+      "disclaimer": "Project-owned testnet-only collateral; not USDC, not fiat-backed and not redeemable for cash."
+    },
+    "spot": {
+      "XAU": {
+        "token": "0x6Ccb8309564331B512C615B905ca3EB707Edb575",
+        "pool": "0xEbDd0c79deae9b6418daD317142Dcc3F2cA99608",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "oracleMode": "fallback"
+      },
+      "XAG": {
+        "token": "0xE9038dff0977115141Ae42c722cDA7c0de481c95",
+        "pool": "0xBE0bcC3d050249d267Ab34CddA238565a311793a",
+        "feedId": "0xf2fb02c32b055c805e7238d628e5e9dadef274376114eb1f012337cabe93871e",
+        "oracleMode": "fallback"
+      },
+      "OIL": {
+        "token": "0x1F024eFbFd238275c982448615176b879f067936",
+        "pool": "0x8d3f6D8A31E2BCb643da6B3Db54283a00643a85D",
+        "feedId": "0xf8c2191e76f7f4d5335e7f4e8f81ab0df6360d54ee020874222841894203e9d7",
+        "oracleMode": "fallback"
+      }
+    },
+    "rwa": [
+      {
+        "symbol": "rKINV26",
+        "assetId": "0x8e9ce7eb3c7d4cae7ffc8205177d2fef2663328cd968e066271dd8186868476f",
+        "token": "0xbC991DB2676Abe8a58D167974cdf28cb05F9E0f0",
+        "pool": "0xd0533d672C7Ff89d9F96992C656f02994B890a62",
+        "assetLiquidity": "90000.0",
+        "quoteLiquidity": "90000.0"
+      },
+      {
+        "symbol": "rSOLAR27",
+        "assetId": "0x70d91a452fda84b42dfe05925f1b7a0b70b2b25f5907318fb35d6347262cb3ca",
+        "token": "0xD9c02c30E87BD3bd7Aa00eE0c3aAF2DEDFD05de3",
+        "pool": "0xB6CC4Cc0F787d964e68B07B6520e396d68b2fECC",
+        "assetLiquidity": "135000.0",
+        "quoteLiquidity": "135000.0"
+      },
+      {
+        "symbol": "rCOFFEE26",
+        "assetId": "0x3f22426beb8b43886d6f301c4f670a57ace0404010b4fa2b46c812ce155e57dc",
+        "token": "0x1fBdC6D7434d3de98e65a4C1BEbAa378cbb794Be",
+        "pool": "0x101b093EEC73ECD50ea1C865cb19Ea119A042fA4",
+        "assetLiquidity": "75000.0",
+        "quoteLiquidity": "75000.0"
+      }
+    ],
+    "perps": {
+      "BTC": {
+        "marketId": "0xb39c402b9bd8428ba7a4cc2d1aca1432756cddeb60941a9175541a819095269e",
+        "feedId": "0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 500,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "250000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "ETH": {
+        "marketId": "0x2430f68ea2e8d4151992bb7fc3a4c472087a6149bf7e0232704396162ab7c1f7",
+        "feedId": "0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 500,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "200000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "SOL": {
+        "marketId": "0xc8f26e6a5357088b86b9152126f5617eacfdd451083ac8200098aa83564c11f5",
+        "feedId": "0xef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 600,
+        "maxConfidenceBps": 125,
+        "maxOpenInterestUsd": "150000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "AAPL": {
+        "marketId": "0xe0b475319cf9c01a19a8127c97800674070ee4a511ac549c9ba584df1fb575b0",
+        "feedId": "0x49f6b65cb1de6b10eaf75e7c03ca029c306d0357e91b5311b175084a5ad55688",
+        "maxPriceAge": 600,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 1000,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "NVDA": {
+        "marketId": "0x8023c500af52a82446010f0f8f786f68100feaab35aea6808ba920af04019187",
+        "feedId": "0xb1073854ed24cbc755dc527418f52b7d271f6cc967bbf8d8129112b18860a593",
+        "maxPriceAge": 600,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 1000,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "XAU": {
+        "marketId": "0xe436723612eb7d581cade97ec576cd66065c3a7cfd25fe994dda6edb90f49bf6",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 750,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000",
+        "oracleMode": "pyth-or-fallback"
+      }
+    },
+    "selectedRwaQuote": "project",
+    "officialCanReceive": false
+  },
+  {
+    "runId": "91342-20260828100933-fac6ee42",
+    "status": "failed",
+    "network": {
+      "name": "GIWA Sepolia",
+      "chainId": 91342
+    },
+    "deployer": "0xD017bCFa977511794AD302F0b7eDBF59fAC6ee42",
+    "startedAt": "2026-08-28T10:09:33.686Z",
+    "requestedRwaQuote": "auto",
+    "pyth": "0x2880ab155794e7179c9ee2e38200202908c17b43",
+    "completedAt": "2026-08-28T10:12:10.050Z",
+    "error": "execution reverted"
+  },
+  {
+    "runId": "47805-20260828103531-ffb92266",
+    "status": "success",
+    "network": {
+      "name": "Custos Local",
+      "chainId": 47805
+    },
+    "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "startedAt": "2026-08-28T10:35:31.995Z",
+    "requestedRwaQuote": "project",
+    "pyth": "",
+    "deployedAt": "2026-08-28T10:35:34.281Z",
+    "completedAt": "2026-08-28T10:35:34.288Z",
+    "contracts": {
+      "testUSDC": "0xA21DDc1f17dF41589BC6A5209292AED2dF61Cc94",
+      "rwaSettlementToken": "0xA21DDc1f17dF41589BC6A5209292AED2dF61Cc94",
+      "verifiedToken": "0xA21DDc1f17dF41589BC6A5209292AED2dF61Cc94",
+      "verifiedTokenFaucet": "0xA21DDc1f17dF41589BC6A5209292AED2dF61Cc94",
+      "oracleRouter": "0x2A590C461Db46bca129E8dBe5C3998A8fF402e76",
+      "registry": "0x2F54D1563963fC04770E85AF819c89Dc807f6a06",
+      "assetFactory": "0xF342E904702b1D021F03f519D6D9614916b03f37",
+      "poolFactory": "0x9849832a1d8274aaeDb1112ad9686413461e7101",
+      "marketRegistry": "0x103A3b128991781EE2c8db0454cA99d67b257923",
+      "marginVault": "0xBbc18b580256A82dC0F9A86152b8B22E7C1C8005",
+      "perpEngine": "0xB9d9e972100a1dD01cd441774b45b5821e136043"
+    },
+    "settlementToken": {
+      "name": "Custos Test USD Coin",
+      "symbol": "tUSDC",
+      "address": "0xA21DDc1f17dF41589BC6A5209292AED2dF61Cc94",
+      "decimals": 6,
+      "official": false,
+      "faucetAddress": "0xA21DDc1f17dF41589BC6A5209292AED2dF61Cc94",
+      "claimUrl": "",
+      "claimFlow": "Call the local tUSDC faucet from the connected wallet.",
+      "disclaimer": "Local testnet-only collateral; no cash value."
+    },
+    "spot": {
+      "XAU": {
+        "token": "0x6b39b761b1b64C8C095BF0e3Bb0c6a74705b4788",
+        "pool": "0xeC827421505972a2AE9C320302d3573B42363C26",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "oracleMode": ""
+      },
+      "XAG": {
+        "token": "0x1D13fF25b10C9a6741DFdce229073bed652197c7",
+        "pool": "0x24d41dbc3d60d0784f8a937c59FBDe51440D5140",
+        "feedId": "0xf2fb02c32b055c805e7238d628e5e9dadef274376114eb1f012337cabe93871e",
+        "oracleMode": ""
+      },
+      "OIL": {
+        "token": "0xA3307BF348ACC4bEDdd67CCA2f7F0c4349d347Db",
+        "pool": "0x313F922BE1649cEc058EC0f076664500c78bdc0b",
+        "feedId": "0xf8c2191e76f7f4d5335e7f4e8f81ab0df6360d54ee020874222841894203e9d7",
+        "oracleMode": ""
+      }
+    },
+    "rwa": [
+      {
+        "symbol": "rKINV26",
+        "assetId": "0x8e9ce7eb3c7d4cae7ffc8205177d2fef2663328cd968e066271dd8186868476f",
+        "token": "0x425CAA15dE175eB20c3f6e6f0186726d1FA52bf7",
+        "pool": "0x1C64f7dBf856e85e6C0835f092055dD1a61D5312",
+        "assetLiquidity": "50000.0",
+        "quoteLiquidity": "50000.0"
+      },
+      {
+        "symbol": "rSOLAR27",
+        "assetId": "0x70d91a452fda84b42dfe05925f1b7a0b70b2b25f5907318fb35d6347262cb3ca",
+        "token": "0x183224f5c73E51876BBDB51e1f19037c327E07Cb",
+        "pool": "0xBF4c7eA3d3d1256a1CE51e52c0E793fa06c98793",
+        "assetLiquidity": "50000.0",
+        "quoteLiquidity": "50000.0"
+      },
+      {
+        "symbol": "rCOFFEE26",
+        "assetId": "0x3f22426beb8b43886d6f301c4f670a57ace0404010b4fa2b46c812ce155e57dc",
+        "token": "0x0776858Ca23341CACBb61749EdEAfc5a2F69d874",
+        "pool": "0xd7269499c9127650C397B0266C67D76e7421eD70",
+        "assetLiquidity": "50000.0",
+        "quoteLiquidity": "50000.0"
+      }
+    ],
+    "perps": {
+      "BTC": {
+        "marketId": "0xb39c402b9bd8428ba7a4cc2d1aca1432756cddeb60941a9175541a819095269e",
+        "feedId": "0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 500,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "250000"
+      },
+      "ETH": {
+        "marketId": "0x2430f68ea2e8d4151992bb7fc3a4c472087a6149bf7e0232704396162ab7c1f7",
+        "feedId": "0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 500,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "200000"
+      },
+      "SOL": {
+        "marketId": "0xc8f26e6a5357088b86b9152126f5617eacfdd451083ac8200098aa83564c11f5",
+        "feedId": "0xef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 600,
+        "maxConfidenceBps": 125,
+        "maxOpenInterestUsd": "150000"
+      },
+      "AAPL": {
+        "marketId": "0xe0b475319cf9c01a19a8127c97800674070ee4a511ac549c9ba584df1fb575b0",
+        "feedId": "0x49f6b65cb1de6b10eaf75e7c03ca029c306d0357e91b5311b175084a5ad55688",
+        "maxPriceAge": 600,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 1000,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000"
+      },
+      "NVDA": {
+        "marketId": "0x8023c500af52a82446010f0f8f786f68100feaab35aea6808ba920af04019187",
+        "feedId": "0xb1073854ed24cbc755dc527418f52b7d271f6cc967bbf8d8129112b18860a593",
+        "maxPriceAge": 600,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 1000,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000"
+      },
+      "XAU": {
+        "marketId": "0xe436723612eb7d581cade97ec576cd66065c3a7cfd25fe994dda6edb90f49bf6",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 750,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000"
+      }
+    },
+    "selectedRwaQuote": "project",
+    "officialCanReceive": false
+  },
+  {
+    "runId": "91342-20260828104037-fac6ee42",
+    "status": "success",
+    "network": {
+      "name": "GIWA Sepolia",
+      "chainId": 91342
+    },
+    "deployer": "0xD017bCFa977511794AD302F0b7eDBF59fAC6ee42",
+    "startedAt": "2026-08-28T10:40:37.813Z",
+    "requestedRwaQuote": "auto",
+    "pyth": "0x2880ab155794e7179c9ee2e38200202908c17b43",
+    "deployedAt": "2026-08-28T10:44:31.368Z",
+    "completedAt": "2026-08-28T10:44:31.377Z",
+    "contracts": {
+      "verifiedToken": "0x1c7Fdb68f2a3431CBE63B12Eacb63CAf9D8890Af",
+      "verifiedTokenFaucet": "0x1c7Fdb68f2a3431CBE63B12Eacb63CAf9D8890Af",
+      "officialVerifiedToken": "0xBCdB22f56642DE57624CfC2fBb9eE398cF3CA268",
+      "rwaSettlementToken": "0x1c7Fdb68f2a3431CBE63B12Eacb63CAf9D8890Af",
+      "testUSDC": "0x1c7Fdb68f2a3431CBE63B12Eacb63CAf9D8890Af",
+      "oracleRouter": "0xfc5bE0C4373C2D4C3f6F6e9D3696AC8B9361F084",
+      "registry": "0xEDEAa147edC4112AC697A61B0b773b15361339EA",
+      "assetFactory": "0xFA7D3027d1f844C307ecea2c506a81166fa37A2c",
+      "poolFactory": "0xAf9529BF4A7ac7Dd26255eEe984CE8Ca9241D55E",
+      "marketRegistry": "0xF3013E46b7957879416C996ba3eeF79bfE1A50FE",
+      "marginVault": "0xa0D6454c23d012e1292ec7990742A80e768fbB6E",
+      "perpEngine": "0x9F0835F430aD4c6fe0A9420AfCE6b4bf36d3b0CB"
+    },
+    "settlementToken": {
+      "name": "Custos Test USD Coin",
+      "symbol": "tUSDC",
+      "address": "0x1c7Fdb68f2a3431CBE63B12Eacb63CAf9D8890Af",
+      "decimals": 6,
+      "official": false,
+      "faucetAddress": "0x1c7Fdb68f2a3431CBE63B12Eacb63CAf9D8890Af",
+      "claimUrl": "",
+      "claimFlow": "Call the Custos tUSDC faucet from the connected wallet.",
+      "disclaimer": "Project-owned testnet-only collateral; not USDC, not fiat-backed and not redeemable for cash."
+    },
+    "spot": {
+      "XAU": {
+        "token": "0xB672a53E3f0781E058F72690B1579a6892B1A871",
+        "pool": "0x44850184e7ae94B9909AB9b484E9a45b28DdBB89",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "oracleMode": "fallback"
+      },
+      "XAG": {
+        "token": "0x2aE2756ff4F08cb8718C25a4c89b2CC42843151E",
+        "pool": "0xC19907c7cd615f09B68d644C46bc0D39b0326bd2",
+        "feedId": "0xf2fb02c32b055c805e7238d628e5e9dadef274376114eb1f012337cabe93871e",
+        "oracleMode": "fallback"
+      },
+      "OIL": {
+        "token": "0x5DA87f28283BC35E978335be7b0513fa8d07121a",
+        "pool": "0x4E72B874998Ec330aC40A13E314C167E39Dd1014",
+        "feedId": "0xf8c2191e76f7f4d5335e7f4e8f81ab0df6360d54ee020874222841894203e9d7",
+        "oracleMode": "fallback"
+      }
+    },
+    "rwa": [
+      {
+        "symbol": "rKINV26",
+        "assetId": "0x8e9ce7eb3c7d4cae7ffc8205177d2fef2663328cd968e066271dd8186868476f",
+        "token": "0xdb23f4B260700999cBF4f86878A646D74412BDE8",
+        "pool": "0x43bf339A5b791587A5419Aa1d3f88508d5A97c9F",
+        "assetLiquidity": "90000.0",
+        "quoteLiquidity": "90000.0"
+      },
+      {
+        "symbol": "rSOLAR27",
+        "assetId": "0x70d91a452fda84b42dfe05925f1b7a0b70b2b25f5907318fb35d6347262cb3ca",
+        "token": "0x3ca9C6BD47332b2e8d819a95fB2805A71Acc4C94",
+        "pool": "0x8f42B22F55467837F1432e98698Aa058b7E663a4",
+        "assetLiquidity": "135000.0",
+        "quoteLiquidity": "135000.0"
+      },
+      {
+        "symbol": "rCOFFEE26",
+        "assetId": "0x3f22426beb8b43886d6f301c4f670a57ace0404010b4fa2b46c812ce155e57dc",
+        "token": "0x67d4B20EEF7Aff1Cb579A854D547E8B09591c805",
+        "pool": "0xca340191D4Dab7c5Bc48B10b7f8A935b616354ef",
+        "assetLiquidity": "75000.0",
+        "quoteLiquidity": "75000.0"
+      }
+    ],
+    "perps": {
+      "BTC": {
+        "marketId": "0xb39c402b9bd8428ba7a4cc2d1aca1432756cddeb60941a9175541a819095269e",
+        "feedId": "0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 500,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "250000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "ETH": {
+        "marketId": "0x2430f68ea2e8d4151992bb7fc3a4c472087a6149bf7e0232704396162ab7c1f7",
+        "feedId": "0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 500,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "200000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "SOL": {
+        "marketId": "0xc8f26e6a5357088b86b9152126f5617eacfdd451083ac8200098aa83564c11f5",
+        "feedId": "0xef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 600,
+        "maxConfidenceBps": 125,
+        "maxOpenInterestUsd": "150000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "AAPL": {
+        "marketId": "0xe0b475319cf9c01a19a8127c97800674070ee4a511ac549c9ba584df1fb575b0",
+        "feedId": "0x49f6b65cb1de6b10eaf75e7c03ca029c306d0357e91b5311b175084a5ad55688",
+        "maxPriceAge": 600,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 1000,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "NVDA": {
+        "marketId": "0x8023c500af52a82446010f0f8f786f68100feaab35aea6808ba920af04019187",
+        "feedId": "0xb1073854ed24cbc755dc527418f52b7d271f6cc967bbf8d8129112b18860a593",
+        "maxPriceAge": 600,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 1000,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "XAU": {
+        "marketId": "0xe436723612eb7d581cade97ec576cd66065c3a7cfd25fe994dda6edb90f49bf6",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 750,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000",
+        "oracleMode": "pyth-or-fallback"
+      }
+    },
+    "selectedRwaQuote": "project",
+    "officialCanReceive": false
+  },
+  {
+    "runId": "47805-20260828113457-ffb92266",
+    "status": "success",
+    "network": {
+      "name": "Custos Local",
+      "chainId": 47805
+    },
+    "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "startedAt": "2026-08-28T11:34:57.478Z",
+    "requestedRwaQuote": "project",
+    "pyth": "",
+    "deployedAt": "2026-08-28T11:35:00.906Z",
+    "completedAt": "2026-08-28T11:35:00.914Z",
+    "contracts": {
+      "testUSDC": "0x2BB8B93F585B43b06F3d523bf30C203d3B6d4BD4",
+      "rwaSettlementToken": "0x2BB8B93F585B43b06F3d523bf30C203d3B6d4BD4",
+      "verifiedToken": "0x2BB8B93F585B43b06F3d523bf30C203d3B6d4BD4",
+      "verifiedTokenFaucet": "0x2BB8B93F585B43b06F3d523bf30C203d3B6d4BD4",
+      "oracleRouter": "0xB7ca895F81F20e05A5eb11B05Cbaab3DAe5e23cd",
+      "registry": "0x2d13826359803522cCe7a4Cfa2c1b582303DD0B4",
+      "assetFactory": "0xCa57C1d3c2c35E667745448Fef8407dd25487ff8",
+      "poolFactory": "0xc3023a2c9f7B92d1dd19F488AF6Ee107a78Df9DB",
+      "marketRegistry": "0xB468647B04bF657C9ee2de65252037d781eABafD",
+      "marginVault": "0x47c05BCCA7d57c87083EB4e586007530eE4539e9",
+      "perpEngine": "0x408F924BAEC71cC3968614Cb2c58E155A35e6890"
+    },
+    "settlementToken": {
+      "name": "Custos Test USD Coin",
+      "symbol": "tUSDC",
+      "address": "0x2BB8B93F585B43b06F3d523bf30C203d3B6d4BD4",
+      "decimals": 6,
+      "official": false,
+      "faucetAddress": "0x2BB8B93F585B43b06F3d523bf30C203d3B6d4BD4",
+      "claimUrl": "",
+      "claimFlow": "Call the local tUSDC faucet from the connected wallet.",
+      "disclaimer": "Local testnet-only collateral; no cash value."
+    },
+    "spot": {
+      "XAU": {
+        "token": "0xD1760AA0FCD9e64bA4ea43399Ad789CFd63C7809",
+        "pool": "0x75b0B516B47A27b1819D21B26203Abf314d42CCE",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "oracleMode": ""
+      },
+      "XAG": {
+        "token": "0x8f119cd256a0FfFeed643E830ADCD9767a1d517F",
+        "pool": "0xe14058B1c3def306e2cb37535647A04De03Db092",
+        "feedId": "0xf2fb02c32b055c805e7238d628e5e9dadef274376114eb1f012337cabe93871e",
+        "oracleMode": ""
+      },
+      "OIL": {
+        "token": "0x73C68f1f41e4890D06Ba3e71b9E9DfA555f1fb46",
+        "pool": "0xD2D5e508C82EFc205cAFA4Ad969a4395Babce026",
+        "feedId": "0xf8c2191e76f7f4d5335e7f4e8f81ab0df6360d54ee020874222841894203e9d7",
+        "oracleMode": ""
+      }
+    },
+    "rwa": [
+      {
+        "symbol": "rKINV26",
+        "assetId": "0x8e9ce7eb3c7d4cae7ffc8205177d2fef2663328cd968e066271dd8186868476f",
+        "token": "0x47873862c10b3f80E2Ebc2800C9B63aB895D453d",
+        "pool": "0xcdc9D7811974744355d74819D044b2B92D75b83e",
+        "assetLiquidity": "50000.0",
+        "quoteLiquidity": "50000.0"
+      },
+      {
+        "symbol": "rSOLAR27",
+        "assetId": "0x70d91a452fda84b42dfe05925f1b7a0b70b2b25f5907318fb35d6347262cb3ca",
+        "token": "0x06AF88798e474B4F6D39Bc37B611dF0cce296259",
+        "pool": "0xee1589b9B4D5b568Bec98463562958FC2423Cb3E",
+        "assetLiquidity": "50000.0",
+        "quoteLiquidity": "50000.0"
+      },
+      {
+        "symbol": "rCOFFEE26",
+        "assetId": "0x3f22426beb8b43886d6f301c4f670a57ace0404010b4fa2b46c812ce155e57dc",
+        "token": "0x90E5907f06eb571Dc569F322b3647ee562dcAB07",
+        "pool": "0x6865157CCF4cF760514c464f3C4821dF8e3F19cC",
+        "assetLiquidity": "50000.0",
+        "quoteLiquidity": "50000.0"
+      }
+    ],
+    "perps": {
+      "BTC": {
+        "marketId": "0xb39c402b9bd8428ba7a4cc2d1aca1432756cddeb60941a9175541a819095269e",
+        "feedId": "0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 500,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "250000"
+      },
+      "ETH": {
+        "marketId": "0x2430f68ea2e8d4151992bb7fc3a4c472087a6149bf7e0232704396162ab7c1f7",
+        "feedId": "0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 500,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "200000"
+      },
+      "SOL": {
+        "marketId": "0xc8f26e6a5357088b86b9152126f5617eacfdd451083ac8200098aa83564c11f5",
+        "feedId": "0xef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 600,
+        "maxConfidenceBps": 125,
+        "maxOpenInterestUsd": "150000"
+      },
+      "AAPL": {
+        "marketId": "0xe0b475319cf9c01a19a8127c97800674070ee4a511ac549c9ba584df1fb575b0",
+        "feedId": "0x49f6b65cb1de6b10eaf75e7c03ca029c306d0357e91b5311b175084a5ad55688",
+        "maxPriceAge": 600,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 1000,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000"
+      },
+      "NVDA": {
+        "marketId": "0x8023c500af52a82446010f0f8f786f68100feaab35aea6808ba920af04019187",
+        "feedId": "0xb1073854ed24cbc755dc527418f52b7d271f6cc967bbf8d8129112b18860a593",
+        "maxPriceAge": 600,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 1000,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000"
+      },
+      "XAU": {
+        "marketId": "0xe436723612eb7d581cade97ec576cd66065c3a7cfd25fe994dda6edb90f49bf6",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 750,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000"
+      }
+    },
+    "selectedRwaQuote": "project",
+    "officialCanReceive": false
+  },
+  {
+    "runId": "91342-20260828120626-fac6ee42",
+    "status": "success",
+    "network": {
+      "name": "GIWA Sepolia",
+      "chainId": 91342
+    },
+    "deployer": "0xD017bCFa977511794AD302F0b7eDBF59fAC6ee42",
+    "startedAt": "2026-08-28T12:06:26.122Z",
+    "requestedRwaQuote": "auto",
+    "pyth": "0x2880ab155794e7179c9ee2e38200202908c17b43",
+    "deployedAt": "2026-08-28T12:10:25.429Z",
+    "completedAt": "2026-08-28T12:10:25.445Z",
+    "contracts": {
+      "verifiedToken": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+      "verifiedTokenFaucet": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+      "officialVerifiedToken": "0xBCdB22f56642DE57624CfC2fBb9eE398cF3CA268",
+      "rwaSettlementToken": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+      "testUSDC": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+      "oracleRouter": "0x4aE104028b03c2Bd8730b32999A0ce22865A8eee",
+      "registry": "0x094d3a81582E470d9b669C0E776eE422CbEC4570",
+      "assetFactory": "0xe306f0ea65CCe42462f57E79b7EC203a4e88dAee",
+      "poolFactory": "0x5360507e0965f9e0d50b729E72a17B83B3ccd8Cc",
+      "marketRegistry": "0x1F8088286c9ecb75A4AECe9300524C9B4f33cEC4",
+      "marginVault": "0x38847c6C1fC6bACAD3929c541812f532CFcdc174",
+      "perpEngine": "0x6163B145B1cDe748E3BE527df3085E708880F7F3"
+    },
+    "settlementToken": {
+      "name": "Custos Test USD Coin",
+      "symbol": "tUSDC",
+      "address": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+      "decimals": 6,
+      "official": false,
+      "faucetAddress": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+      "claimUrl": "",
+      "claimFlow": "Call the Custos tUSDC faucet from the connected wallet.",
+      "disclaimer": "Project-owned testnet-only collateral; not USDC, not fiat-backed and not redeemable for cash."
+    },
+    "spot": {
+      "XAU": {
+        "token": "0xA9E82BA86C8069508be7dc254248946886E6B0FE",
+        "pool": "0xa6B3b7e400d89874880F78654211B5108d2f563C",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "oracleMode": "fallback"
+      },
+      "XAG": {
+        "token": "0x0032b38908bDDDF634Aa0e9a548C516573FC1A3B",
+        "pool": "0x73D0D1FfFF7Cb3B5E98694B8e68268123c0A5144",
+        "feedId": "0xf2fb02c32b055c805e7238d628e5e9dadef274376114eb1f012337cabe93871e",
+        "oracleMode": "fallback"
+      },
+      "OIL": {
+        "token": "0xD451C4fFFE0F77887b1036D1e431b9d3b408154A",
+        "pool": "0x6000F1Bb346AF1Bd6EDB3F061E6A2BBA15270756",
+        "feedId": "0xf8c2191e76f7f4d5335e7f4e8f81ab0df6360d54ee020874222841894203e9d7",
+        "oracleMode": "fallback"
+      }
+    },
+    "rwa": [
+      {
+        "symbol": "rKINV26",
+        "assetId": "0x8e9ce7eb3c7d4cae7ffc8205177d2fef2663328cd968e066271dd8186868476f",
+        "token": "0x85B65f5A44EE2faff5e99D04A5E2f842c16c12B3",
+        "pool": "0xeA3ec5d362D5599161e5Bc4013103Fb0b4758A95",
+        "assetLiquidity": "90000.0",
+        "quoteLiquidity": "90000.0"
+      },
+      {
+        "symbol": "rSOLAR27",
+        "assetId": "0x70d91a452fda84b42dfe05925f1b7a0b70b2b25f5907318fb35d6347262cb3ca",
+        "token": "0x9e1CD03EEfe22e62f104966Dc7784c32fC174e07",
+        "pool": "0x01Ef4d5431EB2Ed3f66D47686D433b34928dF3dd",
+        "assetLiquidity": "135000.0",
+        "quoteLiquidity": "135000.0"
+      },
+      {
+        "symbol": "rCOFFEE26",
+        "assetId": "0x3f22426beb8b43886d6f301c4f670a57ace0404010b4fa2b46c812ce155e57dc",
+        "token": "0x09fDD53efaA8b87Fe2B6C4e09f179b9BaED08913",
+        "pool": "0xCc753182d9DDD5875Ba974a16600f1Dac83Efa1f",
+        "assetLiquidity": "75000.0",
+        "quoteLiquidity": "75000.0"
+      }
+    ],
+    "perps": {
+      "BTC": {
+        "marketId": "0xb39c402b9bd8428ba7a4cc2d1aca1432756cddeb60941a9175541a819095269e",
+        "feedId": "0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 500,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "250000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "ETH": {
+        "marketId": "0x2430f68ea2e8d4151992bb7fc3a4c472087a6149bf7e0232704396162ab7c1f7",
+        "feedId": "0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 500,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "200000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "SOL": {
+        "marketId": "0xc8f26e6a5357088b86b9152126f5617eacfdd451083ac8200098aa83564c11f5",
+        "feedId": "0xef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 600,
+        "maxConfidenceBps": 125,
+        "maxOpenInterestUsd": "150000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "AAPL": {
+        "marketId": "0xe0b475319cf9c01a19a8127c97800674070ee4a511ac549c9ba584df1fb575b0",
+        "feedId": "0x49f6b65cb1de6b10eaf75e7c03ca029c306d0357e91b5311b175084a5ad55688",
+        "maxPriceAge": 600,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 1000,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "NVDA": {
+        "marketId": "0x8023c500af52a82446010f0f8f786f68100feaab35aea6808ba920af04019187",
+        "feedId": "0xb1073854ed24cbc755dc527418f52b7d271f6cc967bbf8d8129112b18860a593",
+        "maxPriceAge": 600,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 1000,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "XAU": {
+        "marketId": "0xe436723612eb7d581cade97ec576cd66065c3a7cfd25fe994dda6edb90f49bf6",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 750,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000",
+        "oracleMode": "pyth-or-fallback"
+      }
+    },
+    "selectedRwaQuote": "project",
+    "officialCanReceive": false
+  },
+  {
+    "runId": "91342-20260906011746-06709d97",
+    "status": "success",
+    "network": {
+      "name": "GIWA Sepolia",
+      "chainId": 91342
+    },
+    "deployer": "0xee379A4fC908F03Cd886197945bf964806709D97",
+    "startedAt": "2026-09-06T01:17:46.338Z",
+    "requestedRwaQuote": "auto",
+    "pyth": "0x2880ab155794e7179c9ee2e38200202908c17b43",
+    "deployedAt": "2026-09-06T01:21:44.205Z",
+    "completedAt": "2026-09-06T01:21:44.213Z",
+    "contracts": {
+      "verifiedToken": "0x9a434B8578319433844154DC4eb6e4CaA119EdE8",
+      "verifiedTokenFaucet": "0x9a434B8578319433844154DC4eb6e4CaA119EdE8",
+      "officialVerifiedToken": "0xBCdB22f56642DE57624CfC2fBb9eE398cF3CA268",
+      "rwaSettlementToken": "0x9a434B8578319433844154DC4eb6e4CaA119EdE8",
+      "testUSDC": "0x9a434B8578319433844154DC4eb6e4CaA119EdE8",
+      "oracleRouter": "0xD5005CcB436c0479206cD0757740cF249144C9E7",
+      "registry": "0x0689AFa9ED68115844707b7625088ef5e6e1ac12",
+      "assetFactory": "0xc766701e6fB30e3fcE4CeB1167ca2762BF3C5B91",
+      "poolFactory": "0x43cCDa15C2fd90b887566ffbFB6157C6F63d0d6B",
+      "marketRegistry": "0x3E7D87cFA2f30074C7E7CF4206CE4e4ECBDaCc30",
+      "marginVault": "0xD4ecF7bB001554F7d312036c86699dC2d6218224",
+      "perpEngine": "0x7736bb4341491C011087d407d76318F4a581395F"
+    },
+    "settlementToken": {
+      "name": "Custos Test USD Coin",
+      "symbol": "tUSDC",
+      "address": "0x9a434B8578319433844154DC4eb6e4CaA119EdE8",
+      "decimals": 6,
+      "official": false,
+      "faucetAddress": "0x9a434B8578319433844154DC4eb6e4CaA119EdE8",
+      "claimUrl": "",
+      "claimFlow": "Call the Custos tUSDC faucet from the connected wallet.",
+      "disclaimer": "Project-owned testnet-only collateral; not USDC, not fiat-backed and not redeemable for cash."
+    },
+    "spot": {
+      "XAU": {
+        "token": "0xaaff09f126342553829c38F6b7B75da63C7F7bbE",
+        "pool": "0x92033FD87e9Fb97F870F0162ebAFc4bc7fEdF8ec",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "oracleMode": "fallback"
+      },
+      "XAG": {
+        "token": "0x5e50e53864D97EA90fe6c754ED1042541E8831C4",
+        "pool": "0xbF9C4F4a5805c287aa062AA8F4772d94E4f007f2",
+        "feedId": "0xf2fb02c32b055c805e7238d628e5e9dadef274376114eb1f012337cabe93871e",
+        "oracleMode": "fallback"
+      },
+      "OIL": {
+        "token": "0x6ef49E02BE1BAc8C9085a3A31DF19efc318EA3ca",
+        "pool": "0x970d57Bea4d0f7b8dd6D851520008a20C95f16Ab",
+        "feedId": "0xf8c2191e76f7f4d5335e7f4e8f81ab0df6360d54ee020874222841894203e9d7",
+        "oracleMode": "fallback"
+      }
+    },
+    "rwa": [
+      {
+        "symbol": "rKINV26",
+        "assetId": "0x8e9ce7eb3c7d4cae7ffc8205177d2fef2663328cd968e066271dd8186868476f",
+        "token": "0x867590520D75F6597cb50ae30E35698649642229",
+        "pool": "0x2541a6D54618Cb533cE35bAABE471DdCDb59aD96",
+        "assetLiquidity": "90000.0",
+        "quoteLiquidity": "90000.0"
+      },
+      {
+        "symbol": "rSOLAR27",
+        "assetId": "0x70d91a452fda84b42dfe05925f1b7a0b70b2b25f5907318fb35d6347262cb3ca",
+        "token": "0xf60969b4C5f32105FF90956199048A0Dc8219A94",
+        "pool": "0x85b0de9bd837b4C5803c2b9d4aAb8e087dCBDAB3",
+        "assetLiquidity": "135000.0",
+        "quoteLiquidity": "135000.0"
+      },
+      {
+        "symbol": "rCOFFEE26",
+        "assetId": "0x3f22426beb8b43886d6f301c4f670a57ace0404010b4fa2b46c812ce155e57dc",
+        "token": "0x31354F683a74E55E6139b8b70776458C7A4B92aF",
+        "pool": "0x3ADCAFB6E19344E2528E17891eeA6c19f115B9ac",
+        "assetLiquidity": "75000.0",
+        "quoteLiquidity": "75000.0"
+      }
+    ],
+    "perps": {
+      "BTC": {
+        "marketId": "0xb39c402b9bd8428ba7a4cc2d1aca1432756cddeb60941a9175541a819095269e",
+        "feedId": "0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 500,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "250000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "ETH": {
+        "marketId": "0x2430f68ea2e8d4151992bb7fc3a4c472087a6149bf7e0232704396162ab7c1f7",
+        "feedId": "0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 500,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "200000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "SOL": {
+        "marketId": "0xc8f26e6a5357088b86b9152126f5617eacfdd451083ac8200098aa83564c11f5",
+        "feedId": "0xef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 100000,
+        "maintenanceMarginBps": 600,
+        "maxConfidenceBps": 125,
+        "maxOpenInterestUsd": "150000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "AAPL": {
+        "marketId": "0xe0b475319cf9c01a19a8127c97800674070ee4a511ac549c9ba584df1fb575b0",
+        "feedId": "0x49f6b65cb1de6b10eaf75e7c03ca029c306d0357e91b5311b175084a5ad55688",
+        "maxPriceAge": 600,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 1000,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "NVDA": {
+        "marketId": "0x8023c500af52a82446010f0f8f786f68100feaab35aea6808ba920af04019187",
+        "feedId": "0xb1073854ed24cbc755dc527418f52b7d271f6cc967bbf8d8129112b18860a593",
+        "maxPriceAge": 600,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 1000,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000",
+        "oracleMode": "pyth-or-fallback"
+      },
+      "XAU": {
+        "marketId": "0xe436723612eb7d581cade97ec576cd66065c3a7cfd25fe994dda6edb90f49bf6",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "maxPriceAge": 120,
+        "maxLeverageBps": 50000,
+        "maintenanceMarginBps": 750,
+        "maxConfidenceBps": 100,
+        "maxOpenInterestUsd": "100000",
+        "oracleMode": "pyth-or-fallback"
+      }
+    },
+    "selectedRwaQuote": "project",
+    "officialCanReceive": false
+  }
+]

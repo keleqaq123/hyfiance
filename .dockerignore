@@ -1,0 +1,16 @@
+**/.git
+**/.gitignore
+**/node_modules
+**/.venv
+**/.env
+**/.env.*
+**/*.db
+**/__pycache__
+**/dist
+**/build
+**/artifacts
+**/cache
+**/.DS_Store
+ui-screenshots
+KELQ_RWA_PERP_MERGED
+contracts/swap

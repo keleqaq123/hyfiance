@@ -1,0 +1,24 @@
+{
+  "name": "@custos/nft-contracts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GIWA Genesis NFT contract, deployment records and testnet smoke checks.",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:giwa": "hardhat run scripts/deploy-giwa-nft.js --network giwaSepolia",
+    "smoke:giwa": "hardhat run scripts/smoke-giwa-nft.js --network giwaSepolia"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "5.2.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "6.1.0",
+    "dotenv": "16.4.7",
+    "hardhat": "2.28.6",
+    "solc": "0.8.26"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "network": "GIWA Sepolia",
+  "chainId": 91342,
+  "rpc": "https://sepolia-rpc.giwa.io",
+  "deployedAt": "2026-09-06T02:10:30.251Z",
+  "deployer": "0xee379A4fC908F03Cd886197945bf964806709D97",
+  "contracts": {
+    "launchpad": "0x37BC45c02dbc2f390E7404aFB688FA64e3b17E64",
+    "bridge": "0xEee47E68C564dDC33F91e62555fb76E969606C44",
+    "bridgeToken": "0xa35b0D5F4C3f870f2fFfA154eA41083ABF694c0A"
+  },
+  "counterparty": {
+    "chainId": 11155111,
+    "network": "Ethereum Sepolia",
+    "bridge": "0x9C296c3F0586Ab6412E06161D148eAde806076a0",
+    "bridgeToken": "0x35BF7faB801C3fF283f4fABaE5ae8690099e9e01"
+  },
+  "demo": {
+    "launchId": "1",
+    "launchTx": "0x11470292de8fd446d2c581b0f4d398f04b9fd2d524eb954d2eb9816a05ac4d96",
+    "bridgeMessage": "0xe93552a5a1fc2d2366b67d93f4705800ea76c3ab82780772db46c5e7a69ff08b",
+    "bridgeTx": "0x2b0d1504f8de35d3e85579199b600e65c708099ea1c9800c98a43f09f2b22fd6",
+    "executeTx": "0x89ca1a655f0bf47f2a25bb5bf1a17eb1065083261202e4b5bb5f8037c85c820d"
+  }
+}

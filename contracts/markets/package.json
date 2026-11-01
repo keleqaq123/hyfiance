@@ -1,0 +1,27 @@
+{
+  "name": "custos-markets-contracts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Custos Spot, Perpetuals and RWA testnet market contracts.",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:local": "hardhat run scripts/deploy-local-markets.js --network hardhat",
+    "deploy:local:rpc": "hardhat run scripts/deploy-local-markets.js --network local",
+    "deploy:giwa": "hardhat run scripts/deploy-giwa-markets.js --network giwaSepolia",
+    "smoke:giwa": "hardhat run scripts/smoke-giwa-markets.js --network giwaSepolia",
+    "sync:config": "node scripts/sync-market-config.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "5.2.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "6.1.0",
+    "dotenv": "16.4.7",
+    "hardhat": "2.28.6",
+    "solc": "0.8.26"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@custos/bridge-relayer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Custos Bridge message relayer for paired EVM testnets.",
+  "main": "src/index.cjs",
+  "scripts": {
+    "test": "node --test test/*.test.cjs",
+    "start": "node src/index.cjs",
+    "check": "node --check src/config.cjs && node --check src/state.cjs && node --check src/relayer.cjs && node --check src/index.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ethers": "^5.8.0"
+  },
+  "overrides": {
+    "ws": "8.21.0"
+  }
+}

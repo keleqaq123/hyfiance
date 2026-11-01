@@ -1,0 +1,50 @@
+{
+  "version": "custos-spot-v1",
+  "chainId": 91342,
+  "deployedAt": "2026-09-06T01:21:44.205Z",
+  "deployer": "0xee379A4fC908F03Cd886197945bf964806709D97",
+  "quoteToken": "0x9a434B8578319433844154DC4eb6e4CaA119EdE8",
+  "quoteSymbol": "tUSDC",
+  "quoteDecimals": 6,
+  "oracleRouter": "0xD5005CcB436c0479206cD0757740cF249144C9E7",
+  "markets": {
+    "XAU": {
+      "name": "Custos Synthetic Gold",
+      "tokenSymbol": "rXAU",
+      "underlying": "XAU/USD",
+      "pythSymbol": "Metal.XAU/USD",
+      "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+      "unit": "1 token = 1 troy oz gold reference",
+      "token": "0xaaff09f126342553829c38F6b7B75da63C7F7bbE",
+      "pool": "0x92033FD87e9Fb97F870F0162ebAFc4bc7fEdF8ec",
+      "oracleMode": "fallback"
+    },
+    "XAG": {
+      "name": "Custos Synthetic Silver",
+      "tokenSymbol": "rXAG",
+      "underlying": "XAG/USD",
+      "pythSymbol": "Metal.XAG/USD",
+      "feedId": "0xf2fb02c32b055c805e7238d628e5e9dadef274376114eb1f012337cabe93871e",
+      "unit": "1 token = 1 troy oz silver reference",
+      "token": "0x5e50e53864D97EA90fe6c754ED1042541E8831C4",
+      "pool": "0xbF9C4F4a5805c287aa062AA8F4772d94E4f007f2",
+      "oracleMode": "fallback"
+    },
+    "OIL": {
+      "name": "Custos Synthetic WTI",
+      "tokenSymbol": "rWTI",
+      "underlying": "WTI/USD",
+      "pythSymbol": "Commodities.WTIX6/USD",
+      "feedId": "0xf8c2191e76f7f4d5335e7f4e8f81ab0df6360d54ee020874222841894203e9d7",
+      "unit": "1 token = 1 barrel WTI reference",
+      "token": "0x6ef49E02BE1BAc8C9085a3A31DF19efc318EA3ca",
+      "pool": "0x970d57Bea4d0f7b8dd6D851520008a20C95f16Ab",
+      "oracleMode": "fallback"
+    }
+  },
+  "notes": [
+    "Synthetic testnet spot markets; not redeemable for physical assets.",
+    "Spot execution is anchored to the configured Pyth or local mock oracle.",
+    "The same tUSDC contract is used by Spot and Perpetuals."
+  ]
+}

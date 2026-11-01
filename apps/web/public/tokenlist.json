@@ -1,0 +1,99 @@
+{
+  "name": "Custos Swap",
+  "logoURI": "/custos-reality-mark.svg",
+  "keywords": [
+    "defi",
+    "local"
+  ],
+  "timestamp": "2026-10-02T00:00:00.000Z",
+  "tokens": [
+    {
+      "chainId": 47805,
+      "address": "0x9338CA7d556248055f5751d85cDA7aD6eF254433",
+      "name": "Custos Token A",
+      "symbol": "CUSTOS-A",
+      "decimals": 18,
+      "logoURI": "/custos-icon.png"
+    },
+    {
+      "chainId": 47805,
+      "address": "0x9c65f85425c619A6cB6D29fF8d57ef696323d188",
+      "name": "Custos Token B",
+      "symbol": "CUSTOS-B",
+      "decimals": 18,
+      "logoURI": "/custos-icon.png"
+    },
+    {
+      "chainId": 47805,
+      "address": "0x286B8DecD5ED79c962b2d8F4346CD97FF0E2C352",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/ethereum/info/logo.png"
+    },
+    {
+      "chainId": 91342,
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18
+    },
+    {
+      "chainId": 91342,
+      "address": "0xaf9856DC884c50d4355944C9bB383449EF64aEc6",
+      "name": "Test USDC",
+      "symbol": "tUSDC",
+      "decimals": 6
+    },
+    {
+      "chainId": 91342,
+      "address": "0x6F20141BD8ADA8cb2DA23900041268B003c359DB",
+      "name": "KELQ Synthetic Gold",
+      "symbol": "rXAU",
+      "decimals": 18
+    },
+    {
+      "chainId": 91342,
+      "address": "0xbEbc44bD8bF215a0E5f18Ed0db4D3910B9fB12D1",
+      "name": "KELQ Synthetic Silver",
+      "symbol": "rXAG",
+      "decimals": 18
+    },
+    {
+      "chainId": 91342,
+      "address": "0x86c54DA4936aD3bBC01a6329aC1f77343628Ad01",
+      "name": "KELQ Synthetic WTI",
+      "symbol": "rWTI",
+      "decimals": 18
+    },
+    {
+      "chainId": 91342,
+      "address": "0x32AF40B25CB5842f91E2B790563e5F0e51A70832",
+      "name": "Custos Token A",
+      "symbol": "CUSTOS-A",
+      "decimals": 18,
+      "logoURI": "https://www.custosfinance.xyz/custos-icon.png"
+    },
+    {
+      "chainId": 91342,
+      "address": "0x5ea3096fA9366e136605A73269B38900529dfD5A",
+      "name": "Custos Token B",
+      "symbol": "CUSTOS-B",
+      "decimals": 18,
+      "logoURI": "https://www.custosfinance.xyz/custos-icon.png"
+    },
+    {
+      "chainId": 91342,
+      "address": "0xeDBc87C8c03af5eB8Ff2C97ae9708719Ed050b66",
+      "name": "Custos V2 Wrapped Ether",
+      "symbol": "V2-WETH",
+      "decimals": 18,
+      "logoURI": "https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/ethereum/info/logo.png"
+    }
+  ],
+  "version": {
+    "major": 2,
+    "minor": 3,
+    "patch": 0
+  }
+}

@@ -1,0 +1,24 @@
+{
+    "wbtc": ["Wrapped Bitcoin", "WBTC"],
+    "ada": ["Cardano", "ADA"],
+    "xrp": ["XRP", "XRP"],
+    "dot": ["Polkadot", "DOT"],
+    "sol": ["Solana", "SOL"],
+    "uni": ["Uniswap", "UNI"],
+    "doge": ["Dogecoin", "DOGE"],
+    "ltc": ["Litecoin", "LTC"],
+    "bch": ["Bitcoin Cash", "BCH"],
+    "busd": ["Binance USD", "BUSD"],
+    "usdt": ["Tether", "USDT"],
+    "usdc": ["USD Coin", "USDC"],
+    "dai": ["Dai", "DAI"],
+    "cake": ["PancakeSwap", "CAKE"],
+    "axs": ["Axie Infinity", "AXS"],
+    "mana": ["Decentraland", "MANA"],
+    "alice": ["MyNeighborAlice", "ALICE"],
+    "sand": ["The Sandbox", "SAND"],
+    "flow": ["Flow", "FLOW"]
+}
+
+
+

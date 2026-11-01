@@ -1,0 +1,77 @@
+{
+  "version": "custos-rwa-v1",
+  "chainId": 91342,
+  "deployedAt": "2026-09-06T01:21:44.205Z",
+  "deployer": "0xee379A4fC908F03Cd886197945bf964806709D97",
+  "contracts": {
+    "verifiedToken": "0x9a434B8578319433844154DC4eb6e4CaA119EdE8",
+    "verifiedTokenFaucet": "0x9a434B8578319433844154DC4eb6e4CaA119EdE8",
+    "registry": "0x0689AFa9ED68115844707b7625088ef5e6e1ac12",
+    "assetFactory": "0xc766701e6fB30e3fcE4CeB1167ca2762BF3C5B91",
+    "poolFactory": "0x43cCDa15C2fd90b887566ffbFB6157C6F63d0d6B"
+  },
+  "settlementToken": {
+    "name": "Custos Test USD Coin",
+    "symbol": "tUSDC",
+    "address": "0x9a434B8578319433844154DC4eb6e4CaA119EdE8",
+    "decimals": 6,
+    "official": false,
+    "faucetAddress": "0x9a434B8578319433844154DC4eb6e4CaA119EdE8",
+    "claimUrl": "",
+    "claimFlow": "Call the Custos tUSDC faucet from the connected wallet.",
+    "disclaimer": "Project-owned testnet-only collateral; not USDC, not fiat-backed and not redeemable for cash."
+  },
+  "markets": [
+    {
+      "name": "Korea Export Invoice 2026",
+      "symbol": "rKINV26",
+      "asset_type": "Trade Invoice",
+      "maturity": "2027-08-30",
+      "risk": 31,
+      "supply": "1000000",
+      "weight": 30,
+      "assetPerQuote": 1,
+      "assetId": "0x8e9ce7eb3c7d4cae7ffc8205177d2fef2663328cd968e066271dd8186868476f",
+      "tokenAddress": "0x867590520D75F6597cb50ae30E35698649642229",
+      "poolAddress": "0x2541a6D54618Cb533cE35bAABE471DdCDb59aD96",
+      "documentHash": "0x206691bad47a51f111df1d02c7a7f1dfccfc4e3f7b3a66ae97346ddfbf0f7453",
+      "metadataURI": "ipfs://custos-rwa-demo/rkinv26",
+      "assetLiquidity": "90000.0",
+      "quoteLiquidity": "90000.0"
+    },
+    {
+      "name": "Solar Equipment Lease",
+      "symbol": "rSOLAR27",
+      "asset_type": "Equipment Lease",
+      "maturity": "2027-12-15",
+      "risk": 39,
+      "supply": "1000000",
+      "weight": 45,
+      "assetPerQuote": 1,
+      "assetId": "0x70d91a452fda84b42dfe05925f1b7a0b70b2b25f5907318fb35d6347262cb3ca",
+      "tokenAddress": "0xf60969b4C5f32105FF90956199048A0Dc8219A94",
+      "poolAddress": "0x85b0de9bd837b4C5803c2b9d4aAb8e087dCBDAB3",
+      "documentHash": "0x518fd051064bf359884c5b54b132fe482a91f9e95bb09ea05545f48c876d176a",
+      "metadataURI": "ipfs://custos-rwa-demo/rsolar27",
+      "assetLiquidity": "135000.0",
+      "quoteLiquidity": "135000.0"
+    },
+    {
+      "name": "Coffee Supply Receivable",
+      "symbol": "rCOFFEE26",
+      "asset_type": "Supply-chain Receivable",
+      "maturity": "2027-10-20",
+      "risk": 58,
+      "supply": "1000000",
+      "weight": 25,
+      "assetPerQuote": 1,
+      "assetId": "0x3f22426beb8b43886d6f301c4f670a57ace0404010b4fa2b46c812ce155e57dc",
+      "tokenAddress": "0x31354F683a74E55E6139b8b70776458C7A4B92aF",
+      "poolAddress": "0x3ADCAFB6E19344E2528E17891eeA6c19f115B9ac",
+      "documentHash": "0xd2c320662eb4ab6e4a492f41864d6eb8f384ddfbf1a4bfd0fbc2ddf2443ea04c",
+      "metadataURI": "ipfs://custos-rwa-demo/rcoffee26",
+      "assetLiquidity": "75000.0",
+      "quoteLiquidity": "75000.0"
+    }
+  ]
+}

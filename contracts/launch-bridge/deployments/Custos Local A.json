@@ -1,0 +1,25 @@
+{
+  "network": "Custos Local A",
+  "chainId": 47805,
+  "rpc": "http://127.0.0.1:8545",
+  "deployedAt": "2026-09-05T11:01:39.739Z",
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "contracts": {
+    "launchpad": "0xc5a5C42992dECbae36851359345FE25997F5C42d",
+    "bridge": "0x67d269191c92Caf3cD7723F116c85e6E9bf55933",
+    "bridgeToken": "0xE6E340D132b5f46d1e472DebcD681B2aBc16e57E"
+  },
+  "counterparty": {
+    "chainId": 47806,
+    "network": "Custos Local B",
+    "bridge": "0xa85233C63b9Ee964Add6F2cffe00Fd84eb32338f",
+    "bridgeToken": "0x4A679253410272dd5232B3Ff7cF5dbB88f295319"
+  },
+  "demo": {
+    "launchId": "1",
+    "launchTx": "0x50308ebbaa1a5ad918ab14b47a8d5518f033bea8ede03212f36d49287d2cca22",
+    "bridgeMessage": "0x46ee036df246e0b92245d246c902acaa9d75d38c7233877a55d65931f90588c9",
+    "bridgeTx": "0x7de65319cda404a626fd8238b566e2ae0fc6c5fd14ea6950a140cffb0037a2c3",
+    "executeTx": "0x031cc98b423600064b25ef576ed98cc2a4db373553b9acab50abf60af366343b"
+  }
+}

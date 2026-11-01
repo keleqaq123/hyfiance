@@ -1,0 +1,77 @@
+{
+  "network": "GIWA Sepolia",
+  "chainId": 91342,
+  "deployedAt": "2026-09-06T01:21:44.205Z",
+  "deployer": "0xee379A4fC908F03Cd886197945bf964806709D97",
+  "pyth": "0x2880ab155794e7179c9ee2e38200202908c17b43",
+  "contracts": {
+    "testUSDC": "0x9a434B8578319433844154DC4eb6e4CaA119EdE8",
+    "oracleRouter": "0xD5005CcB436c0479206cD0757740cF249144C9E7",
+    "marketRegistry": "0x3E7D87cFA2f30074C7E7CF4206CE4e4ECBDaCc30",
+    "marginVault": "0xD4ecF7bB001554F7d312036c86699dC2d6218224",
+    "perpEngine": "0x7736bb4341491C011087d407d76318F4a581395F"
+  },
+  "markets": {
+    "BTC": {
+      "marketId": "0xb39c402b9bd8428ba7a4cc2d1aca1432756cddeb60941a9175541a819095269e",
+      "feedId": "0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43",
+      "maxPriceAge": 120,
+      "maxLeverageBps": 100000,
+      "maintenanceMarginBps": 500,
+      "maxConfidenceBps": 100,
+      "maxOpenInterestUsd": "250000",
+      "oracleMode": "pyth-or-fallback"
+    },
+    "ETH": {
+      "marketId": "0x2430f68ea2e8d4151992bb7fc3a4c472087a6149bf7e0232704396162ab7c1f7",
+      "feedId": "0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+      "maxPriceAge": 120,
+      "maxLeverageBps": 100000,
+      "maintenanceMarginBps": 500,
+      "maxConfidenceBps": 100,
+      "maxOpenInterestUsd": "200000",
+      "oracleMode": "pyth-or-fallback"
+    },
+    "SOL": {
+      "marketId": "0xc8f26e6a5357088b86b9152126f5617eacfdd451083ac8200098aa83564c11f5",
+      "feedId": "0xef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d",
+      "maxPriceAge": 120,
+      "maxLeverageBps": 100000,
+      "maintenanceMarginBps": 600,
+      "maxConfidenceBps": 125,
+      "maxOpenInterestUsd": "150000",
+      "oracleMode": "pyth-or-fallback"
+    },
+    "AAPL": {
+      "marketId": "0xe0b475319cf9c01a19a8127c97800674070ee4a511ac549c9ba584df1fb575b0",
+      "feedId": "0x49f6b65cb1de6b10eaf75e7c03ca029c306d0357e91b5311b175084a5ad55688",
+      "maxPriceAge": 600,
+      "maxLeverageBps": 50000,
+      "maintenanceMarginBps": 1000,
+      "maxConfidenceBps": 100,
+      "maxOpenInterestUsd": "100000",
+      "oracleMode": "pyth-or-fallback"
+    },
+    "NVDA": {
+      "marketId": "0x8023c500af52a82446010f0f8f786f68100feaab35aea6808ba920af04019187",
+      "feedId": "0xb1073854ed24cbc755dc527418f52b7d271f6cc967bbf8d8129112b18860a593",
+      "maxPriceAge": 600,
+      "maxLeverageBps": 50000,
+      "maintenanceMarginBps": 1000,
+      "maxConfidenceBps": 100,
+      "maxOpenInterestUsd": "100000",
+      "oracleMode": "pyth-or-fallback"
+    },
+    "XAU": {
+      "marketId": "0xe436723612eb7d581cade97ec576cd66065c3a7cfd25fe994dda6edb90f49bf6",
+      "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+      "maxPriceAge": 120,
+      "maxLeverageBps": 50000,
+      "maintenanceMarginBps": 750,
+      "maxConfidenceBps": 100,
+      "maxOpenInterestUsd": "100000",
+      "oracleMode": "pyth-or-fallback"
+    }
+  },
+  "version": "custos-markets-v1"
+}

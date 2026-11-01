@@ -1,0 +1,12 @@
+const fs=require('fs'),path=require('path');
+const solc=require(process.env.SOLC_MODULE||'solc');
+const source=path.resolve(__dirname,'../src/CustosRealityLaunchpad.sol');
+const input={language:'Solidity',sources:{'CustosRealityLaunchpad.sol':{content:fs.readFileSync(source,'utf8')}},settings:{optimizer:{enabled:true,runs:200},viaIR:true,evmVersion:'paris',outputSelection:{'*':{'*':['abi','evm.bytecode.object','evm.deployedBytecode.object']}}}};
+const result=JSON.parse(solc.compile(JSON.stringify(input)));
+for(const error of result.errors||[])console.log(error.formattedMessage);
+if((result.errors||[]).some(e=>e.severity==='error'))process.exit(1);
+const compiled=result.contracts['CustosRealityLaunchpad.sol'];const artifacts={};
+for(const [name,value]of Object.entries(compiled))artifacts[name]={abi:value.abi,bytecode:'0x'+value.evm.bytecode.object,deployedBytecode:'0x'+value.evm.deployedBytecode.object};
+const target=path.resolve(__dirname,'../../../apps/web/src/custos/reality-artifacts.json');
+fs.writeFileSync(target,JSON.stringify(artifacts));console.log('Reality artifacts generated');
+fs.writeFileSync(path.resolve(__dirname,'../../../apps/api/reality-contract.json'),JSON.stringify(artifacts.CustosRealityLaunchpad));

@@ -1,0 +1,16 @@
+{
+  "short_name": "Custos",
+  "name": "Custos Finance",
+  "icons": [
+    {
+      "src": "./custos-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "orientation": "portrait",
+  "display": "standalone",
+  "theme_color": "#050506",
+  "background_color": "#050506"
+}

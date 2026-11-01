@@ -1,0 +1,12 @@
+{
+  "chainId": 91342,
+  "deployer": "0xD017bCFa977511794AD302F0b7eDBF59fAC6ee42",
+  "vault": "0xE6ad5FE166edeA0B949180168E928Ee6AA9B7137",
+  "cfi": "0xE6ad5FE166edeA0B949180168E928Ee6AA9B7137",
+  "pyth": "0x2880aB155794e7179c9eE2e38200202908C17B43",
+  "transactionHash": "0x6be6e4ad19279ef4cd3e3a65148ed31dec849be169de19949e1efb8d745ffd31",
+  "status": "verified",
+  "blockNumber": 37442257,
+  "runtimeCodeHash": "0xb8cac87a00955c4059b36a49aa687714978ee04bb9887613d705fb1e5dd70112",
+  "deployedAt": "2026-09-30T16:56:23.468Z"
+}

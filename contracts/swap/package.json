@@ -1,0 +1,55 @@
+{
+  "name": "custos-swap-contracts",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Custos Finance contract workspace for Swap, Spot, Perps and CRP test environments.",
+  "main": "hardhat.config.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "deploy": "hardhat deploy --tags main",
+    "deploy:local": "hardhat deploy --network local --tags main",
+    "deploy:kovan": "hardhat deploy --network kovan --tags main",
+    "deploy:giwa": "hardhat run --network giwaSepolia scripts/deploy-giwa-uniswap.js",
+    "verify:giwa": "hardhat run --network giwaSepolia scripts/verify-giwa-interactions.js",
+    "mock": "hardhat deploy --tags mock",
+    "test": "hardhat test --network local",
+    "test:v2": "hardhat test --network local test/current/v2.integration.js",
+    "deploy:swap:local": "hardhat run --network local scripts/deploy-local-uniswap.js",
+    "verify:swap:local": "hardhat run --network local scripts/verify-local-interactions.js"
+  },
+  "keywords": [
+    "custos",
+    "defi",
+    "swap",
+    "hardhat"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^2.5.0",
+    "ethers": "^5.0.31",
+    "hardhat": "^2.0.11",
+    "truffle-assertions": "^0.9.2"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-etherscan": "^3.0.4",
+    "@nomiclabs/hardhat-truffle5": "^2.0.6",
+    "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@openzeppelin/test-helpers": "^0.5.15",
+    "@truffle/artifactor": "^4.0.156",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "decimal.js": "^10.3.1",
+    "dotenv": "^10.0.0",
+    "hardhat-deploy": "^0.11.10",
+    "hardhat-local-networks-config-plugin": "^0.0.5",
+    "solc-0.5.16": "npm:solc@0.5.16",
+    "solc-0.6.6": "npm:solc@0.6.6",
+    "solc-0.6.12": "npm:solc@0.6.12",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3",
+    "web3": "^1.7.3"
+  }
+}

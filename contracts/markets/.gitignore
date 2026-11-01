@@ -1,0 +1,6 @@
+node_modules/
+artifacts/
+cache/
+.env
+deployments/local.json
+deployments/giwa-sepolia.json

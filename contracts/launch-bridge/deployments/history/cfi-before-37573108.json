@@ -1,0 +1,14 @@
+{
+  "chainId": 91342,
+  "deployer": "0xD017bCFa977511794AD302F0b7eDBF59fAC6ee42",
+  "vault": "0xE38214dEAC49b139d1a6376b3A58Ff72B3D0eE87",
+  "cfi": "0xE38214dEAC49b139d1a6376b3A58Ff72B3D0eE87",
+  "quoteSigner": "0x33AFD96fE7E87C297c1a46dFE659B541DDF97E77",
+  "priceSource": "Binance ETHUSDT, operator-signed",
+  "previousVault": "0xE6ad5FE166edeA0B949180168E928Ee6AA9B7137",
+  "transactionHash": "0x4e4b230951e4d2039d55f15d30ed7e4ca7fdd21201fe5e41510413de59e441d2",
+  "status": "verified",
+  "blockNumber": 37482741,
+  "runtimeCodeHash": "0x61da95c74f827d322322b17c01f0fc80198da5014f9a8b27b2c21b0c14edcb6f",
+  "deployedAt": "2026-10-01T04:11:03.981Z"
+}

@@ -1,0 +1,6 @@
+import {expect,it,vi} from 'vitest'
+import {listenRealityWallet} from './realityWalletEvents'
+function setup(bridge:boolean){const handlers=new Map<string,(value:unknown)=>void>(),clear=vi.fn(),invalidate=vi.fn(),removeListener=vi.fn();const stop=listenRealityWallet({on:(event,handler)=>{handlers.set(event,handler)},removeListener},bridge,clear,invalidate);return {handlers,clear,invalidate,stop,removeListener}}
+it('keeps a bridge session through supported chain switches and invalidates display reads',()=>{const s=setup(true);s.handlers.get('chainChanged')!('0xaa36a7');s.handlers.get('chainChanged')!('0x164ce');expect(s.clear).not.toHaveBeenCalled();expect(s.invalidate).toHaveBeenCalledTimes(2);s.stop();expect(s.removeListener).toHaveBeenCalledTimes(2)})
+it('always revokes wallet authentication when the selected account changes',()=>{const s=setup(true);s.handlers.get('accountsChanged')!(['0xother']);expect(s.clear).toHaveBeenCalledOnce();expect(s.invalidate).not.toHaveBeenCalled()})
+it('revokes authentication on unsupported chains or network changes outside the bridge',()=>{const bridge=setup(true);bridge.handlers.get('chainChanged')!('0x1');expect(bridge.clear).toHaveBeenCalledOnce();const normal=setup(false);normal.handlers.get('chainChanged')!('0xaa36a7');expect(normal.clear).toHaveBeenCalledOnce()})

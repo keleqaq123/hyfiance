@@ -1,0 +1,184 @@
+{
+  "version": "custos-markets-v1",
+  "network": {
+    "name": "GIWA Sepolia",
+    "chainId": 91342
+  },
+  "deployer": "0xD017bCFa977511794AD302F0b7eDBF59fAC6ee42",
+  "deployedAt": "2026-08-28T12:10:25.429Z",
+  "contracts": {
+    "verifiedToken": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+    "verifiedTokenFaucet": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+    "officialVerifiedToken": "0xBCdB22f56642DE57624CfC2fBb9eE398cF3CA268",
+    "rwaSettlementToken": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+    "testUSDC": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+    "oracleRouter": "0x4aE104028b03c2Bd8730b32999A0ce22865A8eee",
+    "registry": "0x094d3a81582E470d9b669C0E776eE422CbEC4570",
+    "assetFactory": "0xe306f0ea65CCe42462f57E79b7EC203a4e88dAee",
+    "poolFactory": "0x5360507e0965f9e0d50b729E72a17B83B3ccd8Cc",
+    "marketRegistry": "0x1F8088286c9ecb75A4AECe9300524C9B4f33cEC4",
+    "marginVault": "0x38847c6C1fC6bACAD3929c541812f532CFcdc174",
+    "perpEngine": "0x6163B145B1cDe748E3BE527df3085E708880F7F3"
+  },
+  "settlementToken": {
+    "name": "Custos Test USD Coin",
+    "symbol": "tUSDC",
+    "address": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+    "decimals": 6,
+    "official": false,
+    "faucetAddress": "0xdE1Ae220D755AFf0Ddd1f02dBe93F2E0FeF2f263",
+    "claimUrl": "",
+    "claimFlow": "Call the Custos tUSDC faucet from the connected wallet.",
+    "disclaimer": "Project-owned testnet-only collateral; not USDC, not fiat-backed and not redeemable for cash."
+  },
+  "markets": [
+    {
+      "name": "Korea Export Invoice 2026",
+      "symbol": "rKINV26",
+      "asset_type": "Trade Invoice",
+      "maturity": "2027-08-30",
+      "risk": 31,
+      "supply": "1000000",
+      "weight": 30,
+      "assetPerQuote": 1,
+      "assetId": "0x8e9ce7eb3c7d4cae7ffc8205177d2fef2663328cd968e066271dd8186868476f",
+      "tokenAddress": "0x85B65f5A44EE2faff5e99D04A5E2f842c16c12B3",
+      "poolAddress": "0xeA3ec5d362D5599161e5Bc4013103Fb0b4758A95",
+      "documentHash": "0x206691bad47a51f111df1d02c7a7f1dfccfc4e3f7b3a66ae97346ddfbf0f7453",
+      "metadataURI": "ipfs://custos-rwa-demo/rkinv26",
+      "assetLiquidity": "90000.0",
+      "quoteLiquidity": "90000.0"
+    },
+    {
+      "name": "Solar Equipment Lease",
+      "symbol": "rSOLAR27",
+      "asset_type": "Equipment Lease",
+      "maturity": "2027-12-15",
+      "risk": 39,
+      "supply": "1000000",
+      "weight": 45,
+      "assetPerQuote": 1,
+      "assetId": "0x70d91a452fda84b42dfe05925f1b7a0b70b2b25f5907318fb35d6347262cb3ca",
+      "tokenAddress": "0x9e1CD03EEfe22e62f104966Dc7784c32fC174e07",
+      "poolAddress": "0x01Ef4d5431EB2Ed3f66D47686D433b34928dF3dd",
+      "documentHash": "0x518fd051064bf359884c5b54b132fe482a91f9e95bb09ea05545f48c876d176a",
+      "metadataURI": "ipfs://custos-rwa-demo/rsolar27",
+      "assetLiquidity": "135000.0",
+      "quoteLiquidity": "135000.0"
+    },
+    {
+      "name": "Coffee Supply Receivable",
+      "symbol": "rCOFFEE26",
+      "asset_type": "Supply-chain Receivable",
+      "maturity": "2027-10-20",
+      "risk": 58,
+      "supply": "1000000",
+      "weight": 25,
+      "assetPerQuote": 1,
+      "assetId": "0x3f22426beb8b43886d6f301c4f670a57ace0404010b4fa2b46c812ce155e57dc",
+      "tokenAddress": "0x09fDD53efaA8b87Fe2B6C4e09f179b9BaED08913",
+      "poolAddress": "0xCc753182d9DDD5875Ba974a16600f1Dac83Efa1f",
+      "documentHash": "0xd2c320662eb4ab6e4a492f41864d6eb8f384ddfbf1a4bfd0fbc2ddf2443ea04c",
+      "metadataURI": "ipfs://custos-rwa-demo/rcoffee26",
+      "assetLiquidity": "75000.0",
+      "quoteLiquidity": "75000.0"
+    }
+  ],
+  "spot": {
+    "XAU": {
+      "name": "Custos Synthetic Gold",
+      "tokenSymbol": "rXAU",
+      "underlying": "XAU/USD",
+      "pythSymbol": "Metal.XAU/USD",
+      "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+      "unit": "1 token = 1 troy oz gold reference",
+      "token": "0xA9E82BA86C8069508be7dc254248946886E6B0FE",
+      "pool": "0xa6B3b7e400d89874880F78654211B5108d2f563C",
+      "oracleMode": "fallback"
+    },
+    "XAG": {
+      "name": "Custos Synthetic Silver",
+      "tokenSymbol": "rXAG",
+      "underlying": "XAG/USD",
+      "pythSymbol": "Metal.XAG/USD",
+      "feedId": "0xf2fb02c32b055c805e7238d628e5e9dadef274376114eb1f012337cabe93871e",
+      "unit": "1 token = 1 troy oz silver reference",
+      "token": "0x0032b38908bDDDF634Aa0e9a548C516573FC1A3B",
+      "pool": "0x73D0D1FfFF7Cb3B5E98694B8e68268123c0A5144",
+      "oracleMode": "fallback"
+    },
+    "OIL": {
+      "name": "Custos Synthetic WTI",
+      "tokenSymbol": "rWTI",
+      "underlying": "WTI/USD",
+      "pythSymbol": "Commodities.WTIX6/USD",
+      "feedId": "0xf8c2191e76f7f4d5335e7f4e8f81ab0df6360d54ee020874222841894203e9d7",
+      "unit": "1 token = 1 barrel WTI reference",
+      "token": "0xD451C4fFFE0F77887b1036D1e431b9d3b408154A",
+      "pool": "0x6000F1Bb346AF1Bd6EDB3F061E6A2BBA15270756",
+      "oracleMode": "fallback"
+    }
+  },
+  "perps": {
+    "BTC": {
+      "marketId": "0xb39c402b9bd8428ba7a4cc2d1aca1432756cddeb60941a9175541a819095269e",
+      "feedId": "0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43",
+      "maxPriceAge": 120,
+      "maxLeverageBps": 100000,
+      "maintenanceMarginBps": 500,
+      "maxConfidenceBps": 100,
+      "maxOpenInterestUsd": "250000",
+      "oracleMode": "pyth-or-fallback"
+    },
+    "ETH": {
+      "marketId": "0x2430f68ea2e8d4151992bb7fc3a4c472087a6149bf7e0232704396162ab7c1f7",
+      "feedId": "0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+      "maxPriceAge": 120,
+      "maxLeverageBps": 100000,
+      "maintenanceMarginBps": 500,
+      "maxConfidenceBps": 100,
+      "maxOpenInterestUsd": "200000",
+      "oracleMode": "pyth-or-fallback"
+    },
+    "SOL": {
+      "marketId": "0xc8f26e6a5357088b86b9152126f5617eacfdd451083ac8200098aa83564c11f5",
+      "feedId": "0xef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d",
+      "maxPriceAge": 120,
+      "maxLeverageBps": 100000,
+      "maintenanceMarginBps": 600,
+      "maxConfidenceBps": 125,
+      "maxOpenInterestUsd": "150000",
+      "oracleMode": "pyth-or-fallback"
+    },
+    "AAPL": {
+      "marketId": "0xe0b475319cf9c01a19a8127c97800674070ee4a511ac549c9ba584df1fb575b0",
+      "feedId": "0x49f6b65cb1de6b10eaf75e7c03ca029c306d0357e91b5311b175084a5ad55688",
+      "maxPriceAge": 600,
+      "maxLeverageBps": 50000,
+      "maintenanceMarginBps": 1000,
+      "maxConfidenceBps": 100,
+      "maxOpenInterestUsd": "100000",
+      "oracleMode": "pyth-or-fallback"
+    },
+    "NVDA": {
+      "marketId": "0x8023c500af52a82446010f0f8f786f68100feaab35aea6808ba920af04019187",
+      "feedId": "0xb1073854ed24cbc755dc527418f52b7d271f6cc967bbf8d8129112b18860a593",
+      "maxPriceAge": 600,
+      "maxLeverageBps": 50000,
+      "maintenanceMarginBps": 1000,
+      "maxConfidenceBps": 100,
+      "maxOpenInterestUsd": "100000",
+      "oracleMode": "pyth-or-fallback"
+    },
+    "XAU": {
+      "marketId": "0xe436723612eb7d581cade97ec576cd66065c3a7cfd25fe994dda6edb90f49bf6",
+      "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+      "maxPriceAge": 120,
+      "maxLeverageBps": 50000,
+      "maintenanceMarginBps": 750,
+      "maxConfidenceBps": 100,
+      "maxOpenInterestUsd": "100000",
+      "oracleMode": "pyth-or-fallback"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.gcloudignore
+.git/
+**/.git
+**/node_modules
+**/.venv
+**/.env
+**/.env.*
+**/*.db
+**/dist
+**/build
+**/artifacts
+**/cache
+**/.DS_Store
+contracts/swap/
+ui-screenshots/
+KELQ_RWA_PERP_MERGED/

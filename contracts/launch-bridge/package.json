@@ -1,0 +1,31 @@
+{
+  "name": "@custos/launch-bridge",
+  "private": true,
+  "scripts": {
+    "test:relayer": "npm run build && node scripts/test-relayer.cjs",
+    "smoke:public": "node scripts/smoke-test-public.cjs",
+    "deploy:reality": "node scripts/deploy-reality.cjs",
+    "build:reality": "node scripts/compile-reality.cjs",
+    "test:reality": "node scripts/test-reality.cjs",
+    "build": "node scripts/compile-protocol.cjs",
+    "deploy:dual": "node scripts/deploy-protocol.cjs",
+    "smoke:local": "node scripts/smoke-test.cjs",
+    "fmt": "forge fmt",
+    "build:cfi": "node scripts/compile-cfi.cjs",
+    "test:cfi": "node scripts/test-cfi.cjs",
+    "deploy:cfi": "node scripts/deploy-cfi.cjs",
+    "build:cfi:binance": "node scripts/compile-cfi-binance.cjs",
+    "test:cfi:binance": "node scripts/test-cfi-binance.cjs",
+    "deploy:cfi:binance": "node scripts/deploy-cfi-binance.cjs",
+    "build:faucet": "node scripts/faucet-artifact.cjs",
+    "test:faucet": "node scripts/test-faucet.cjs",
+    "deploy:faucet": "node scripts/deploy-faucet.cjs",
+    "test:faucet:configurable": "node scripts/test-configurable-faucet.cjs",
+    "test:faucet:service": "node scripts/test-faucet-service.cjs"
+  },
+  "devDependencies": {
+    "ethers": "5.8.0",
+    "ganache": "7.9.2",
+    "solc": "0.8.30"
+  }
+}

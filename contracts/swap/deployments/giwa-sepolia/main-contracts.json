@@ -1,0 +1,17 @@
+{
+  "network": "GIWA Sepolia",
+  "chainId": 91342,
+  "rpc": "https://sepolia-rpc.giwa.io",
+  "deployer": "0xee379A4fC908F03Cd886197945bf964806709D97",
+  "deployedAt": "2026-09-06T01:31:46.166Z",
+  "contracts": {
+    "weth": "0xeDBc87C8c03af5eB8Ff2C97ae9708719Ed050b66",
+    "factory": "0x349a1CBB28C6267B4B567A06b2661Af8d6A1a1f5",
+    "router": "0x4F1F5E8DE722e2773e7794af41ca0863457943C5",
+    "multicall": "0x95a882901Bd9e4F819034ba62FB3F21Cf248E19B",
+    "tokenA": "0x32AF40B25CB5842f91E2B790563e5F0e51A70832",
+    "tokenB": "0x5ea3096fA9366e136605A73269B38900529dfD5A",
+    "pair": "0x1A649Eb1D48D7962D3f72A54311CA4048590B25A"
+  },
+  "initCodeHash": "0x557a766008a8cd8e924285f8112de27cababa9ac28e813698860a4342ed3f647"
+}

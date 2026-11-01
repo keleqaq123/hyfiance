@@ -1,0 +1,26 @@
+1.先部署工厂合约。 拿到init_code
+2.去路由合约找hex,然后替换下面字符串。去掉0x
+3.部署multicall合约 
+3.打开sdk 打开constants文件  替换 factory地址和下面的字符串.  然后再上面加一个chainid
+4.打开entities下面的token.js  在最后加一段改weth  [ChainId.REI]: new Token(ChainId.REI, '0x726A343864Ddf968631b8E034742D7a7A5053B76', 18, 'WREI', 'Wrapped Ether')
+5.然后安装依赖 npm i
+6.然后登陆npmjs.com。
+7.然后打开前端。 安装npm i    然后打开src/constants/index.ts  替换路由合约 
+8.打开connectors/index.ts 加一个链id supportedChainIds: [1, 3, 4, 5, 42,47805]
+9.constants/multicall/index.ts 里加一个当前网络 [ChainId.REI]: '0x1a75F711F03b34CC5859da561cce30d0F1faE5C7',
+10. constants/list.ts   修改tokenlist 
+export const DEFAULT_TOKEN_LIST_URL = 'https://umaproject.org/uma.tokenlist.json'
+
+export const DEFAULT_LIST_OF_LISTS: string[] = [
+  DEFAULT_TOKEN_LIST_URL
+]
+
+11.浏览器链接地址 src/utils/index.ts   47805: 'scan.rei.network'  
+const prefix = `https://${ETHERSCAN_PREFIXES[chainId] || ETHERSCAN_PREFIXES[1]}`
+12.制作sdk  改名字版本号 1. npm login 2. npm publish 
+13. 去前端代码。去掉unisdk 加上自己sdk.  然后全文替换
+14. Src/components/header/index.tsx  129行加一句新的  [ChainId.REI]: 'REI'
+15.src/constants/index.ts 25行 [ChainId.REI]: [WETH[ChainId.REI]]
+16.src/constants/v1/index.js 12行[ChainId.REI]: ''
+17.src/state/lists/hooks.ts 39行[ChainId.REI]: {}
+18.开源合约。 参数用创建合约的input和编辑的bytecode对比。input中多的是参数

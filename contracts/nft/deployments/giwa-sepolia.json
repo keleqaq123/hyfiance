@@ -1,0 +1,35 @@
+{
+  "network": "GIWA Sepolia",
+  "chainId": 91342,
+  "rpc": "https://sepolia-rpc.giwa.io",
+  "explorer": "https://sepolia-explorer.giwa.io",
+  "deployedAt": "2026-09-11T07:25:39.483Z",
+  "deployer": "0xee379A4fC908F03Cd886197945bf964806709D97",
+  "contractAddress": "0xe12c3b8940368e85500ec48CfF1EB0e7cB882dF2",
+  "deploymentTx": "0x54942a1aac1d7cd43a7bb5deb5c03dc2498cfc52a862c260eac111fca7e78148",
+  "blockNumber": 35766422,
+  "constructor": {
+    "mintPriceWei": "100000000000000",
+    "mintPriceEth": "0.0001",
+    "baseURI": "https://www.custosfinance.xyz/nft/metadata/"
+  },
+  "collection": {
+    "name": "GIWA Genesis",
+    "symbol": "GIWA",
+    "maxSupply": "1111",
+    "walletLimit": "1",
+    "mintOpen": true
+  },
+  "smoke": {
+    "ok": true,
+    "checkedAt": "2026-09-11T07:28:57.049Z",
+    "signer": "0xee379A4fC908F03Cd886197945bf964806709D97",
+    "mintTx": "0xcb73a1236085cc9d4ceab02a32f618bc16e5746521b2b22cece2624fda419364",
+    "tokenId": "1",
+    "totalSupply": "1",
+    "mintedByWallet": "1",
+    "ownerOf": "0xee379A4fC908F03Cd886197945bf964806709D97",
+    "tokenURI": "https://www.custosfinance.xyz/nft/metadata/1",
+    "duplicateMintRejected": true
+  }
+}

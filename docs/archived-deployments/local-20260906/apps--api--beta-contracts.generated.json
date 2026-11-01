@@ -1,0 +1,119 @@
+{
+  "version": "public-beta-s1",
+  "chainId": 91342,
+  "generatedAt": "2026-09-06T01:21:44.205Z",
+  "contracts": {
+    "testUSDC": "0x9a434B8578319433844154DC4eb6e4CaA119EdE8",
+    "marginVault": "0xD4ecF7bB001554F7d312036c86699dC2d6218224",
+    "perpEngine": "0x7736bb4341491C011087d407d76318F4a581395F",
+    "spotPools": [
+      "0x92033FD87e9Fb97F870F0162ebAFc4bc7fEdF8ec",
+      "0xbF9C4F4a5805c287aa062AA8F4772d94E4f007f2",
+      "0x970d57Bea4d0f7b8dd6D851520008a20C95f16Ab"
+    ],
+    "spotMarkets": {
+      "XAU": {
+        "token": "0xaaff09f126342553829c38F6b7B75da63C7F7bbE",
+        "pool": "0x92033FD87e9Fb97F870F0162ebAFc4bc7fEdF8ec",
+        "feedId": "0x765d2ba906dbc32ca17cc11f5310a89e9ee1f6420508c63861f2f8ba4ee34bb2",
+        "tokenSymbol": "rXAU",
+        "underlying": "XAU/USD"
+      },
+      "XAG": {
+        "token": "0x5e50e53864D97EA90fe6c754ED1042541E8831C4",
+        "pool": "0xbF9C4F4a5805c287aa062AA8F4772d94E4f007f2",
+        "feedId": "0xf2fb02c32b055c805e7238d628e5e9dadef274376114eb1f012337cabe93871e",
+        "tokenSymbol": "rXAG",
+        "underlying": "XAG/USD"
+      },
+      "OIL": {
+        "token": "0x6ef49E02BE1BAc8C9085a3A31DF19efc318EA3ca",
+        "pool": "0x970d57Bea4d0f7b8dd6D851520008a20C95f16Ab",
+        "feedId": "0xf8c2191e76f7f4d5335e7f4e8f81ab0df6360d54ee020874222841894203e9d7",
+        "tokenSymbol": "rWTI",
+        "underlying": "WTI/USD"
+      }
+    }
+  },
+  "actions": {
+    "faucet": {
+      "targets": [
+        "0x9a434B8578319433844154DC4eb6e4CaA119EdE8"
+      ],
+      "selectors": [
+        "0xde5f72fd"
+      ]
+    },
+    "spot_trade": {
+      "targets": [
+        "0x92033FD87e9Fb97F870F0162ebAFc4bc7fEdF8ec",
+        "0xbF9C4F4a5805c287aa062AA8F4772d94E4f007f2",
+        "0x970d57Bea4d0f7b8dd6D851520008a20C95f16Ab"
+      ],
+      "selectors": [
+        "0x3b4092b8",
+        "0x73427d68"
+      ]
+    },
+    "add_liquidity": {
+      "targets": [
+        "0x92033FD87e9Fb97F870F0162ebAFc4bc7fEdF8ec",
+        "0xbF9C4F4a5805c287aa062AA8F4772d94E4f007f2",
+        "0x970d57Bea4d0f7b8dd6D851520008a20C95f16Ab"
+      ],
+      "selectors": [
+        "0x9a76f772"
+      ]
+    },
+    "remove_liquidity": {
+      "targets": [
+        "0x92033FD87e9Fb97F870F0162ebAFc4bc7fEdF8ec",
+        "0xbF9C4F4a5805c287aa062AA8F4772d94E4f007f2",
+        "0x970d57Bea4d0f7b8dd6D851520008a20C95f16Ab"
+      ],
+      "selectors": [
+        "0xd6e2e86d"
+      ]
+    },
+    "perp_deposit": {
+      "targets": [
+        "0xD4ecF7bB001554F7d312036c86699dC2d6218224"
+      ],
+      "selectors": [
+        "0xb6b55f25"
+      ]
+    },
+    "perp_withdraw": {
+      "targets": [
+        "0xD4ecF7bB001554F7d312036c86699dC2d6218224"
+      ],
+      "selectors": [
+        "0x2e1a7d4d"
+      ]
+    },
+    "perp_open": {
+      "targets": [
+        "0x7736bb4341491C011087d407d76318F4a581395F"
+      ],
+      "selectors": [
+        "0x08d0346f"
+      ]
+    },
+    "perp_close": {
+      "targets": [
+        "0x7736bb4341491C011087d407d76318F4a581395F"
+      ],
+      "selectors": [
+        "0x247d7b65"
+      ]
+    },
+    "tpsl": {
+      "targets": [
+        "0x7736bb4341491C011087d407d76318F4a581395F"
+      ],
+      "selectors": [
+        "0xc7dd5c1d"
+      ]
+    }
+  }
+}

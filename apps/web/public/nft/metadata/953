@@ -1,0 +1,19 @@
+{
+  "name": "GIWA Genesis #953",
+  "description": "GIWA Genesis Phase 3 — Selected Builder 2026 on GIWA Sepolia Testnet.",
+  "image": "ipfs://bafybeia2wqrtn3tyeggxe5dkgu43k356wkuespkmbczypr4oxy3r7253ty",
+  "attributes": [
+    {
+      "trait_type": "Phase",
+      "value": "3"
+    },
+    {
+      "trait_type": "Edition",
+      "value": "Selected Builder 2026"
+    },
+    {
+      "trait_type": "Network",
+      "value": "GIWA Sepolia Testnet"
+    }
+  ]
+}

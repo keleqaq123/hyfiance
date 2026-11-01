@@ -1,0 +1,29 @@
+{
+  "chainId": 91342,
+  "address": "0xF2B200A8a90cB40f08e91CE1539260556719d691",
+  "owner": "0xD017bCFa977511794AD302F0b7eDBF59fAC6ee42",
+  "transactionHash": "0x2be9ccadffe25672ed1ea3b3b6e436ac906f13e6a1d8ff1d5bda88f9f2537845",
+  "blockNumber": 37601213,
+  "name": "Custos - The Builder's Mark",
+  "symbol": "KBW2026",
+  "maxSupply": 2026,
+  "mintPrice": "0",
+  "walletLimit": 1,
+  "metadata": {
+    "name": "Custos — The Builder’s Mark",
+    "description": "Dedicated to those who came with curiosity and stayed to build. An independent Custos Finance community keepsake commemorating KBW 2026 and the journey from participation to creation.",
+    "image": "https://www.custosfinance.xyz/assets/nft/kbw2026-community.png",
+    "attributes": [
+      {
+        "trait_type": "Edition",
+        "value": "KBW 2026"
+      },
+      {
+        "trait_type": "Community",
+        "value": "Custos Finance"
+      }
+    ]
+  },
+  "verifiedAt": "2026-10-05",
+  "executableBytecodeMatches": true
+}

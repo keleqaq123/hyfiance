@@ -1,0 +1,30 @@
+{
+  "type": "public-dual-chain-smoke",
+  "testedAt": "2026-09-06T02:40:27.924Z",
+  "source": {
+    "network": "GIWA Sepolia",
+    "chainId": 91342,
+    "deployer": "0xee379A4fC908F03Cd886197945bf964806709D97"
+  },
+  "target": {
+    "network": "Ethereum Sepolia",
+    "chainId": 11155111,
+    "deployer": "0xee379A4fC908F03Cd886197945bf964806709D97"
+  },
+  "smokeBuyer": "0xee379A4fC908F03Cd886197945bf964806709D97",
+  "checks": {
+    "permissionlessLaunch": true,
+    "curatedRwaLaunch": true,
+    "forwardRelay": true,
+    "reverseRelay": true,
+    "replayProtection": true
+  },
+  "transactions": {
+    "publicLaunch": "0x26f88c7e3f62263da00aaf0a1a6c4e5698b6eb6caf2f90af5f31ea6b8b1a7605",
+    "publicBuy": "0xe513298977171bcffe2cabbced72b07f31be534e888c6a50fe5b18f125bb9482",
+    "curatedLaunch": "0xa15d1422542d4b69f1ae9a8331c611b329eda15c9a29bd741f39f6ed349a5bad",
+    "curatedBuy": "0x646466e0b4960e46ed235d6f26f11d7e687a0450502ed45d741e4e9b962fde0a",
+    "bridgeATx": "0x44966497f8bfc375b488f260e6341543b48754d747bf29bf6f23a38e978dddf2",
+    "bridgeBTx": "0x522673f32c649d20b2f9fd1b9bbad894d0bd68f63d00ff6221332035df6c87c1"
+  }
+}

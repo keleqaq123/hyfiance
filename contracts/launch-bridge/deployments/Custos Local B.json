@@ -1,0 +1,22 @@
+{
+  "network": "Custos Local B",
+  "chainId": 47806,
+  "rpc": "http://127.0.0.1:8546",
+  "deployedAt": "2026-09-05T11:01:55.911Z",
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "contracts": {
+    "launchpad": "0x322813Fd9A801c5507c9de605d63CEA4f2CE6c44",
+    "bridge": "0xa85233C63b9Ee964Add6F2cffe00Fd84eb32338f",
+    "bridgeToken": "0x4A679253410272dd5232B3Ff7cF5dbB88f295319"
+  },
+  "counterparty": {
+    "chainId": 47805,
+    "network": "Custos Local A",
+    "bridge": "0x67d269191c92Caf3cD7723F116c85e6E9bf55933",
+    "bridgeToken": "0xE6E340D132b5f46d1e472DebcD681B2aBc16e57E"
+  },
+  "demo": {
+    "launchId": "1",
+    "launchTx": "0xd2f9482345b54909867d5f2999d6966e432cddef86fa514818a58c225242fc31"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "chainId": 91342,
+  "address": "0xb77C2e25D7a998556eE0C71d170e7FD7Ead080a1",
+  "owner": "0xCb440121395fcE13bcA9a5D5ED826b2A47Ede44F",
+  "operator": "0xc504b7eE17CA998bF0AEd2F24eA4f1ED013C130a",
+  "claimETH": "0.001",
+  "cooldownSeconds": 0,
+  "dailyETH": "100.0",
+  "transactionHash": "0x8579d0aac9d9dc0393ff5131e50fcf6ce7e3d3d28bb9c8eb7ee77701baf0921c",
+  "blockNumber": 37922391,
+  "fundedETH": "3.73",
+  "replaced": "0x08a9e665fC13e65021DA8e8b2C8993Db843d5Fb7",
+  "oldRecoveryBalanceETH": "3.73",
+  "setterTests": {
+    "amount": "passed",
+    "cooldown": "passed",
+    "dailyLimit": "passed"
+  },
+  "websiteTest": {
+    "date": "2026-10-06",
+    "url": "https://www.custosfinance.xyz/#/reality/faucet",
+    "recipient": "0x5961Cb185488F93df4b92Db59BCA43d0b2B188b0",
+    "requestId": "d08b0628cd854efe88f089e9953af440",
+    "transactionHash": "0x5d46f17e6d2491310b87b9f606e448404d37e95d74b6338668ebf4bf288e66ef",
+    "receivedETH": "0.001",
+    "cooldownSeconds": 0,
+    "confirmed": true,
+    "walletCalls": 0,
+    "pageErrors": 0,
+    "failedRequests": 0
+  },
+  "repeatWebsiteTest": {
+    "recipient": "0x5961Cb185488F93df4b92Db59BCA43d0b2B188b0",
+    "requestId": "c45542fb4e164e80ada016ccf37044f1",
+    "transactionHash": "0x81b2637d4c95b44d8837cead0434f1c76bb3aef54b4855c81eb70c02a17b4789",
+    "receivedTotalETH": "0.002",
+    "cooldownSeconds": 0,
+    "confirmed": true
+  },
+  "transactions": {
+    "pause-old": {
+      "hash": "0xc1fc481086dafb60c8afd6c12caf83d226764c062979b670d9b301bd5f2222d8",
+      "blockNumber": 37922376
+    },
+    "recover-old": {
+      "hash": "0xeacd17954a1889b1e8624414c6214c12455030229743bbb9b3ed6bbfb555f0df",
+      "blockNumber": 37922384
+    },
+    "deploy-new": {
+      "hash": "0x8579d0aac9d9dc0393ff5131e50fcf6ce7e3d3d28bb9c8eb7ee77701baf0921c",
+      "blockNumber": 37922391
+    },
+    "fund-new": {
+      "hash": "0x1c30e392305b7199c8a89be690180f77eb399e22840f0aab6b65a1510d38985e",
+      "blockNumber": 37922398
+    },
+    "pause-new-setters": {
+      "hash": "0xd85d84a5d522a403d5d34e374cd1e61e8e5a58b370936260f86f028109a8bf1e",
+      "blockNumber": 37922405
+    },
+    "set-amount-test": {
+      "hash": "0x00120ea93d1fd7da4aee04782d44be75f2f0905793c9bb4932c8bdb6d8fe4784",
+      "blockNumber": 37922412
+    },
+    "set-cooldown-test": {
+      "hash": "0xedb05e3ec3c9ef3a69f5e163b038016337327621ba54e66912ad538635973fe5",
+      "blockNumber": 37922418
+    },
+    "set-daily-test": {
+      "hash": "0xe4c1abad82b36ffd28b8b67475490350949075861b85ac4d032095cdf1fac492",
+      "blockNumber": 37922424
+    },
+    "restore-amount": {
+      "hash": "0x89f7b5b27b1497e203bf116b323bb6cc1f239dc757d7cb3db37359ceccb8c052",
+      "blockNumber": 37922431
+    },
+    "restore-cooldown": {
+      "hash": "0x68c20cd9d2261b86a07403dddd00dee976afd5f5a2f7b0456928a95d600bb932",
+      "blockNumber": 37922437
+    },
+    "restore-daily": {
+      "hash": "0x7321bba8039b94ce4fc1dbc257bf73f80ce09b68d7264673b5a1272a3fad17fa",
+      "blockNumber": 37922443
+    },
+    "activate-new": {
+      "hash": "0xf7acd15595147e8a198b29cd7284fb1e1547b0ae8c552728a51d1e589774200f",
+      "blockNumber": 37922451
+    }
+  }
+}
